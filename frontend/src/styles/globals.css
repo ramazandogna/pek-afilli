@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  min-height: 100vh;
+}
+
 .container-wrap {
   max-width: 784px;
   width: 100%;

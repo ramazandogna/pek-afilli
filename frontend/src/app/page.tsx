@@ -1,7 +1,13 @@
+//components
+import Footer from '../layouts/footer';
+import Header from '../layouts/header';
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div>Hello world</div>
-    </main>
+    <div className="">
+      <Header />
+      <main className="container-wrap min-h-screen">test</main>
+      <Footer />
+    </div>
   );
 }
