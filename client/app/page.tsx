@@ -1,12 +1,12 @@
 //components
-import Footer from '../layouts/footer';
-import Header from '../layouts/header';
+import Footer from '../components/footer';
+import Header from '../components/header';
 
 export default function Home() {
   return (
-    <div className="">
+    <div>
       <Header />
-      <main className="container-wrap min-h-screen">test</main>
+      <main className="container-wrap section min-h-screen">test</main>
       <Footer />
     </div>
   );
