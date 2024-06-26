@@ -1,10 +1,6 @@
 import style from './layout.module.css';
 
-export default function AuthLayout({
-  children
-}: {
-  children: React.ReactNode;
-}) {
+export default function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
     <div>
       <div className={style.backgroundContent}></div>
