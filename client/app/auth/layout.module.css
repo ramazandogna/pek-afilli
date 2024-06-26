@@ -1,22 +1,15 @@
 .backgroundContent {
   @apply fixed inset-0 z-0;
-  background: linear-gradient(45deg, #b31312, #ea906c, #2b2a4c, #eee2de);
-  background-size: 400% 400%;
-  animation: gradientAnimation 15s ease infinite;
 }
 
-@keyframes gradientAnimation {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+.logoLink {
+  @apply absolute left-4 top-4 flex h-[60px] w-[60px] items-center justify-center  bg-white;
+}
+
+.logo {
+  @apply flex h-[50px] w-[50px] items-center justify-center  uppercase  text-[#f9fafb]  shadow-lg transition-all hover:scale-105 hover:opacity-100 hover:shadow-2xl;
 }
 
 .authContent {
-  @apply fixed right-0 z-10 flex h-[100vh] shadow-2xl;
+  @apply fixed bottom-4 left-4 right-4 top-4 z-10 flex h-[full] grow shadow-2xl sm:left-auto;
 }

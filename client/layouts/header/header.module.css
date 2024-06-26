@@ -1,0 +1,65 @@
+.navbar {
+  @apply fixed left-0 top-0 flex w-full shadow backdrop-blur-md;
+}
+
+.wrapper {
+  @apply flex gap-[16px];
+}
+
+.logo {
+  @apply relative flex h-[80px] w-[80px] items-center justify-center text-[20px] uppercase text-white;
+}
+
+.menus {
+  @apply flex grow flex-col;
+}
+
+.menu {
+  @apply flex h-[40px] grow items-center;
+}
+
+.topLeft {
+  @apply flex items-center gap-[8px];
+}
+
+.social {
+  @apply flex items-center gap-[4px];
+}
+
+.iconBg {
+  @apply flex h-[25px] w-[25px] cursor-pointer rounded-md bg-[#cccccc50] p-[1px] transition-all  hover:bg-[#cccccc80];
+}
+
+.iconBg:hover {
+  .icon {
+    @apply hover:rotate-3 hover:scale-[105%];
+  }
+}
+
+.icon {
+  @apply m-auto flex h-[21px] w-[21px] p-[2px] transition-all;
+}
+
+.searchInput {
+  @apply h-[30px] rounded-[49px] border-0 bg-[#cccccc60] pl-[8px] text-[12px];
+}
+
+.topRight {
+  @apply ml-auto flex w-[200px] gap-3;
+}
+
+.topRightItem {
+  @apply flex grow cursor-pointer items-center justify-center transition-all hover:scale-[102%];
+}
+
+.bottomLeft {
+  @apply flex gap-3;
+}
+
+.bottomLeftItem {
+  @apply cursor-pointer transition-all hover:scale-[102%];
+}
+
+.bottomRight {
+  @apply ml-auto flex w-[200px] cursor-pointer items-center justify-center rounded-[9px] border-[0.5px] border-red-500 px-2 py-[6px] text-red-500;
+}

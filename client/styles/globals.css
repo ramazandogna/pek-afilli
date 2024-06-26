@@ -25,5 +25,69 @@ body {
 }
 
 .section {
-  padding-top: 60px;
+  padding-top: 90px;
+}
+
+.backgroundContent {
+  background: linear-gradient(45deg, #ebf4f6, #37b7c3, #071952, #088395);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.input {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: #0000000d;
+  border-radius: 4px;
+}
+
+input {
+  border: none;
+  flex-grow: 1;
+  height: 46px;
+  padding-top: 10px;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 300;
+  transition: all 0.4s ease;
+  border-radius: 4px;
+  padding-left: 52px;
+  z-index: 2;
+}
+
+.input input:focus {
+  outline: none;
+  border-bottom: 1px solid #088395;
+  box-shadow: 0 1px 0 0 #088395;
+}
+
+label {
+  left: 52px;
+  position: absolute;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  transition: all 0.4s ease;
+  color: #00000090;
+  cursor: text;
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label {
+  transform: translateY(-17px);
+  font-size: 12px;
+  color: #088395;
 }
