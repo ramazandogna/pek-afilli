@@ -25,11 +25,17 @@ body {
 }
 
 .section {
-  padding-top: 90px;
+  padding-top: 110px;
 }
 
 .backgroundContent {
   background: linear-gradient(45deg, #ebf4f6, #37b7c3, #071952, #088395);
+  background-size: 400% 400%;
+  animation: gradientAnimation 15s ease infinite;
+}
+
+.backgroundContent2 {
+  background: linear-gradient(45deg, #b31312, #ea906c, #2b2a4c, #eee2de);
   background-size: 400% 400%;
   animation: gradientAnimation 15s ease infinite;
 }
@@ -46,7 +52,7 @@ body {
   }
 }
 
-.input {
+.inputWrapper {
   display: flex;
   flex-direction: column;
   position: relative;
@@ -54,7 +60,7 @@ body {
   border-radius: 4px;
 }
 
-input {
+.input {
   border: none;
   flex-grow: 1;
   height: 46px;
@@ -68,13 +74,13 @@ input {
   z-index: 2;
 }
 
-.input input:focus {
+.inputWrapper .input:focus {
   outline: none;
   border-bottom: 1px solid #088395;
   box-shadow: 0 1px 0 0 #088395;
 }
 
-label {
+.label {
   left: 52px;
   position: absolute;
   height: 100%;
@@ -85,8 +91,8 @@ label {
   cursor: text;
 }
 
-input:focus + label,
-input:not(:placeholder-shown) + label {
+.input:focus + .label,
+.input:not(:placeholder-shown) + .label {
   transform: translateY(-17px);
   font-size: 12px;
   color: #088395;

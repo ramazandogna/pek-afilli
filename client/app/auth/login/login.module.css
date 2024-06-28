@@ -1,5 +1,5 @@
 .authSide {
-  @apply flex w-full flex-col gap-[16px] overflow-y-auto overflow-y-auto bg-[#f9fafb] p-[24px] [box-shadow:_10px_0_10px_-5px_rgba(0,_0,_0,_0.5)]  sm:w-[450px];
+  @apply flex w-full flex-col gap-[16px] overflow-y-auto bg-[#f9fafb] p-[24px] [box-shadow:_10px_0_10px_-5px_rgba(0,_0,_0,_0.5)]  sm:w-[450px];
 }
 
 .titleWrapper {
@@ -52,4 +52,8 @@
 
 .button {
   @apply h-[40px] w-full min-w-[92px] rounded-[4px] py-1 font-bold text-[#f9fafb] transition-all hover:scale-105 hover:border-2 hover:border-[#088395] hover:bg-[#f9fafb] sm:w-auto;
+}
+
+.backToHomepage {
+  @apply absolute bottom-[8px] right-[8px] flex items-center gap-[8px] text-[14px] text-[#33333385] hover:text-[#333333];
 }

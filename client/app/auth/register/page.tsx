@@ -11,6 +11,7 @@ import { NameIcon } from '../../../icons/NameIcon';
 import { RenameIcon } from '../../../icons/RenameIcon';
 import { EmailIcon } from '../../../icons/EmailIcon';
 import { CompanyIcon } from '../../../icons/CompanyIcon';
+import { ArrowRightIcon } from '../../../icons/ArrowRightIcon';
 
 const formatDate = (date: any) => {
   const year = date.getFullYear();
@@ -31,38 +32,78 @@ export default function Register() {
         <h1 className={styles.title}>Register</h1>
         <div className={styles.date}>{time}</div>
       </div>
-      <div className="input">
+      <div className="inputWrapper">
         <NameIcon className={styles.inputIcon} />
-        <input v-model="auth.usernameOrEmail" type="text" placeholder=" " id="usernameOrEmail" />
-        <label htmlFor="Name">Name</label>
+        <input
+          className="input"
+          v-model="auth.usernameOrEmail"
+          type="text"
+          placeholder=" "
+          id="usernameOrEmail"
+        />
+        <label className="label" htmlFor="Name">
+          Name
+        </label>
       </div>
-      <div className="input">
+      <div className="inputWrapper">
         <RenameIcon className={styles.inputIcon} />
-        <input v-model="auth.usernameOrEmail" type="text" placeholder=" " id="usernameOrEmail" />
-        <label htmlFor="usernameOrEmail">Surname</label>
+        <input
+          className="input"
+          v-model="auth.usernameOrEmail"
+          type="text"
+          placeholder=" "
+          id="usernameOrEmail"
+        />
+        <label className="label" htmlFor="usernameOrEmail">
+          Surname
+        </label>
       </div>
-      <div className="input">
+      <div className="inputWrapper">
         <HandRaiseIcon className={styles.inputIcon} />
-        <input v-model="auth.usernameOrEmail" type="text" placeholder=" " id="usernameOrEmail" />
-        <label htmlFor="usernameOrEmail">Username</label>
+        <input
+          className="input"
+          v-model="auth.usernameOrEmail"
+          type="text"
+          placeholder=" "
+          id="usernameOrEmail"
+        />
+        <label className="label" htmlFor="usernameOrEmail">
+          Username
+        </label>
       </div>
-      <div className="input">
+      <div className="inputWrapper">
         <EmailIcon className={styles.inputIcon} />
-        <input v-model="auth.usernameOrEmail" type="text" placeholder=" " id="usernameOrEmail" />
-        <label htmlFor="usernameOrEmail">Email</label>
+        <input
+          className="input"
+          v-model="auth.usernameOrEmail"
+          type="text"
+          placeholder=" "
+          id="usernameOrEmail"
+        />
+        <label className="label" htmlFor="usernameOrEmail">
+          Email
+        </label>
       </div>
-      <div className="input">
+      <div className="inputWrapper">
         <CompanyIcon className={styles.inputIcon} />
-        <input v-model="auth.usernameOrEmail" type="text" placeholder=" " id="usernameOrEmail" />
-        <label htmlFor="usernameOrEmail">Company</label>
+        <input
+          className="input"
+          v-model="auth.usernameOrEmail"
+          type="text"
+          placeholder=" "
+          id="usernameOrEmail"
+        />
+        <label className="label" htmlFor="usernameOrEmail">
+          Company
+        </label>
       </div>
-      <div className="input">
+      <div className="inputWrapper">
         <PasswordIcon
           className="absolute left-[14px] top-[50%]
 z-[1] flex h-[24px] w-[24px] -translate-y-[50%] items-center text-[#9e9e9e]"
         />
-        <input v-model="auth.password" placeholder=" " id="password" />
-        <label className="" htmlFor="password">
+        <input className="input" v-model="auth.password" placeholder=" " id="password" />
+        <label className="label" htmlFor="password">
           Password
         </label>
         <div
@@ -72,13 +113,13 @@ z-[1] flex h-[24px] w-[24px] -translate-y-[50%] items-center text-[#9e9e9e]"
           <EyeIcon className={styles.eyeIcon} />
         </div>
       </div>
-      <div className="input">
+      <div className="inputWrapper">
         <PasswordIcon
           className="absolute left-[14px] top-[50%]
 z-[1] flex h-[24px] w-[24px] -translate-y-[50%] items-center text-[#9e9e9e]"
         />
-        <input v-model="auth.password" placeholder=" " id="password" />
-        <label className="" htmlFor="password">
+        <input className="input" v-model="auth.password" placeholder=" " id="password" />
+        <label className="label" htmlFor="password">
           Password
         </label>
         <div
@@ -108,6 +149,10 @@ z-[1] flex h-[24px] w-[24px] -translate-y-[50%] items-center text-[#9e9e9e]"
           Register
         </button>
       </div>
+      <Link href="/" className={styles.backToHomepage}>
+        <div> Back to Homepage</div>
+        <ArrowRightIcon />
+      </Link>
     </div>
   );
 }

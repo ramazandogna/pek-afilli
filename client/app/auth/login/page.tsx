@@ -7,6 +7,7 @@ import { EyeIcon } from '../../../icons/EyeIcon';
 import { LinkIcon } from '../../../icons/LinkIcon';
 //Styles
 import styles from './login.module.css';
+import { ArrowRightIcon } from '../../../icons/ArrowRightIcon';
 
 const formatDate = (date: any) => {
   const year = date.getFullYear();
@@ -27,19 +28,27 @@ export default function Login() {
         <h1 className={styles.title}>Login</h1>
         <div className={styles.date}>{time}</div>
       </div>
-      <div className="input">
+      <div className="inputWrapper">
         <HandRaiseIcon className={styles.inputIcon} />
-        <input v-model="auth.usernameOrEmail" type="text" placeholder=" " id="usernameOrEmail" />
-        <label htmlFor="usernameOrEmail">Username or Email</label>
+        <input
+          className="input"
+          v-model="auth.usernameOrEmail"
+          type="text"
+          placeholder=" "
+          id="usernameOrEmail"
+        />
+        <label className="label" htmlFor="usernameOrEmail">
+          Username or Email
+        </label>
       </div>
 
-      <div className="input">
+      <div className="inputWrapper">
         <PasswordIcon
           className="absolute left-[14px] top-[50%]
 z-[1] flex h-[24px] w-[24px] -translate-y-[50%] items-center text-[#9e9e9e]"
         />
-        <input v-model="auth.password" placeholder=" " id="password" />
-        <label className="" htmlFor="password">
+        <input className="input" v-model="auth.password" placeholder=" " id="password" />
+        <label className="label" htmlFor="password">
           Password
         </label>
         <div
@@ -69,6 +78,10 @@ z-[1] flex h-[24px] w-[24px] -translate-y-[50%] items-center text-[#9e9e9e]"
           Login
         </button>
       </div>
+      <Link href="/" className={styles.backToHomepage}>
+        <div> Back to Homepage</div>
+        <ArrowRightIcon />
+      </Link>
     </div>
   );
 }
