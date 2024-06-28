@@ -1,5 +1,5 @@
 .navbar {
-  @apply fixed left-0 top-0 flex w-full shadow backdrop-blur-md;
+  @apply fixed left-0 top-0 z-[99] flex w-full shadow backdrop-blur-md;
 }
 
 .wrapper {
