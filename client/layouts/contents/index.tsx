@@ -1,5 +1,5 @@
-import Card from '../../components/Card';
-import Slider from '../../components/Slider';
+import Card from '../../components/card';
+import Slider from '../../components/slider';
 
 export default function Contents() {
   return (
