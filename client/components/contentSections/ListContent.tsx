@@ -26,8 +26,6 @@ export default function ListContent({ posts }: { posts: any[] }) {
 
   const truncatedTitle = truncateText(listPosts[0].title, 3);
 
-  console.log(listPosts);
-
   return (
     <Card>
       <div className="mb-8 mt-2 w-full border-b-2">
