@@ -1,0 +1,43 @@
+.sliderWrapper {
+  @apply relative m-auto h-full w-full;
+}
+
+.sliderWrapper:hover .leftIcon,
+.sliderWrapper:hover .rightIcon {
+  @apply flex;
+}
+
+.image {
+  @apply h-auto w-full max-w-full rounded bg-cover bg-center duration-500 ease-in-out;
+}
+
+.textWrapper {
+  @apply absolute bottom-10 left-4 right-4 flex flex-col-reverse items-start justify-center gap-[4px]   text-white;
+}
+
+.title {
+  @apply rounded bg-[#00000030] px-2 py-[2px] text-[32px] font-bold;
+}
+
+.view {
+  @apply flex items-center gap-[4px] text-[13px];
+}
+
+.leftIcon {
+  @apply absolute left-[5px] top-[50%] hidden h-[40px] w-[25px] -translate-y-[50%] cursor-pointer items-center justify-center rounded  bg-black/20  text-[30px] text-white transition-all;
+}
+
+.rightIcon {
+  @apply absolute right-[5px] top-[50%] hidden h-[40px] w-[25px] -translate-y-[50%] rotate-180 cursor-pointer items-center   justify-center bg-black/20  text-[30px] text-white transition-all;
+}
+
+.dottes {
+  @apply flex items-center justify-center pt-2;
+}
+
+.dot {
+  @apply cursor-pointer  text-[24px] transition-all;
+}
+
+.active {
+}

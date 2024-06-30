@@ -1,5 +1,5 @@
 .navbar {
-  @apply fixed left-0 top-0 z-[99] flex w-full shadow backdrop-blur-md;
+  @apply fixed left-0 right-0 top-0 z-[99] flex  scroll-smooth bg-white/30 shadow backdrop-blur-2xl;
 }
 
 .wrapper {
@@ -52,8 +52,16 @@
   @apply relative;
 }
 
+.inputWrapper:hover .inputIcon {
+  @apply rotate-3 scale-[105%] opacity-100;
+}
+
 .searchInput {
   @apply h-[30px] w-[200px] rounded-[49px] border-0 bg-[#cccccc60] pl-[8px] text-[13px] focus:outline-none;
+}
+
+.searchInput::placeholder {
+  @apply text-black/60;
 }
 
 .inputIcons {
@@ -61,11 +69,11 @@
 }
 
 .inputBorder {
-  @apply h-full border-[0.35px] border-[#ccc];
+  @apply h-full border-[0.35px] border-[#00000060];
 }
 
 .inputIcon {
-  @apply cursor-pointer  text-[#ccc];
+  @apply cursor-pointer  text-black/60;
 }
 
 .topRight {

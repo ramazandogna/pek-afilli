@@ -5,12 +5,14 @@ import Header from '../layouts/header';
 
 export default function Home() {
   return (
-    <div>
+    <main>
       <Header />
-      <main className="container-wrap section min-h-screen ">
+
+      <div className="container-wrap section">
         <Contents />
-      </main>
+      </div>
+
       <Footer />
-    </div>
+    </main>
   );
 }

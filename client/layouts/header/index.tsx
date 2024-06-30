@@ -50,16 +50,16 @@ export default function Header() {
                 </div>
               </div>
             </div>
-            <ul className={styles.topRight}>
-              <li className={`${styles.topRightSignIn} backgroundContent`}>
+            <div className={styles.topRight}>
+              <Link href="/auth/login" className={`${styles.topRightSignIn} backgroundContent`}>
                 <SignInIcon className={styles.signInIcon} />
-                <Link href="/auth/login">Sign In</Link>
-              </li>
-              <li className={`${styles.topRightSignUp} backgroundContent2`}>
+                <div>Sign In</div>
+              </Link>
+              <Link href="/auth/register" className={`${styles.topRightSignUp} backgroundContent2`}>
                 <SignUpIcon className={styles.signUpIcon} />
-                <Link href="/auth/register">Join Now</Link>
-              </li>
-            </ul>
+                <div>Join Now</div>
+              </Link>
+            </div>
           </div>
           <div className={styles.bottomMenu}>
             <ul className={styles.bottomLeft}>
@@ -70,7 +70,7 @@ export default function Header() {
             </ul>
             <Link href="/" className={styles.bottomRight}>
               <HotIcon className={styles.hotIcon} />
-              <Link href="/">What's Hot</Link>
+              <div>What's Hot</div>
             </Link>
           </div>
         </div>
