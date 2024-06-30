@@ -3,7 +3,7 @@ import Card from '../card';
 import Images from '../../helpers/slider/images';
 import Link from 'next/link';
 
-export default function FullContent({ posts }: { posts: any[] }) {
+export default function ListContent({ posts }: { posts: any[] }) {
   if (!posts) {
     return (
       <Card>
@@ -22,17 +22,25 @@ export default function FullContent({ posts }: { posts: any[] }) {
     return text;
   }
 
-  const listPosts = posts.slice(1, 6);
+  const listPosts = posts.slice(1, 4);
+
   const truncatedTitle = truncateText(listPosts[0].title, 3);
+
+  console.log(listPosts);
 
   return (
     <Card>
       <div className="mb-8 mt-2 w-full border-b-2">
         <h2 className="mt-4 inline-flex border-b-[3px] border-[#0693e3] pb-3 text-[18px] font-bold text-[#0693e3] transition-all hover:border-[#0061b1] hover:text-[#0061b1]">
-          <Link href={listPosts[1].title.toLowerCase().replace(/\s+/g, '-')}>{truncatedTitle}</Link>
+          <Link
+            href={listPosts[1].title.toLowerCase().replace(/\s+/g, '-')}
+            className="block overflow-hidden text-ellipsis whitespace-nowrap"
+          >
+            {truncatedTitle}
+          </Link>
         </h2>
       </div>
-      <div className="flex h-auto w-full flex-col gap-[16px] md:h-[550px] md:flex-row">
+      <div className="flex h-auto w-full flex-col gap-[16px] md:h-[650px]">
         <Link
           href={Images[1].title.toLowerCase().replace(/\s+/g, '-')}
           className="relative h-[375px] w-full overflow-hidden rounded md:h-[550px]"
@@ -45,7 +53,7 @@ export default function FullContent({ posts }: { posts: any[] }) {
             fill
             className="object-cover"
           />
-          <div className=" absolute bottom-[24px]  left-[24px] z-10 bg-black/30 px-2 py-[2px] text-[24px] text-white">
+          <div className=" absolute bottom-[16px] left-[16px] z-10 mr-[16px] overflow-hidden bg-black/30 px-2 py-[2px] text-[20px] text-white">
             {posts[1].title}
           </div>
         </Link>
