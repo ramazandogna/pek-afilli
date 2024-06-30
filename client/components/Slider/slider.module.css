@@ -40,4 +40,5 @@
 }
 
 .active {
+  @apply text-[#0693e3] transition-all;
 }

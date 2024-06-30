@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Card from '../card';
 import Images from '../../helpers/slider/images';
+import Link from 'next/link';
 
 export default function Home({ posts }: { posts: any[] }) {
   if (!posts) {
@@ -13,34 +14,59 @@ export default function Home({ posts }: { posts: any[] }) {
     );
   }
 
+  const listPosts = posts.slice(1, 6);
+
   console.log(posts[1].title);
 
   return (
     <Card>
-      <div className="flex h-[550px] w-full flex-col gap-[16px] md:flex-row">
-        <div className="relative h-[550px] w-full overflow-hidden rounded">
+      <div className="mb-8 mt-2 w-full border-b-2">
+        <h2 className="mt-4 inline-flex border-b-[3px] border-[#0693e3] pb-3 text-[18px] font-bold text-[#0693e3] transition-all hover:border-[#0061b1] hover:text-[#0061b1]">
+          <Link href="/listeler">Listeler</Link>
+        </h2>
+      </div>
+      <div className="flex h-auto w-full flex-col gap-[16px] md:h-[550px] md:flex-row">
+        <Link
+          href={Images[1].title.toLowerCase().replace(/\s+/g, '-')}
+          className="relative h-[375px] w-full overflow-hidden rounded md:h-[550px]"
+        >
           <Image
             src={Images[1].src}
             alt={Images[1].alt}
             loading="lazy"
-            layout="fill"
+            sizes="(max-width: 768px) 100vw, 50vw"
+            fill
             className="object-cover"
           />
-          <div className=" absolute z-10">{posts[1].title}</div>
-        </div>
+          <div className=" absolute bottom-[24px]  left-[24px] z-10 bg-black/30 px-2 py-[2px] text-[24px] text-white">
+            {posts[1].title}
+          </div>
+        </Link>
         <div className="flex h-[550px] w-full flex-col gap-[24px] rounded ">
-          {posts.map((post) => (
-            <div className="flex h-[110px] flex-1 grow gap-[8px]" key={post.id}>
-              <div className="relative flex h-full w-1/4 items-start rounded">
+          {listPosts.map((post) => (
+            <div
+              className="flex h-[70px] min-h-[70px] flex-1  grow gap-[8px] md:h-auto"
+              key={post.id}
+            >
+              <Link
+                href={post.title.toLowerCase().replace(/\s+/g, '-')}
+                className="relative flex h-full w-[110px] min-w-[110px] items-start rounded"
+              >
                 <Image
                   src={Images[2].src}
                   alt={Images[2].alt}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   loading="lazy"
-                  layout="fill"
+                  fill
                   className="rounded object-cover"
                 />
-              </div>
-              <h2 className="font-700 w-full text-[14px]">{post.title}</h2>
+              </Link>
+              <Link
+                href={post.title.toLowerCase().replace(/\s+/g, '-')}
+                className="font-700 grow text-[14px] transition-all hover:text-[#0693e3]"
+              >
+                <h2>{post.title}</h2>
+              </Link>
             </div>
           ))}
         </div>
