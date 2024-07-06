@@ -1,7 +1,7 @@
-import FullContent from '../../components/contentSections/FullContent';
-import Card from '../../components/card/index';
+import FullContent from '../../components/contentSections/fullContent';
+import Card from '../../components/card';
 import Slider from '../../components/slider';
-import ListContent from '../../components/contentSections/ListContent';
+import ListContent from '../../components/contentSections/listContent';
 
 export default function Contents({
   dataPost,
