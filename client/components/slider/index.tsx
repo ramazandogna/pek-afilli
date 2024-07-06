@@ -33,6 +33,7 @@ export default function Slider() {
     }, 10000);
 
     return () => clearInterval(interval);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentImage]);
   return (
     <div className={styles.sliderWrapper}>
