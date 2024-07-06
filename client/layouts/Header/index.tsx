@@ -70,7 +70,7 @@ export default function Header() {
             </ul>
             <Link href="/" className={styles.bottomRight}>
               <HotIcon className={styles.hotIcon} />
-              <div>What's Hot</div>
+              <div>What&apos;s Hot</div>
             </Link>
           </div>
         </div>
