@@ -1,3 +1,3 @@
 export default function Footer() {
-  return <footer className="container-wrap">footer</footer>;
+  return <footer className="width-container">footer</footer>;
 }

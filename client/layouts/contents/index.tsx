@@ -1,48 +1,17 @@
-import axios from 'axios';
-import Card from '../../components/card';
+import Card from '../../components/card/index';
 import FullContent from '../../components/contentSections/FullContent';
-import Slider from '../../components/slider';
-import { fetchPosts } from '../../helpers/apis/fetchs';
+import Slider from '../../components/slider/index';
 import ListContent from '../../components/contentSections/ListContent';
 
-export default async function Contents() {
-  const getListPost = async () => {
-    try {
-      const posts = await fetchPosts();
-      const firstSixPosts = posts.slice(6, 12);
-
-      return firstSixPosts;
-    } catch (error) {
-      console.error('Veri getirme hatası:', error);
-    }
-  };
-
-  const getPopularPost = async () => {
-    try {
-      const posts = await fetchPosts();
-      const firstSixPosts = posts.slice(0, 6);
-
-      return firstSixPosts;
-    } catch (error) {
-      console.error('Veri getirme hatası:', error);
-    }
-  };
-
-  const getMoneyPost = async () => {
-    try {
-      const posts = await fetchPosts();
-      const firstSixPosts = posts.slice(12, 16);
-
-      return firstSixPosts;
-    } catch (error) {
-      console.error('Veri getirme hatası:', error);
-    }
-  };
-
-  const dataPost = await getPopularPost();
-  const dataList = await getListPost();
-  const dataMoney = await getMoneyPost();
-
+export default function Contents({
+  dataPost,
+  dataList,
+  dataMoney
+}: {
+  dataPost: any;
+  dataList: any;
+  dataMoney: any;
+}) {
   return (
     <Card>
       <Slider />

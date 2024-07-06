@@ -1,6 +1,7 @@
 import type { Config } from 'tailwindcss';
 
 const config: Config = {
+  mode: 'jit',
   content: [
     './components/**/*.{js,ts,jsx,tsx,mdx}',
     './layouts/**/*.{js,ts,jsx,tsx,mdx}',

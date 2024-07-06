@@ -14,7 +14,7 @@ import { HotIcon } from '../../icons/HotIcon';
 export default function Header() {
   return (
     <nav className={styles.navbar}>
-      <div className={`${styles.wrapper} container-wrap`}>
+      <div className={`${styles.wrapper} width-container`}>
         <Link href="/">
           <div className={`${styles.logo} backgroundContent`}>
             <div>PEK</div>
