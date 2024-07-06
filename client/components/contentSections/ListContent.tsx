@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Card from '../card/index';
+import Card from '../Card/index';
 import Images from '../../helpers/slider/images';
 import Link from 'next/link';
 
