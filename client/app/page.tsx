@@ -1,8 +1,8 @@
 //components
 import { fetchPosts } from '../helpers/apis/fetchs';
-import Contents from '../layouts/contents/index';
-import Footer from '../layouts/footer/index';
-import Header from '../layouts/header/index';
+import Contents from '../layouts/contents';
+import Footer from '../layouts/footer';
+import Header from '../layouts/header';
 
 export default async function Home() {
   const getListPost = async () => {

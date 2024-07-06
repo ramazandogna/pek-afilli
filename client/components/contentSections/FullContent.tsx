@@ -1,7 +1,7 @@
 import Image from 'next/image';
-import Card from '../card/index';
 import Images from '../../helpers/slider/images';
 import Link from 'next/link';
+import Card from '../card';
 
 export default function FullContent({ posts }: { posts: any[] }) {
   if (!posts) {
