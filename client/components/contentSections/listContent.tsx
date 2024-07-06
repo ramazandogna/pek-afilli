@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Card from '../card/';
 import Images from '../../helpers/slider/images';
 import Link from 'next/link';
+import { DocumentIcon } from '../../icons/DocumentIcon';
 
 export default function ListContent({ posts }: { posts: any[] }) {
   if (!posts) {
@@ -28,7 +29,7 @@ export default function ListContent({ posts }: { posts: any[] }) {
 
   return (
     <Card>
-      <div className="mb-8 mt-2 w-full border-b-2">
+      <div className="mb-8 mt-2 flex w-full items-center justify-between border-b-2">
         <h2 className="mt-4 inline-flex border-b-[3px] border-[#0693e3] pb-3 text-[18px] font-bold text-[#0693e3] transition-all hover:border-[#0061b1] hover:text-[#0061b1]">
           <Link
             href={listPosts[1].title.toLowerCase().replace(/\s+/g, '-')}
@@ -37,6 +38,7 @@ export default function ListContent({ posts }: { posts: any[] }) {
             {truncatedTitle}
           </Link>
         </h2>
+        <DocumentIcon className="ml-auto text-[18.5px] text-[#b9bec3]" />
       </div>
       <div className="flex h-auto w-full flex-col gap-[16px] md:h-[650px]">
         <Link
@@ -51,7 +53,7 @@ export default function ListContent({ posts }: { posts: any[] }) {
             fill
             className="object-cover"
           />
-          <div className=" absolute bottom-[16px] left-[16px] z-10 mr-[16px] overflow-hidden bg-black/30 px-2 py-[2px] text-[20px] text-white">
+          <div className=" absolute bottom-[16px] left-[16px] z-10 mr-[16px] overflow-hidden bg-black/30 px-2 py-[2px] text-[20px] text-white md:text-[22px]">
             {posts[1].title}
           </div>
         </Link>

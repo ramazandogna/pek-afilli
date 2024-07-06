@@ -13,15 +13,20 @@ body {
   padding: 0 1rem;
 }
 
-@media (max-width: 639px) {
+@media (max-width: 768px) {
   .width-container {
-    padding: 0;
+    padding-left: 0;
+    padding-right: 0;
     width: 100%;
+  }
+
+  .section {
+    padding-top: 65px !important;
   }
 }
 
 .section {
-  padding-top: 110px;
+  padding-top: 90px;
 }
 
 .backgroundContent {

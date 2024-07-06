@@ -16,7 +16,7 @@
 }
 
 .title {
-  @apply rounded bg-[#00000030] px-2 py-[2px] text-[32px] font-bold;
+  @apply rounded bg-[#00000030] px-2 py-[2px] text-[22px] font-bold md:text-[32px];
 }
 
 .view {

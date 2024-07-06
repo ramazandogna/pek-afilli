@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Images from '../../helpers/slider/images';
 import Link from 'next/link';
-import Card from '../card/index';
+import Card from '../card';
 
 export default function FullContent({ posts }: { posts: any[] }) {
   if (!posts) {
@@ -45,7 +45,7 @@ export default function FullContent({ posts }: { posts: any[] }) {
             fill
             className="object-cover"
           />
-          <div className=" absolute bottom-[24px]  left-[24px] z-10 bg-black/30 px-2 py-[2px] text-[24px] text-white">
+          <div className=" absolute bottom-[24px]  left-[24px] z-10 bg-black/30 px-2 py-[2px] text-[20px] text-white  md:text-[22px]">
             {posts[1].title}
           </div>
         </Link>
