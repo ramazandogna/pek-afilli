@@ -1,0 +1,119 @@
+.navbar {
+  @apply fixed left-0 right-0 top-0 z-[99] flex  scroll-smooth bg-white/30 shadow backdrop-blur-2xl;
+}
+
+.wrapper {
+  @apply flex gap-[16px];
+}
+
+.logo {
+  @apply relative flex h-[80px] w-[80px] flex-col justify-center text-[20px] uppercase text-white;
+}
+
+.logo > div {
+  @apply ml-[8px];
+}
+
+.menus {
+  @apply flex grow flex-col;
+}
+
+.topMenu {
+  @apply flex h-[40px] grow items-center border-b;
+}
+
+.bottomMenu {
+  @apply flex h-[40px] grow items-center;
+}
+
+.topLeft {
+  @apply flex items-center gap-[8px];
+}
+
+.social {
+  @apply flex items-center gap-[4px];
+}
+
+.iconBg {
+  @apply flex h-[25px] w-[25px] cursor-pointer rounded-md bg-[#cccccc50] p-[1px] transition-all  hover:bg-[#cccccc80];
+}
+
+.iconBg:hover {
+  .icon {
+    @apply hover:rotate-3 hover:scale-[105%];
+  }
+}
+
+.icon {
+  @apply m-auto flex h-[21px] w-[21px] p-[2px] transition-all;
+}
+
+.inputWrapper {
+  @apply relative;
+}
+
+.inputWrapper:hover .inputIcon {
+  @apply rotate-3 scale-[105%] opacity-100;
+}
+
+.searchInput {
+  @apply h-[30px] w-[200px] rounded-[49px] border-0 bg-[#cccccc60] pl-[8px] text-[13px] focus:outline-none;
+}
+
+.searchInput::placeholder {
+  @apply text-black/60;
+}
+
+.inputIcons {
+  @apply absolute right-[6px] top-[50%] flex h-[65%] -translate-y-[50%] items-center gap-[6px];
+}
+
+.inputBorder {
+  @apply h-full border-[0.35px] border-[#00000060];
+}
+
+.inputIcon {
+  @apply cursor-pointer  text-black/60;
+}
+
+.topRight {
+  @apply ml-auto flex w-[225px] gap-1;
+}
+
+.topRightSignIn {
+  @apply flex grow cursor-pointer items-center justify-end gap-[8px] rounded px-[8px] py-[4px] text-white  opacity-95 transition-all;
+}
+
+.topRightSignIn:hover {
+  .signInIcon {
+    @apply rotate-3 scale-[105%] opacity-100;
+  }
+}
+
+.topRightSignUp {
+  @apply flex grow cursor-pointer items-center justify-end gap-[8px] rounded px-[8px] py-[4px] text-white  opacity-95 transition-all;
+}
+
+.topRightSignUp:hover {
+  .signUpIcon {
+    @apply rotate-3 scale-[105%] opacity-100;
+  }
+}
+
+.bottomLeft {
+  @apply flex gap-3;
+}
+
+.bottomLeftItem {
+  @apply cursor-pointer transition-all hover:scale-[102%];
+}
+
+.bottomRight {
+  @apply ml-auto flex w-[225px] cursor-pointer items-center justify-center gap-[8px] rounded bg-[#f64e4e] px-[8px] py-[4px] text-white opacity-95   transition-all hover:opacity-100;
+}
+
+.bottomRight:hover {
+  .hotIcon {
+    @apply rotate-3 scale-[105%] opacity-100;
+  }
+}
