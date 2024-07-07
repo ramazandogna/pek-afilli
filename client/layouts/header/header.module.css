@@ -7,7 +7,7 @@
 }
 
 .logo {
-  @apply relative ml-4 flex h-[40px] flex-col justify-center px-2 py-3 text-[16px] uppercase text-white md:ml-auto md:h-[80px] md:w-[80px] md:text-[20px];
+  @apply relative flex h-[40px] flex-col justify-center rounded px-2 py-3 text-[16px] uppercase text-white md:ml-auto md:h-[80px] md:w-[80px] md:rounded-none md:text-[20px];
 }
 
 .logo > div {
@@ -57,7 +57,7 @@
 }
 
 .searchInput {
-  @apply h-[30px] w-[200px] rounded-[49px] border-0 bg-[#cccccc60] pl-[8px] text-[13px] focus:outline-none;
+  @apply rounded-[49px] border-0 bg-[#cccccc60] pl-[16px] text-[13px] focus:outline-none;
 }
 
 .searchInput::placeholder {
@@ -119,15 +119,10 @@
 }
 
 .mobileIcon {
-  @apply ml-auto mr-4 flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-md bg-[#161619] text-[#ccc] transition-all hover:bg-[#161619] md:mr-auto md:hidden;
+  @apply ml-auto mr-4 flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-md text-[40px] text-[#161619] transition-all hover:scale-105 md:mr-auto md:hidden;
 }
 
 .mobileMenu {
-  @apply fixed bottom-0 right-0 top-0 z-[100000] hidden h-full w-[70%]  flex-col items-center gap-[16px] bg-[#161619] px-4 text-white opacity-0 md:hidden;
-  @apply transition-all duration-500 ease-out;
-}
-
-.mobileMenu.open {
-  @apply flex  opacity-100;
-  @apply transition-all duration-500 ease-out;
+  @apply fixed bottom-0 right-0 top-0 z-[1000001] hidden h-full w-[70%]  flex-col items-center gap-[16px] bg-[#161619] px-4 text-white md:hidden;
+  @apply translate-x-full transition-all duration-500 ease-out;
 }
