@@ -64,7 +64,10 @@ export default function ListContent({ posts }: { posts: any[] }) {
               key={post.id}
             >
               <Link
-                href={post.title.toLowerCase().replace(/\s+/g, '-')}
+                href={{
+                  pathname: post.title.toLowerCase().replace(/\s+/g, '-'),
+                  query: { id: post.id }
+                }}
                 className="relative flex h-full w-[110px] min-w-[110px] items-start rounded"
               >
                 <Image
