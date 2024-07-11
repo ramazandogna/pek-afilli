@@ -2,6 +2,8 @@ import Image from 'next/image';
 import Images from '../../helpers/slider/images';
 import Link from 'next/link';
 import Card from '../card';
+import { LinkContentIcon } from '../../icons/LinkContentIcon';
+import { ThreeDotIcon } from '../../icons/ThreeDotIcon';
 
 export default function FullContent({ posts }: { posts: any[] }) {
   if (!posts) {
@@ -35,15 +37,18 @@ export default function FullContent({ posts }: { posts: any[] }) {
       <div className="flex h-auto w-full flex-col gap-[16px] md:h-[550px] md:flex-row">
         <Link
           href={Images[1].title.toLowerCase().replace(/\s+/g, '-')}
-          className="relative h-[375px] w-full overflow-hidden rounded md:h-[550px]"
+          className="groupA relative h-[375px] w-full overflow-hidden rounded md:h-[550px]"
         >
+          <div className="groupA-hover absolute inset-0 z-50 hidden bg-black/50">
+            <ThreeDotIcon className="absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[36px]" />
+          </div>
           <Image
             src={Images[1].src}
             alt={Images[1].alt}
             loading="lazy"
             sizes="(max-width: 768px) 100vw, 50vw"
             fill
-            className="object-cover"
+            className="groupA-image object-cover"
           />
           <div className=" absolute bottom-[24px]  left-[24px] z-10 bg-black/30 px-2 py-[2px] text-[20px] text-white  md:text-[22px]">
             {posts[1].title}
@@ -52,20 +57,23 @@ export default function FullContent({ posts }: { posts: any[] }) {
         <div className="flex h-[550px] w-full flex-col gap-[24px] rounded ">
           {listPosts.map((post) => (
             <div
-              className="flex h-[70px] min-h-[70px] flex-1  grow gap-[8px] md:h-auto"
+              className="relative flex h-[70px] min-h-[70px] flex-1  grow gap-[8px] md:h-auto"
               key={post.id}
             >
               <Link
                 href={post.title.toLowerCase().replace(/\s+/g, '-')}
-                className="relative flex h-full w-[110px] min-w-[110px] items-start rounded"
+                className="groupA relative flex h-full w-[110px] min-w-[110px] items-start overflow-hidden rounded "
               >
+                <div className="groupA-hover absolute inset-0 z-50 hidden bg-black/30">
+                  <ThreeDotIcon className="fade-in absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[24px] " />
+                </div>
                 <Image
                   src={Images[2].src}
                   alt={Images[2].alt}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   loading="lazy"
                   fill
-                  className="rounded object-cover"
+                  className="groupA-image rounded object-cover"
                 />
               </Link>
               <Link

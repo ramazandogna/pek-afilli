@@ -183,3 +183,27 @@ body {
   animation: slide-top 0.3s forwards;
   overflow: hidden;
 }
+
+.groupA {
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.groupA:hover .groupA-hover {
+  display: block;
+}
+
+.groupA:hover {
+  transition: all 0.3s ease;
+}
+
+.groupA:hover .groupA-image {
+  transform: scale(1.05) rotate(1deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+.groupA-image {
+  transition: transform 0.3s ease-in-out;
+  transform: scale(1) rotate(0deg);
+}
