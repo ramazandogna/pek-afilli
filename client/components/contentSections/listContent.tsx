@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import Card from '../card/';
 import Images from '../../helpers/slider/images';
+import Image from 'next/image';
 import Link from 'next/link';
 import { DocumentIcon } from '../../icons/DocumentIcon';
 import { ContentLinkIcon } from '../../icons/ContentLinkIcon';
@@ -47,7 +47,7 @@ export default function ListContent({ posts }: { posts: Content[] }) {
           href={Images[1].title.toLowerCase().replace(/\s+/g, '-')}
           className="groupA relative h-[375px] w-full overflow-hidden rounded md:h-[550px]"
         >
-          <div className="groupA-hover absolute inset-0 z-50  bg-black/30">
+          <div className="groupA-hover absolute inset-0 z-50  bg-black/50">
             <ContentLinkIcon className="absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[36px]" />
           </div>
           <Image
@@ -58,7 +58,7 @@ export default function ListContent({ posts }: { posts: Content[] }) {
             fill
             className="groupA-image object-cover"
           />
-          <div className=" absolute bottom-[16px] left-[16px] z-10 mr-[16px] overflow-hidden bg-black/30 px-2 py-[2px] text-[20px] text-white md:text-[22px]">
+          <div className=" absolute bottom-[16px] left-[16px] z-10 mr-[16px] overflow-hidden bg-black/50 px-2 py-[2px] text-[20px] text-white md:text-[22px]">
             {posts[1].title}
           </div>
         </Link>

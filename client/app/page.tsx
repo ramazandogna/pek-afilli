@@ -18,7 +18,7 @@ export default async function Home() {
   const getPopularPost = async () => {
     try {
       const posts = await fetchPosts();
-      return posts.slice(0, 6);
+      return posts.slice(14, 20);
     } catch (error) {
       console.error('Veri getirme hatası:', error);
       return [];
@@ -35,16 +35,31 @@ export default async function Home() {
     }
   };
 
+  const getRecentPost = async () => {
+    try {
+      const posts = await fetchPosts();
+      return posts.slice(0, 8);
+    } catch (error) {
+      console.error('Veri getirme hatası:', error);
+      return [];
+    }
+  };
+
   const dataPost = await getPopularPost();
   const dataList = await getListPost();
   const dataMoney = await getMoneyPost();
-
+  const dataRecent = await getRecentPost();
   return (
     <main>
       <Header />
 
       <div className="width-container section">
-        <Contents dataList={dataList} dataMoney={dataMoney} dataPost={dataPost} />
+        <Contents
+          dataList={dataList}
+          dataMoney={dataMoney}
+          dataPost={dataPost}
+          dataRecent={dataRecent}
+        />
       </div>
 
       <Footer />
