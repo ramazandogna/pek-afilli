@@ -1,6 +1,4 @@
 import Images from '../../helpers/slider/images';
-import Image from 'next/image';
-import BreadCrumb from '../../components/breadCrumb';
 import Comments from '../../components/comments';
 import RelatedPosts from '../../components/relatedPosts';
 import WriteComment from '../../components/writeComment';
