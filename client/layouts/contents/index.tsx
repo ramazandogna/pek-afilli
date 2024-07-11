@@ -2,6 +2,7 @@ import FullContent from '../../components/contentSections/fullContent';
 import Card from '../../components/card';
 import Slider from '../../components/slider';
 import ListContent from '../../components/contentSections/listContent';
+import { Content } from '../../types/content';
 
 export default function Contents({
   dataPost,
