@@ -38,7 +38,7 @@ export default async function Home() {
   const getRecentPost = async () => {
     try {
       const posts = await fetchPosts();
-      return posts.slice(0, 8);
+      return posts;
     } catch (error) {
       console.error('Veri getirme hatası:', error);
       return [];

@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 //styles
 import '../styles/globals.css';
 import '../styles/tailwind.css';
+import '../styles/hoverElements.css';
 
 const inter = Inter({ subsets: ['latin'] });
 

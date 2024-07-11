@@ -70,7 +70,7 @@ export default function ListContent({ posts }: { posts: Content[] }) {
             >
               <Link
                 href={post.title.toLowerCase().replace(/\s+/g, '-')}
-                className="groupA relative flex h-full w-[110px] min-w-[110px] items-start rounded"
+                className="groupA relative flex h-full w-[110px] min-w-[110px] items-start overflow-hidden rounded"
               >
                 <div className="groupA-hover absolute inset-0 z-50  bg-black/30">
                   <ContentLinkIcon className="absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[24px]" />
