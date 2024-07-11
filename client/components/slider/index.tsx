@@ -23,6 +23,10 @@ export default function Slider() {
     currentImage > 0 ? setCurrentImage(currentImage - 1) : setCurrentImage(maxImages);
   };
 
+  const onDragStart = (e: any) => {
+    e.preventDefault();
+  };
+
   const changeImage = (index: number) => {
     setCurrentImage(index);
   };
@@ -30,7 +34,7 @@ export default function Slider() {
   useEffect(() => {
     const interval = setInterval(() => {
       nextImage();
-    }, 10000);
+    }, 5000);
 
     return () => clearInterval(interval);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -45,6 +49,7 @@ export default function Slider() {
           priority
           width={1000}
           height={500}
+          onDragStart={onDragStart}
         />
         <div className={styles.textWrapper}>
           <h3 className={styles.title}>{image.title}</h3>

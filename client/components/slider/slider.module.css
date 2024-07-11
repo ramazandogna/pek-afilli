@@ -4,7 +4,7 @@
 
 .sliderWrapper:hover .leftIcon,
 .sliderWrapper:hover .rightIcon {
-  @apply flex;
+  @apply md:flex;
 }
 
 .image {
@@ -24,15 +24,17 @@
 }
 
 .leftIcon {
-  @apply absolute left-[5px] top-[50%] hidden h-[40px] w-[25px] -translate-y-[50%] cursor-pointer items-center justify-center rounded  bg-black/20  text-[30px] text-white transition-all;
+  @apply absolute left-[5px] top-[50%] z-[2147483647] hidden  -translate-y-[50%] items-center  justify-center;
+  @apply h-[40px] w-[25px] cursor-pointer  rounded bg-black/20 text-[30px] text-white transition-all;
 }
 
 .rightIcon {
-  @apply absolute right-[5px] top-[50%] hidden h-[40px] w-[25px] -translate-y-[50%] rotate-180 cursor-pointer items-center   justify-center bg-black/20  text-[30px] text-white transition-all;
+  @apply absolute left-[5px] top-[50%] z-[2147483647] hidden -translate-y-[50%]  rotate-180 items-center  justify-center;
+  @apply h-[40px] w-[25px] cursor-pointer  rounded bg-black/20 text-[30px] text-white transition-all;
 }
 
 .dottes {
-  @apply flex items-center justify-center pt-2;
+  @apply flex items-center justify-center md:pt-2;
 }
 
 .dot {
