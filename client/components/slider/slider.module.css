@@ -4,7 +4,7 @@
 
 .sliderWrapper:hover .leftIcon,
 .sliderWrapper:hover .rightIcon {
-  @apply opacity-100;
+  @apply md:opacity-100;
 }
 
 .image {

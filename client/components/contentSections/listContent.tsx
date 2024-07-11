@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { DocumentIcon } from '../../icons/DocumentIcon';
 import { ContentLinkIcon } from '../../icons/ContentLinkIcon';
 
-export default function ListContent({ posts }: { posts: any[] }) {
+export default function ListContent({ posts }: { posts: Content[] }) {
   if (!posts) {
     return (
       <Card>

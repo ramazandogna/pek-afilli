@@ -8,9 +8,9 @@ export default function Contents({
   dataList,
   dataMoney
 }: {
-  dataPost: any;
-  dataList: any;
-  dataMoney: any;
+  dataPost: Content[];
+  dataList: Content[];
+  dataMoney: Content[];
 }) {
   return (
     <Card>

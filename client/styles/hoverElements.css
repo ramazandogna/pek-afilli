@@ -1,0 +1,35 @@
+.groupA {
+  transition:
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
+.groupA-hover {
+  background-color: #00000030;
+  opacity: 0;
+  transition:
+    opacity 0.4s ease,
+    background-color 0.4s ease;
+}
+
+.groupA:hover .groupA-hover {
+  display: block;
+  transition:
+    opacity 0.4s ease,
+    background-color 0.4s ease;
+  opacity: 1;
+  transition-delay: 100ms;
+}
+
+.groupA:hover {
+  transition: all 0.3s ease;
+}
+
+.groupA:hover .groupA-image {
+  transform: scale(1.03);
+  transition: transform 0.3s ease-in-out;
+}
+
+.groupA-image {
+  transition: transform 0.3s ease-in-out;
+  transform: scale(1);
+}

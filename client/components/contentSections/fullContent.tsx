@@ -2,10 +2,9 @@ import Image from 'next/image';
 import Images from '../../helpers/slider/images';
 import Link from 'next/link';
 import Card from '../card';
-import { LinkContentIcon } from '../../icons/LinkContentIcon';
 import { ContentLinkIcon } from '../../icons/ContentLinkIcon';
 
-export default function FullContent({ posts }: { posts: any[] }) {
+export default function FullContent({ posts }: { posts: Content[] }) {
   if (!posts) {
     return (
       <Card>

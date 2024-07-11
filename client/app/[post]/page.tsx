@@ -4,18 +4,11 @@ import RelatedPosts from '../../components/relatedPosts';
 import WriteComment from '../../components/writeComment';
 import { fetchPost } from '../../helpers/apis/fetchs';
 async function Home({ params }: { params: { post: string } }) {
-  //types
-  type Post = {
-    userId: number;
-    id: number;
-    title: string;
-    body: string;
-  };
-
   //gets
   const getSinglePosts = async () => {
     try {
       const post = await fetchPost(1);
+      console.log(post);
       return post;
     } catch (error) {
       console.error('Veri getirme hatası:', error);
@@ -23,7 +16,7 @@ async function Home({ params }: { params: { post: string } }) {
     }
   };
 
-  const post: Post = await getSinglePosts();
+  const post: Content = await getSinglePosts();
   console.log(post);
 
   return (
