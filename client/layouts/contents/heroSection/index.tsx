@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import BreadCrumb from '../../../components/breadCrumb';
+import { ImageType } from '../../../types/content';
 
 export default function HeroSection({
   params,

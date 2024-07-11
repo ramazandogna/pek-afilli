@@ -4,6 +4,7 @@ import RelatedPosts from '../../components/relatedPosts';
 import WriteComment from '../../components/writeComment';
 import { fetchPost } from '../../helpers/apis/fetchs';
 import HeroSection from '../../layouts/contents/heroSection';
+import { Content } from '../../types/content';
 async function Home({ params }: { params: { post: string } }) {
   //gets
   const getSinglePosts = async () => {

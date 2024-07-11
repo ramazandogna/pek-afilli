@@ -1,3 +1,5 @@
+import { ImageType } from '../../types/content';
+
 const images: ImageType[] = [
   {
     src: '/assets/slider/1.jpg',

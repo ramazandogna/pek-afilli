@@ -1,21 +1,21 @@
-type Content = {
+export type Content = {
   userId: number;
   id: number;
   title: string;
   body: string;
 };
 
-interface Contents {
+export interface Contents {
   contents: Content[];
 }
 
-type ImageType = {
+export type ImageType = {
   src: string;
   alt: string;
   title: string;
   view: number;
 };
 
-interface ImageTypes {
+export interface ImagesType {
   images: ImageType[];
 }

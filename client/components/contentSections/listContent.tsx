@@ -4,6 +4,7 @@ import Images from '../../helpers/slider/images';
 import Link from 'next/link';
 import { DocumentIcon } from '../../icons/DocumentIcon';
 import { ContentLinkIcon } from '../../icons/ContentLinkIcon';
+import { Content } from '../../types/content';
 
 export default function ListContent({ posts }: { posts: Content[] }) {
   if (!posts) {
