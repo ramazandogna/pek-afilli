@@ -3,6 +3,7 @@ import Images from '../../helpers/slider/images';
 import Link from 'next/link';
 import Card from '../card';
 import { ContentLinkIcon } from '../../icons/ContentLinkIcon';
+import { Content } from '../../types/content';
 
 export default function FullContent({ posts }: { posts: Content[] }) {
   if (!posts) {

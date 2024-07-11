@@ -1,6 +1,7 @@
+import { Content } from '../../types/content';
 import Card from '../card';
 
-export default function RecentContent({ posts }: { posts: any[] }) {
+export default function RecentContent({ posts }: { posts: Content[] }) {
   if (!posts) {
     return (
       <Card>
