@@ -8,3 +8,14 @@ type Content = {
 interface Contents {
   contents: Content[];
 }
+
+type ImageType = {
+  src: string;
+  alt: string;
+  title: string;
+  view: number;
+};
+
+interface ImageTypes {
+  images: ImageType[];
+}
