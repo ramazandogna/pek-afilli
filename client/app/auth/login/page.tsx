@@ -25,7 +25,6 @@ export default function Login() {
 
   return (
     <div className={styles.authSide}>
-      <BreadCrumb />
       <div className={styles.titleWrapper}>
         <h1 className={styles.title}>Login</h1>
         <div className={styles.date}>{time}</div>
