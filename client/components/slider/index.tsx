@@ -1,13 +1,17 @@
 'use client';
+//react - next
 import Image from 'next/image';
-import styles from './slider.module.css';
-//image
-import images from '../../helpers/slider/images';
-import { LeftIcon } from '../../icons/LeftIcon';
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
+//styles
+import styles from './slider.module.css';
+//helpers
+import { formatTitle } from '../../helpers/functions';
+import images from '../../helpers/slider/images';
+//components
+import { LeftIcon } from '../../icons/LeftIcon';
 import { ViewIcon } from '../../icons/ViewIcon';
 import { DotIcon } from '../../icons/DotIcon';
-import Link from 'next/link';
 
 export default function Slider() {
   const [currentImage, setCurrentImage] = useState(0);
@@ -41,7 +45,7 @@ export default function Slider() {
   }, [currentImage]);
   return (
     <div className={styles.sliderWrapper}>
-      <Link href={image.title.toLowerCase().replace(/\s+/g, '-')}>
+      <Link href={formatTitle(image.title)}>
         <Image
           className={styles.image}
           src={image.src}

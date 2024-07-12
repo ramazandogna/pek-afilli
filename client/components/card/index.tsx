@@ -1,5 +1,11 @@
 import styles from './card.module.css';
 
-export default function Card({ children }: { children: React.ReactNode }) {
-  return <div className={styles.card}>{children}</div>;
+export default function Card({
+  children,
+  className
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
+  return <div className={`${styles.card} ${className}`}>{children}</div>;
 }
