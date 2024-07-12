@@ -58,9 +58,12 @@ export default function HeroSection({
       </div>
 
       <h2 className=" text-[24px] font-bold">{params.post}</h2>
-      <div className="mb-[20px] flex text-[12px]">
-        <li>{time}</li>
-        <div className="ml-auto flex items-center gap-[12px]">
+      <div className="mb-[20px] flex flex-col gap-[8px] text-[12px] md:flex-row md:gap-0">
+        <div className="flex items-center gap-[8px]">
+          <span className="hidden font-bold md:flex"> &#183;</span>
+          {time}
+        </div>
+        <div className="flex items-center gap-[12px] md:ml-auto">
           <span className="flex items-center  gap-[4px]">
             <CommentsIcon />
             {comments ? comments : 0}
