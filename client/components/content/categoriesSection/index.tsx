@@ -6,7 +6,7 @@ export default function CategoriesSection({ categories }: { categories?: string[
   return (
     <>
       {categories ? (
-        <div className="flex gap-[8px] pb-2 pt-4 text-[13px]">
+        <div className="flex w-full flex-wrap gap-[8px] pb-2 pt-4 text-[13px]">
           {categories.map((category, index) => {
             return (
               <Link key={index} href={formatTitle(category)}>

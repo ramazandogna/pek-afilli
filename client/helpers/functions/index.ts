@@ -9,3 +9,12 @@ export function truncateText(text: string, wordLimit: number) {
 export function formatTitle(title: string) {
   return title.toLowerCase().replace(/\s+/g, '-');
 }
+
+export const formatDate = (date: any) => {
+  const year = date.getFullYear();
+  const day = date.getDate();
+  const month = date.getMonth() + 1;
+  const formattedMonth = month < 10 ? `0${month}` : month;
+
+  return `${day}.${formattedMonth}.${year}`;
+};

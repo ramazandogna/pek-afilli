@@ -23,13 +23,23 @@ async function Home({ params }: { params: { post: string } }) {
       return [];
     }
   };
-  const categories = ['Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5'];
+
   const post: Content = await getSinglePosts();
 
+  const categories = ['Category 1', 'Category2', 'Category3'];
+  const comments = 5;
+  const views = 2000;
+  const readTime = post.body.split(' ').length / 200;
   return (
     <main className="min-h-[100vh]">
       <Card className="my-4 bg-gray-100 p-4">
-        <HeroSection params={params} image={Images[0]} />
+        <HeroSection
+          params={params}
+          image={Images[0]}
+          readTime={readTime * 26}
+          views={views}
+          comments={comments}
+        />
         <Post post={post} />
         <CategoriesSection categories={categories} />
       </Card>

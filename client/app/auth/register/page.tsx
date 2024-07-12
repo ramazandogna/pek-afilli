@@ -1,8 +1,6 @@
-//Next
+//next - react
 import Link from 'next/link';
-//Styles
-import styles from './register.module.css';
-//Icons
+//components
 import { HandRaiseIcon } from '../../../icons/HandRaiseIcon';
 import { PasswordIcon } from '../../../icons/PasswordIcon';
 import { EyeIcon } from '../../../icons/EyeIcon';
@@ -12,15 +10,9 @@ import { RenameIcon } from '../../../icons/RenameIcon';
 import { EmailIcon } from '../../../icons/EmailIcon';
 import { CompanyIcon } from '../../../icons/CompanyIcon';
 import { ArrowRightIcon } from '../../../icons/ArrowRightIcon';
-
-const formatDate = (date: any) => {
-  const year = date.getFullYear();
-  const day = date.getDate();
-  const month = date.getMonth() + 1;
-  const formattedMonth = month < 10 ? `0${month}` : month;
-
-  return `${day}.${formattedMonth}.${year}`;
-};
+import { formatDate } from '../../../helpers/functions';
+//styles
+import styles from './register.module.css';
 
 export default function Register() {
   const today = new Date();

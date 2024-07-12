@@ -1,23 +1,16 @@
-//Next
+//next - react
 import Link from 'next/link';
-//Icons
+//components
+import BreadCrumb from '../../../components/breadCrumb';
 import { HandRaiseIcon } from '../../../icons/HandRaiseIcon';
 import { PasswordIcon } from '../../../icons/PasswordIcon';
 import { EyeIcon } from '../../../icons/EyeIcon';
 import { LinkIcon } from '../../../icons/LinkIcon';
-//Styles
-import styles from './login.module.css';
 import { ArrowRightIcon } from '../../../icons/ArrowRightIcon';
-import BreadCrumb from '../../../components/breadCrumb';
-
-const formatDate = (date: any) => {
-  const year = date.getFullYear();
-  const day = date.getDate();
-  const month = date.getMonth() + 1;
-  const formattedMonth = month < 10 ? `0${month}` : month;
-
-  return `${day}.${formattedMonth}.${year}`;
-};
+//styles
+import styles from './login.module.css';
+//helpers
+import { formatDate } from '../../../helpers/functions';
 
 export default function Login() {
   const today = new Date();
