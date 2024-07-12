@@ -1,6 +1,9 @@
+//next - react
 import Image from 'next/image';
 import React from 'react';
+//components
 import BreadCrumb from '../../../components/breadCrumb';
+//types
 import { ImageType } from '../../../types/content';
 
 export default function HeroSection({
@@ -19,7 +22,7 @@ export default function HeroSection({
         height={360}
         className="mx-auto rounded object-cover"
         priority
-      ></Image>
+      />
       <BreadCrumb name="Category 1" link="http://localhost:3000/auth/register" />
       <h2 className="mb-[20px] text-[24px] font-bold">{params.post}</h2>
     </div>

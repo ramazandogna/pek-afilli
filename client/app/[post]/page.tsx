@@ -1,10 +1,17 @@
-import Images from '../../helpers/slider/images';
+//components
 import Comments from '../../components/comments';
 import RelatedPosts from '../../components/relatedPosts';
 import WriteComment from '../../components/writeComment';
+import HeroSection from '../../components/content/heroSection';
+//helpers
+import Images from '../../helpers/slider/images';
 import { fetchPost } from '../../helpers/apis/fetchs';
-import HeroSection from '../../layouts/contents/heroSection';
+//types
 import { Content } from '../../types/content';
+import CategoriesSection from '../../components/content/categoriesSection';
+import Post from '../../components/content/post';
+import Card from '../../components/card';
+
 async function Home({ params }: { params: { post: string } }) {
   //gets
   const getSinglePosts = async () => {
@@ -16,57 +23,25 @@ async function Home({ params }: { params: { post: string } }) {
       return [];
     }
   };
-
+  const categories = ['Category 1', 'Category 2', 'Category 3', 'Category 4', 'Category 5'];
   const post: Content = await getSinglePosts();
 
   return (
     <main className="min-h-[100vh]">
-      <div className="relative my-4 bg-gray-100 p-4 shadow-md">
+      <Card className="my-4 bg-gray-100 p-4">
         <HeroSection params={params} image={Images[0]} />
-        <div>
-          {post.body}
-          {post.body}
-          {post.body}
-          {post.body}
-          {post.body}
-          {post.body}
-          {post.body}
-          {post.body}
-          {post.body}
-          {post.body}
-          {post.body}
-          {post.body}
-          {post.body}
-          <div>
-            {post.body}
-            {post.body}
-            {post.body}
-            {post.body}
-            {post.body}
-            {post.body}
-          </div>
-          <div>
-            {post.body}
-            {post.body}
-            {post.body}
-            {post.body}
-            {post.body}
-            {post.body}
-            {post.body}
-            {post.body}
-            {post.body}
-            {post.body}
-          </div>
-        </div>
-        <div className="mt-[20px] flex items-center justify-center gap-4 text-[12px]">
-          <span className="rounded bg-[#ccc] px-3 py-1">Category 1</span>
-          <span className="rounded bg-[#ccc] px-3 py-1">Category 2</span>
-          <span className="rounded bg-[#ccc] px-3 py-1">Category 3</span>
-        </div>
-      </div>
-      <RelatedPosts />
-      <Comments />
-      <WriteComment />
+        <Post post={post} />
+        <CategoriesSection categories={categories} />
+      </Card>
+      <Card className="my-4 bg-gray-100 p-4">
+        <RelatedPosts />
+      </Card>
+      <Card className="my-4 bg-gray-100 p-4">
+        <Comments />
+      </Card>
+      <Card className="my-4 bg-gray-100 p-4">
+        <WriteComment />
+      </Card>
     </main>
   );
 }

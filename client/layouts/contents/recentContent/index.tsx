@@ -1,13 +1,16 @@
 'use client';
-import { Content } from '../../types/content';
-import Card from '../card';
-import images from '../../helpers/slider/images';
-
-import { ContentLinkIcon } from '../../icons/ContentLinkIcon';
-import Image from 'next/image';
+//next - react
 import Link from 'next/link';
-import { fetchPosts } from '../../helpers/apis/fetchs';
 import { useState } from 'react';
+import Image from 'next/image';
+//helper
+import images from '../../../helpers/slider/images';
+//components
+import Card from '../../../components/card';
+import { ContentLinkIcon } from '../../../icons/ContentLinkIcon';
+//types
+import { Content } from '../../../types/content';
+import { formatTitle } from '../../../helpers/functions';
 
 export default function RecentContent({ posts }: { posts: Content[] }) {
   const [firstContent, setFirstContent] = useState<number>(5);
@@ -31,7 +34,7 @@ export default function RecentContent({ posts }: { posts: Content[] }) {
     <Card>
       <h2 className="mb-8  mt-4 inline-flex border-b-[3px] border-[#0693e3] pb-3 text-[18px] font-bold text-[#0693e3] transition-all hover:border-[#0061b1] hover:text-[#0061b1]">
         <Link
-          href={contents[1].title.toLowerCase().replace(/\s+/g, '-')}
+          href={formatTitle(contents[1].title)}
           className="overflow-hidde relative block text-ellipsis whitespace-nowrap"
         >
           Recent Posts
@@ -42,7 +45,7 @@ export default function RecentContent({ posts }: { posts: Content[] }) {
         {contents.map((post) => (
           <div className="flex h-[189px] min-h-[189px] grow gap-[8px] md:h-auto" key={post.id}>
             <Link
-              href={post.title.toLowerCase().replace(/\s+/g, '-')}
+              href={formatTitle(post.title)}
               className="groupA relative flex h-[189px] min-h-[189px] w-[336px] min-w-[336px]  items-start overflow-hidden rounded"
             >
               <div className="groupA-hover absolute inset-0 z-50  bg-black/50">
@@ -58,7 +61,7 @@ export default function RecentContent({ posts }: { posts: Content[] }) {
               />
             </Link>
             <Link
-              href={post.title.toLowerCase().replace(/\s+/g, '-')}
+              href={formatTitle(post.title)}
               className="font-700 grow text-[14px] transition-all hover:text-[#0693e3]"
             >
               <h2>{post.title}</h2>

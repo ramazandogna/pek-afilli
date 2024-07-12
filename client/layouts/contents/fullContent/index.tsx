@@ -1,9 +1,14 @@
+//next - react
 import Image from 'next/image';
-import Images from '../../helpers/slider/images';
 import Link from 'next/link';
-import Card from '../card';
-import { ContentLinkIcon } from '../../icons/ContentLinkIcon';
-import { Content } from '../../types/content';
+//components
+import Card from '../../../components/card';
+import { ContentLinkIcon } from '../../../icons/ContentLinkIcon';
+//helpers
+import Images from '../../../helpers/slider/images';
+import { formatTitle, truncateText } from '../../../helpers/functions';
+//types
+import { Content } from '../../../types/content';
 
 export default function FullContent({ posts }: { posts: Content[] }) {
   if (!posts) {
@@ -16,14 +21,6 @@ export default function FullContent({ posts }: { posts: Content[] }) {
     );
   }
 
-  function truncateText(text: string, wordLimit: number) {
-    const words = text.split(' ');
-    if (words.length > wordLimit) {
-      return words.slice(0, wordLimit).join(' ') + '..';
-    }
-    return text;
-  }
-
   const listPosts = posts.slice(1, 6);
   const truncatedTitle = truncateText(listPosts[0].title, 3);
 
@@ -31,12 +28,12 @@ export default function FullContent({ posts }: { posts: Content[] }) {
     <Card>
       <div className="mb-8 mt-2 w-full border-b-2">
         <h2 className="mt-4 inline-flex border-b-[3px] border-[#0693e3] pb-3 text-[18px] font-bold text-[#0693e3] transition-all hover:border-[#0061b1] hover:text-[#0061b1]">
-          <Link href={listPosts[1].title.toLowerCase().replace(/\s+/g, '-')}>{truncatedTitle}</Link>
+          <Link href={formatTitle(listPosts[1].title)}>{truncatedTitle}</Link>
         </h2>
       </div>
       <div className="flex h-auto w-full flex-col gap-[16px] md:h-[550px] md:flex-row">
         <Link
-          href={Images[1].title.toLowerCase().replace(/\s+/g, '-')}
+          href={formatTitle(Images[1].title)}
           className="groupA relative h-[375px] w-full overflow-hidden rounded md:h-[550px]"
         >
           <div className="groupA-hover absolute inset-0 z-50  bg-black/50">
@@ -61,7 +58,7 @@ export default function FullContent({ posts }: { posts: Content[] }) {
               key={post.id}
             >
               <Link
-                href={post.title.toLowerCase().replace(/\s+/g, '-')}
+                href={formatTitle(post.title)}
                 className="groupA relative flex h-full w-[110px] min-w-[110px] items-start overflow-hidden rounded "
               >
                 <div className="groupA-hover absolute inset-0 z-50  bg-black/30">
@@ -77,7 +74,7 @@ export default function FullContent({ posts }: { posts: Content[] }) {
                 />
               </Link>
               <Link
-                href={post.title.toLowerCase().replace(/\s+/g, '-')}
+                href={formatTitle(post.title)}
                 className="font-700 grow text-[14px] transition-all hover:text-[#0693e3]"
               >
                 <h2>{post.title}</h2>

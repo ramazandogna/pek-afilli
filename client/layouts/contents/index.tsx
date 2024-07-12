@@ -1,9 +1,12 @@
-import FullContent from '../../components/contentSections/fullContent';
+//components
 import Card from '../../components/card';
 import Slider from '../../components/slider';
-import ListContent from '../../components/contentSections/listContent';
+//layouts
+import FullContent from './fullContent';
+import ListContent from './listContent';
+import RecentContent from './recentContent';
+//types
 import { Content } from '../../types/content';
-import RecentContent from '../../components/contentSections/recentContent';
 
 export default function Contents({
   dataPost,
