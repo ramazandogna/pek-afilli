@@ -23,7 +23,7 @@ async function Home({ params }: { params: { post: string } }) {
     <main className="min-h-[100vh]">
       <div className="relative my-4 bg-gray-100 p-4 shadow-md">
         <HeroSection params={params} image={Images[0]} />
-        <p>
+        <div>
           {post.body}
           {post.body}
           {post.body}
@@ -57,7 +57,7 @@ async function Home({ params }: { params: { post: string } }) {
             {post.body}
             {post.body}
           </div>
-        </p>
+        </div>
         <div className="mt-[20px] flex items-center justify-center gap-4 text-[12px]">
           <span className="rounded bg-[#ccc] px-3 py-1">Category 1</span>
           <span className="rounded bg-[#ccc] px-3 py-1">Category 2</span>

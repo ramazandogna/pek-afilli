@@ -8,6 +8,7 @@ import { LinkIcon } from '../../../icons/LinkIcon';
 //Styles
 import styles from './login.module.css';
 import { ArrowRightIcon } from '../../../icons/ArrowRightIcon';
+import BreadCrumb from '../../../components/breadCrumb';
 
 const formatDate = (date: any) => {
   const year = date.getFullYear();
@@ -24,6 +25,7 @@ export default function Login() {
 
   return (
     <div className={styles.authSide}>
+      <BreadCrumb />
       <div className={styles.titleWrapper}>
         <h1 className={styles.title}>Login</h1>
         <div className={styles.date}>{time}</div>

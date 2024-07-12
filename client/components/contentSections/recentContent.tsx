@@ -52,7 +52,6 @@ export default function RecentContent({ posts }: { posts: Content[] }) {
                 src={images[1].src}
                 alt={images[1].alt}
                 loading="lazy"
-                layout="fill"
                 sizes="(max-width: 768px) 100%, (max-width: 1200px) 50vw, 33vw"
                 fill
                 className="groupA-image rounded object-cover"

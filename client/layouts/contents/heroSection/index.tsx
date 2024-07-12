@@ -15,11 +15,12 @@ export default function HeroSection({
       <Image
         src={image.src}
         alt={image.alt}
-        width={784}
-        height={392}
+        width={720}
+        height={360}
         className="mx-auto rounded object-cover"
+        priority
       ></Image>
-      <BreadCrumb />
+      <BreadCrumb name="Category 1" link="http://localhost:3000/auth/register" />
       <h2 className="mb-[20px] text-[24px] font-bold">{params.post}</h2>
     </div>
   );
