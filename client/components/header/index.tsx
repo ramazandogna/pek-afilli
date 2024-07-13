@@ -4,22 +4,8 @@ import Link from 'next/link';
 //Styles
 import styles from './header.module.css';
 //icons
-import { InstagramIcon } from '../../icons/InstagramIcon';
-import { PinterestIcon } from '../../icons/PinterestIcon';
-import { TwitterIcon } from '../../icons/TwitterIcon';
-import { YoutubeIcon } from '../../icons/YoutubeIcon';
-import { SearchIcon } from '../../icons/SearchIcon';
-import { SignInIcon } from '../../icons/SignInIcon';
-import { SignUpIcon } from '../../icons/SignUpIcon';
-import { HotIcon } from '../../icons/HotIcon';
-import { HamburgerMenuIcon } from '../../icons/HamburgerMenuIcon';
-import { TwitterWhiteIcon } from '../../icons/TwitterWhiteIcon';
-import { YoutubeWhiteIcon } from '../../icons/YoutubeWhiteIcon';
-import { CloseIcon } from '../../icons/CloseIcon';
-import { InstagramWhiteIcon } from '../../icons/InstagramWhiteIcon';
 //CSR
 import { useState } from 'react';
-import { CollapseIcon } from '../../icons/CollapseIcon';
 
 export default function Header() {
   const [menuFixed, setMenuFixed] = useState(false);
@@ -46,16 +32,16 @@ export default function Header() {
               <div className={styles.topLeft}>
                 <div className={styles.social}>
                   <div className={styles.iconBg}>
-                    <InstagramIcon className={styles.icon} />
+                    <div className={`${styles.icon} i-ri:instagram-fill`} />
                   </div>
                   <div className={styles.iconBg}>
-                    <TwitterIcon className={styles.icon} />
+                    <div className={`${styles.icon} i-ant-design:twitter-circle-filled`} />
                   </div>
                   <div className={styles.iconBg}>
-                    <YoutubeIcon className={styles.icon} />
+                    <div className={`${styles.icon} i-ri:youtube-fill`} />
                   </div>
                   <div className={styles.iconBg}>
-                    <PinterestIcon className={styles.icon} />
+                    <div className={`${styles.icon} i-mingcute:pinterest-fill`} />
                   </div>
                 </div>
                 <div className={styles.inputWrapper}>
@@ -66,20 +52,20 @@ export default function Header() {
                   />
                   <div className={styles.inputIcons}>
                     <div className={styles.inputBorder}></div>
-                    <SearchIcon className={styles.inputIcon} />
+                    <div className={`${styles.inputIcon} i-ic:round-search`} />
                   </div>
                 </div>
               </div>
               <div className={styles.topRight}>
                 <Link href="/auth/login" className={`${styles.topRightSignIn} backgroundContent`}>
-                  <SignInIcon className={styles.signInIcon} />
+                  <div className={`${styles.signInIcon} i-uil:signin`} />
                   <div>Sign In</div>
                 </Link>
                 <Link
                   href="/auth/register"
                   className={`${styles.topRightSignUp} backgroundContent2`}
                 >
-                  <SignUpIcon className={styles.signUpIcon} />
+                  <div className={`i-carbon:join-node ${styles.signUpIcon}`} />
                   <div>Join Now</div>
                 </Link>
               </div>
@@ -92,13 +78,13 @@ export default function Header() {
                 <li className={styles.bottomLeftItem}>Motivation</li>
               </ul>
               <Link href="/" className={styles.bottomRight}>
-                <HotIcon className={styles.hotIcon} />
+                <div className={`i-mdi:hot ${styles.hotIcon}`} />
                 <div>What&apos;s Hot</div>
               </Link>
             </div>
           </div>
           <div onClick={toggleMenu} className={styles.mobileIcon}>
-            <HamburgerMenuIcon />
+            <div className="i-solar:hamburger-menu-broken" />
           </div>
         </div>
       </nav>
@@ -113,7 +99,10 @@ export default function Header() {
                 <div className="">PEK AFİLLİ</div>
               </div>
             </Link>
-            <CloseIcon onClick={toggleMenu} className="cursor-pointer text-[24px]" />
+            <div
+              onClick={toggleMenu}
+              className="i-material-symbols-close-rounded cursor-pointer text-[24px]"
+            />
           </div>
 
           <div className="mb-[20px] w-full grow">
@@ -128,8 +117,8 @@ export default function Header() {
                 className="flex items-center justify-between py-[15px] font-bold"
               >
                 <span>Kategoriler</span>
-                <CollapseIcon
-                  className={`${menuCategory === true ? 'rotate-180' : 'rotate-0'} text-[24px] duration-300`}
+                <div
+                  className={`${menuCategory === true ? 'rotate-180' : 'rotate-0'} i-mdi-chevron-down text-[24px] duration-300`}
                 />
               </div>
               <div
@@ -164,13 +153,13 @@ export default function Header() {
           </div>
           <div className="mb-[15px] flex items-end justify-center gap-4 text-[24px]">
             <Link className="flex h-[40px] w-[40px] items-center justify-center" href="/">
-              <InstagramWhiteIcon />
+              <div className="i-teenyicons:instagram-solid" />
             </Link>
             <Link className="flex h-[40px] w-[40px] items-center justify-center" href="/">
-              <TwitterWhiteIcon />
+              <div className="i-ant-design:twitter-circle-filled" />
             </Link>
             <Link className="flex h-[40px] w-[40px] items-center justify-center" href="/">
-              <YoutubeWhiteIcon />
+              <div className="i-ri:youtube-fill" />
             </Link>
           </div>
         </div>

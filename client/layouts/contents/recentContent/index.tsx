@@ -7,7 +7,6 @@ import Image from 'next/image';
 import images from '../../../helpers/slider/images';
 //components
 import Card from '../../../components/card';
-import { ContentLinkIcon } from '../../../icons/ContentLinkIcon';
 //types
 import { Content } from '../../../types/content';
 import { formatTitle } from '../../../helpers/functions';
@@ -49,7 +48,7 @@ export default function RecentContent({ posts }: { posts: Content[] }) {
               className="groupA relative flex h-[189px] min-h-[189px] w-[336px] min-w-[336px]  items-start overflow-hidden rounded"
             >
               <div className="groupA-hover absolute inset-0 z-50  bg-black/50">
-                <ContentLinkIcon className="absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[24px]" />
+                <div className="i-line-md:link text-#d6d6d6 absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[24px]" />
               </div>
               <Image
                 src={images[1].src}

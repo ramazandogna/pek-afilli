@@ -3,8 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 //components
 import Card from '../../../components/card';
-import { ContentLinkIcon } from '../../../icons/ContentLinkIcon';
-import { DocumentIcon } from '../../../icons/DocumentIcon';
 //helpers
 import Images from '../../../helpers/slider/images';
 import { formatTitle, truncateText } from '../../../helpers/functions';
@@ -37,7 +35,7 @@ export default function ListContent({ posts }: { posts: Content[] }) {
             {truncatedTitle}
           </Link>
         </h2>
-        <DocumentIcon className="ml-auto text-[18.5px] text-[#b9bec3]" />
+        <div className="i-fluent:document-32-filled ml-auto text-[18.5px] text-[#b9bec3]" />
       </div>
       <div className="flex h-auto w-full flex-col gap-[16px] md:h-[650px]">
         <Link
@@ -45,7 +43,7 @@ export default function ListContent({ posts }: { posts: Content[] }) {
           className="groupA relative h-[375px] w-full overflow-hidden rounded md:h-[550px]"
         >
           <div className="groupA-hover absolute inset-0 z-50  bg-black/50">
-            <ContentLinkIcon className="absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[36px]" />
+            <div className="i-line-md:link text-#d6d6d6 absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[36px]" />
           </div>
           <Image
             src={Images[1].src}
@@ -70,7 +68,7 @@ export default function ListContent({ posts }: { posts: Content[] }) {
                 className="groupA relative flex h-full w-[110px] min-w-[110px] items-start overflow-hidden rounded"
               >
                 <div className="groupA-hover absolute inset-0 z-50  bg-black/30">
-                  <ContentLinkIcon className="absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[24px]" />
+                  <div className="i-line-md:link text-#d6d6d6 absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[24px]" />
                 </div>
                 <Image
                   src={Images[2].src}

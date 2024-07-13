@@ -9,9 +9,6 @@ import styles from './slider.module.css';
 import { formatTitle } from '../../helpers/functions';
 import images from '../../helpers/slider/images';
 //components
-import { LeftIcon } from '../../icons/LeftIcon';
-import { ViewIcon } from '../../icons/ViewIcon';
-import { DotIcon } from '../../icons/DotIcon';
 
 export default function Slider() {
   const [currentImage, setCurrentImage] = useState(0);
@@ -58,23 +55,26 @@ export default function Slider() {
         <div className={styles.textWrapper}>
           <h3 className={styles.title}>{image.title}</h3>
           <p className={styles.view}>
-            <ViewIcon />
+            <div className="i-mingcute:eye-fill" />
             {image.view}
           </p>
         </div>
       </Link>
 
-      <LeftIcon onClick={() => prevImage()} className={styles.leftIcon} />
-      <LeftIcon onClick={() => nextImage()} className={styles.rightIcon} />
+      <div onClick={() => prevImage()} className={`${styles.leftIcon} i-icon-park-outline:left`} />
+      <div
+        onClick={() => nextImage()}
+        className={`${styles.rightIcon} i-ant-design:right-outlined`}
+      />
 
       <div className={styles.dottes}>
         {images.map((s, i) => (
-          <DotIcon
+          <div
             onClick={() => {
               changeImage(i);
             }}
             key={i}
-            className={`${currentImage === i ? styles.active : ''} ${styles.dot}`}
+            className={`${currentImage === i ? styles.active : ''} ${styles.dot} i-mdi:dot`}
           />
         ))}
       </div>

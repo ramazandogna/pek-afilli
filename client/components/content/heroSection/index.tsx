@@ -7,12 +7,6 @@ import BreadCrumb from '../../../components/breadCrumb';
 import { formatDate } from '../../../helpers/functions';
 //types
 import { ImageType } from '../../../types/content';
-import { CommentsIcon } from '../../../icons/CommentsIcon';
-import { EyeIcon } from '../../../icons/EyeIcon';
-import { BookmarkIcon } from '../../../icons/BookmarkIcon';
-import { PopularIcon } from '../../../icons/PopularIcon';
-import { HotIcon } from '../../../icons/HotIcon';
-import { TrendIcon } from '../../../icons/TrendIcon';
 
 export default function HeroSection({
   params,
@@ -44,15 +38,16 @@ export default function HeroSection({
       <div className="flex text-[13px]">
         {views && views >= 10000 ? (
           <div className="flex items-center justify-center gap-[4px] rounded bg-[#f11e1e] px-[8px] py-[4px] text-white">
-            <HotIcon /> Hot
+            <div className="i-mdi:hot" /> Hot
           </div>
         ) : views && views >= 5000 ? (
           <div className="flex items-center justify-center gap-[4px] rounded bg-[#FF5733] px-[8px] py-[4px] text-white">
-            <TrendIcon /> Trend
+            <div className="i-pepicons-pop:raise-hand-circle-filled" /> Trend
           </div>
         ) : views && views >= 2000 ? (
           <div className="flex items-center justify-center gap-[4px] rounded bg-[#FFC000] px-[8px] py-[4px]">
-            <PopularIcon /> Popular
+            <div className="i-fluent-data-trending-16-filled"></div>
+            Popular
           </div>
         ) : null}
       </div>
@@ -65,7 +60,7 @@ export default function HeroSection({
         </div>
         <div className="flex items-center gap-[12px] md:ml-auto">
           <span className="flex items-center  gap-[4px]">
-            <CommentsIcon />
+            <div className="i-icon-park-twotone-comments" />
             {comments ? comments : 0}
           </span>
           <span
@@ -79,11 +74,11 @@ export default function HeroSection({
             }
             flex items-center  gap-[4px]`}
           >
-            <EyeIcon />
+            <div className="i-mingcute:eye-fill" />
             <span>{views ? views : 0} Okuma</span>
           </span>
           <span className="flex items-center  gap-[4px]">
-            <BookmarkIcon />
+            <div className="i-material-symbols-bookmark-added-rounded"></div>
             <span>{readTime ? readTime : 0} dakika okuma süresi</span>
           </span>
         </div>

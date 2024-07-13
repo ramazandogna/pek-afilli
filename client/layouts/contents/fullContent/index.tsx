@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 //components
 import Card from '../../../components/card';
-import { ContentLinkIcon } from '../../../icons/ContentLinkIcon';
 //helpers
 import Images from '../../../helpers/slider/images';
 import { formatTitle, truncateText } from '../../../helpers/functions';
@@ -37,7 +36,7 @@ export default function FullContent({ posts }: { posts: Content[] }) {
           className="groupA relative h-[375px] w-full overflow-hidden rounded md:h-[550px]"
         >
           <div className="groupA-hover absolute inset-0 z-50  bg-black/50">
-            <ContentLinkIcon className="absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[36px]" />
+            <div className="i-line-md:link text-#d6d6d6 absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[36px]" />
           </div>
           <Image
             src={Images[1].src}
@@ -62,7 +61,7 @@ export default function FullContent({ posts }: { posts: Content[] }) {
                 className="groupA relative flex h-full w-[110px] min-w-[110px] items-start overflow-hidden rounded "
               >
                 <div className="groupA-hover absolute inset-0 z-50  bg-black/30">
-                  <ContentLinkIcon className="fade-in absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[24px] " />
+                  <div className="i-line-md:link text-#d6d6d6 fade-in absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[24px] " />
                 </div>
                 <Image
                   src={Images[2].src}

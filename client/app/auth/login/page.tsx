@@ -2,11 +2,6 @@
 import Link from 'next/link';
 //components
 import BreadCrumb from '../../../components/breadCrumb';
-import { HandRaiseIcon } from '../../../icons/HandRaiseIcon';
-import { PasswordIcon } from '../../../icons/PasswordIcon';
-import { EyeIcon } from '../../../icons/EyeIcon';
-import { LinkIcon } from '../../../icons/LinkIcon';
-import { ArrowRightIcon } from '../../../icons/ArrowRightIcon';
 //styles
 import styles from './login.module.css';
 //helpers
@@ -23,7 +18,7 @@ export default function Login() {
         <div className={styles.date}>{time}</div>
       </div>
       <div className="inputWrapper">
-        <HandRaiseIcon className={styles.inputIcon} />
+        <div className={`${styles.inputIcon} i-material-symbols-light:person-raised-hand`} />
         <input
           className="input"
           v-model="auth.usernameOrEmail"
@@ -37,8 +32,8 @@ export default function Login() {
       </div>
 
       <div className="inputWrapper">
-        <PasswordIcon
-          className="absolute left-[14px] top-[50%]
+        <div
+          className="i-ic:sharp-password absolute left-[14px] top-[50%]
 z-[1] flex h-[24px] w-[24px] -translate-y-[50%] items-center text-[#9e9e9e]"
         />
         <input className="input" v-model="auth.password" placeholder=" " id="password" />
@@ -49,7 +44,7 @@ z-[1] flex h-[24px] w-[24px] -translate-y-[50%] items-center text-[#9e9e9e]"
           // onClick={() => {}}
           className={styles.eyeIconWrapper}
         >
-          <EyeIcon className={styles.eyeIcon} />
+          <div className={`${styles.eyeIcon} i-mingcute:eye-fill`} />
         </div>
       </div>
 
@@ -60,7 +55,7 @@ z-[1] flex h-[24px] w-[24px] -translate-y-[50%] items-center text-[#9e9e9e]"
 
         <Link className={styles.right} href="/auth/register">
           <div className={styles.registerButton}>
-            <LinkIcon className={styles.registerIcon} />
+            <div className={`${styles.registerIcon} i-quill:link-out`} />
             <p className={styles.register}>Register</p>
           </div>
         </Link>
@@ -74,7 +69,7 @@ z-[1] flex h-[24px] w-[24px] -translate-y-[50%] items-center text-[#9e9e9e]"
       </div>
       <Link href="/" className={styles.backToHomepage}>
         <div> Back to Homepage</div>
-        <ArrowRightIcon />
+        <div className="i-lets-icons-arrow-right"></div>
       </Link>
     </div>
   );

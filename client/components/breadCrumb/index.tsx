@@ -1,7 +1,6 @@
 'use client';
 
 import { usePathname } from 'next/navigation';
-import { CollapseIcon } from '../../icons/CollapseIcon';
 import Link from 'next/link';
 
 export default function BreadCrumb({ link, name }: { link?: string; name?: string }) {
