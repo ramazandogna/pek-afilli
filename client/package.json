@@ -7,7 +7,7 @@
     "dev:next": "next dev",
     "dev": "run-p dev:*",
     "css": "unocss '**/*.tsx' --out-file=styles/uno.css",
-    "build": "pnpm run css && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write ."
