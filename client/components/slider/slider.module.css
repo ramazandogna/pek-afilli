@@ -29,7 +29,7 @@
 }
 
 .rightIcon {
-  @apply absolute right-[5px] top-[50%] z-[2147483647] flex -translate-y-[50%]  rotate-180 items-center  justify-center;
+  @apply absolute right-[5px] top-[50%] z-[2147483647] flex -translate-y-[50%] items-center  justify-center;
   @apply h-[40px]  w-[25px] cursor-pointer rounded  bg-black/20 text-[30px] text-white opacity-0 transition-opacity duration-[400ms];
 }
 
