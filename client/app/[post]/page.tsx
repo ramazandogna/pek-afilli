@@ -1,11 +1,11 @@
 //components
 import Comments from '../../components/comments';
-import RelatedPosts from '../../components/relatedPosts';
+import RelatedContent from '../../layouts/contents/relatedContent';
 import WriteComment from '../../components/writeComment';
 import HeroSection from '../../components/content/heroSection';
 //helpers
 import Images from '../../helpers/slider/images';
-import { fetchPost } from '../../helpers/apis/fetchs';
+import { fetchPost, fetchPosts } from '../../helpers/apis/fetchs';
 //types
 import { Content } from '../../types/content';
 import CategoriesSection from '../../components/content/categoriesSection';
@@ -24,7 +24,19 @@ async function Home({ params }: { params: { post: string } }) {
     }
   };
 
+  const getRelatedPost = async () => {
+    try {
+      const posts = await fetchPosts();
+
+      return posts.slice(0, 2);
+    } catch (error) {
+      console.error('Veri getirme hatası:', error);
+      return [];
+    }
+  };
+
   const post: Content = await getSinglePosts();
+  const relatedPosts: Content[] = await getRelatedPost();
 
   const categories = ['Category 1', 'Category2', 'Category3'];
   const comments = 5;
@@ -44,7 +56,7 @@ async function Home({ params }: { params: { post: string } }) {
         <CategoriesSection categories={categories} />
       </Card>
       <Card className="my-4 bg-gray-100 p-4">
-        <RelatedPosts />
+        <RelatedContent relatedPosts={relatedPosts} />
       </Card>
       <Card className="my-4 bg-gray-100 p-4">
         <Comments />

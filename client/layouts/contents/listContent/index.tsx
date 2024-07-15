@@ -4,7 +4,7 @@ import Link from 'next/link';
 //components
 import Card from '../../../components/card';
 //helpers
-import Images from '../../../helpers/slider/images';
+import images from '../../../helpers/slider/images';
 import { formatTitle, truncateText } from '../../../helpers/functions';
 //types
 import { Content } from '../../../types/content';
@@ -39,15 +39,15 @@ export default function ListContent({ posts }: { posts: Content[] }) {
       </div>
       <div className="flex h-auto w-full flex-col gap-[16px] md:h-[650px]">
         <Link
-          href={formatTitle(Images[1].title)}
+          href={formatTitle(images[1].title)}
           className="groupA relative h-[375px] w-full overflow-hidden rounded md:h-[550px]"
         >
           <div className="groupA-hover absolute inset-0 z-50  bg-black/50">
             <div className="i-line-md:link text-#d6d6d6 absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[36px]" />
           </div>
           <Image
-            src={Images[1].src}
-            alt={Images[1].alt}
+            src={images[1].src}
+            alt={images[1].alt}
             loading="lazy"
             sizes="(max-width: 768px) 100vw, 50vw"
             fill
@@ -71,8 +71,8 @@ export default function ListContent({ posts }: { posts: Content[] }) {
                   <div className="i-line-md:link text-#d6d6d6 absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[24px]" />
                 </div>
                 <Image
-                  src={Images[2].src}
-                  alt={Images[2].alt}
+                  src={images[2].src}
+                  alt={images[2].alt}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   loading="lazy"
                   fill
