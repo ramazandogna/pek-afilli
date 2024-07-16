@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { formatTitle } from '../../../helpers/functions';
 import images from '../../../helpers/slider/images';
 
-export default async function RelatedContent({ relatedPosts }: { relatedPosts: Content[] }) {
+export default function RelatedContent({ relatedPosts }: { relatedPosts: Content[] }) {
   return (
     <div>
       <h2 className="my-4 inline-flex border-b-[3px] border-[#0693e3] pb-3 text-[18px] font-bold text-[#0693e3] transition-all hover:border-[#0061b1] hover:text-[#0061b1]">

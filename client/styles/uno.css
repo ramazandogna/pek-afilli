@@ -181,6 +181,7 @@
 .w-\[40px\]{width:40px;}
 .w-\[85\%\]{width:85%;}
 .w-16px{width:16px;}
+[h1=""]{height:0.25rem;}
 .flex,
 [flex=""]{display:flex;}
 .inline-flex{display:inline-flex;}
