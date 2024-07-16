@@ -59,10 +59,10 @@ async function Home({ params }: { params: { post: string } }) {
         <RelatedContent relatedPosts={relatedPosts} />
       </Card>
       <Card className="my-4 bg-gray-100 p-4">
-        <Comments />
+        <WriteComment />
       </Card>
       <Card className="my-4 bg-gray-100 p-4">
-        <WriteComment />
+        <Comments />
       </Card>
     </main>
   );
