@@ -12,7 +12,7 @@ export default async function RelatedContent({ relatedPosts }: { relatedPosts: C
         Related Posts
       </h2>
       <div className="flex flex-wrap">
-        {relatedPosts.map((post) => (
+        {relatedPosts.map((post, i) => (
           <div
             className="mb-4 flex w-full grow flex-col md:h-[189px] md:min-h-[189px] md:gap-[8px]"
             key={post.id}
@@ -25,8 +25,8 @@ export default async function RelatedContent({ relatedPosts }: { relatedPosts: C
                 <div className="i-line-md:link text-#d6d6d6 absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[24px]" />
               </div>
               <Image
-                src={images[1].src}
-                alt={images[1].alt}
+                src={images[i].src}
+                alt={images[i].alt}
                 loading="lazy"
                 fill
                 className="groupA-image rounded object-cover"

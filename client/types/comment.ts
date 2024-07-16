@@ -1,6 +1,5 @@
 export interface FormData {
-  firstName: string;
-  lastName: string;
+  name: string;
   email: string;
   comment: string;
   collectEmail: boolean;

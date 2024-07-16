@@ -4,8 +4,7 @@ import { FormData } from '../../types/comment';
 
 export default function CommentForm() {
   const [formData, setFormData] = useState<FormData>({
-    firstName: '',
-    lastName: '',
+    name: '',
     email: '',
     comment: '',
     collectEmail: false
@@ -24,8 +23,7 @@ export default function CommentForm() {
 
     // Form validasyonunu kontrol et
     setIsFormValid(
-      updatedFormData.firstName.trim() !== '' &&
-        updatedFormData.lastName.trim() !== '' &&
+      updatedFormData.name.trim() !== '' &&
         updatedFormData.email.trim() !== '' &&
         updatedFormData.comment.trim() !== ''
     );
@@ -37,8 +35,7 @@ export default function CommentForm() {
       console.log(formData);
       // Formu sıfırla
       setFormData({
-        firstName: '',
-        lastName: '',
+        name: '',
         email: '',
         comment: '',
         collectEmail: false
@@ -50,59 +47,53 @@ export default function CommentForm() {
   console.log(collectEmail);
 
   return (
-    <form className="gap-8px flex flex-col" onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="firstName">Ad:</label>
-        <input
-          type="text"
-          id="firstName"
-          name="firstName"
-          value={formData.firstName}
-          onChange={handleInputChange}
-          required
-        />
+    <form
+      className="gap-8px text-14px flex flex-col [&_input]:rounded [&_input]:p-2 [&_textarea]:rounded [&_textarea]:p-2"
+      onSubmit={handleSubmit}
+    >
+      <div className="gap-8px flex [&_div]:grow [&_input]:w-full">
+        <div className="">
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value={formData.name}
+            placeholder="İsim"
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div className="">
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={formData.email}
+            placeholder="E-posta"
+            onChange={handleInputChange}
+            required
+          />
+        </div>
       </div>
-      <div>
-        <label htmlFor="lastName">Soyad:</label>
-        <input
-          type="text"
-          id="lastName"
-          name="lastName"
-          value={formData.lastName}
-          onChange={handleInputChange}
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="email">E-posta:</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleInputChange}
-          required
-        />
-      </div>
-      <div>
-        <label htmlFor="comment">Yorum:</label>
+      <div className="h-80px flex w-full">
         <textarea
           id="comment"
           name="comment"
           value={formData.comment}
+          placeholder="Yorum"
           onChange={handleInputChange}
+          className="h-full w-full grow bg-white"
           required
         />
       </div>
-      <div>
-        <label>
-          <span
-            onClick={() => setCollectEmail(!collectEmail)}
-            className="w-16px h-16px border-1.5px flex items-center justify-center overflow-hidden rounded border-black bg-transparent"
-          >
-            <div className={`i-ph:check-bold ${collectEmail ? 'block' : 'hidden'} text-16px`}></div>
-          </span>
-        </label>
+      <div className="gap-8px flex items-center">
+        <span
+          onClick={() => setCollectEmail(!collectEmail)}
+          className="w-16px h-16px border-1px flex cursor-pointer items-center justify-center overflow-hidden rounded border-black/50 bg-white"
+        >
+          <div className={`i-ph:check-bold ${collectEmail ? 'block' : 'hidden'} text-16px`}></div>
+        </span>
+        <div className="text-12px text-black/50">yeni paylaşımlardan haberdar olmamı sağla.</div>
       </div>
       <button type="submit" disabled={!isFormValid}>
         Gönder
