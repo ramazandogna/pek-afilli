@@ -4,7 +4,7 @@ import { Comment } from '../../types/comments';
 import PekAfilli from '../../public/pek-afilli.svg';
 import Image from 'next/image';
 import { truncateText } from '../../helpers/functions';
-import { title } from 'process';
+import Link from 'next/link';
 
 export default function Comments({ comments }: { comments: Comment[] }) {
   const [like, setLike] = useState(0);
@@ -19,7 +19,7 @@ export default function Comments({ comments }: { comments: Comment[] }) {
       setGetComments(comments.slice(0, firstComment + 5));
       setFirstComment(firstComment + 5);
       setCommentLoading(false);
-    }, 2500);
+    }, 1500);
   };
 
   const handleLikeClick = () => {
@@ -35,14 +35,14 @@ export default function Comments({ comments }: { comments: Comment[] }) {
   return (
     <div className="gap-16px flex flex-col rounded bg-white p-4">
       {getComments.map((comment, i) => (
-        <div className="md:gap-12px flex" key={i}>
+        <div id={(i + 1).toString()} className="md:gap-12px relative flex" key={i}>
           <div className="md:w-36px min-w-42px w-42px md:min-w-36px">
             <Image
               src={PekAfilli}
               width={24}
               height={24}
               alt="logo"
-              className="md:w-24px w-36px h-36px md:h-24px "
+              className="md:w-24px w-36px h-36px md:h-24px transition-all hover:rotate-3 hover:scale-[105%] "
               title={comment.name.toString()}
             />
           </div>
@@ -52,7 +52,10 @@ export default function Comments({ comments }: { comments: Comment[] }) {
                 title={comment.name.toString()}
                 className="md:text-13px text-12px  cursor-default font-bold capitalize"
               >
-                {truncateText(comment.name.toString(), 3)}
+                <Link href={`#${i + 1}`} className="text-#ff001975">
+                  #{i + 1}
+                </Link>
+                <span> {truncateText(comment.name.toString(), 3)}</span>
               </div>
               <div className="text-12px text-#60606060 ml-auto md:ml-0">2 ay önce</div>
             </div>

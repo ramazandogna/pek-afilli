@@ -47,7 +47,7 @@ export default function WriteComment() {
         setMailSending(false);
         setCommentOpen(false);
       }
-    }, 2500);
+    }, 1500);
   };
 
   if (mailSending) {

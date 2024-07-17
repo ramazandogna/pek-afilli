@@ -22,7 +22,7 @@ export default function RecentContent({ posts }: { posts: Content[] }) {
       setContents(posts.slice(0, firstContent + 5));
       setFirstContent(firstContent + 5);
       setPostsLoading(false);
-    }, 2500);
+    }, 1500);
   };
 
   if (!posts) {
