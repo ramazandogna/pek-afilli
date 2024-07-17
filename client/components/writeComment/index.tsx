@@ -36,7 +36,6 @@ export default function WriteComment() {
 
     setTimeout(() => {
       if (isFormValid) {
-        console.log(formData);
         // Formu sıfırla
         setFormData({
           name: '',
@@ -50,8 +49,6 @@ export default function WriteComment() {
       }
     }, 2500);
   };
-
-  console.log(collectEmail, 'comment open:', commentOpen);
 
   if (mailSending) {
     return (
@@ -118,7 +115,7 @@ export default function WriteComment() {
               required
             />
           </div>
-          <div className="flex items-center justify-center bg-white p-2  md:justify-start">
+          <div className="flex items-center  justify-start bg-white  p-2">
             <div
               onClick={() => setCollectEmail(!collectEmail)}
               className="gap-8px flex cursor-pointer items-center rounded bg-white"
@@ -128,10 +125,13 @@ export default function WriteComment() {
                   className={`i-ph:check-bold ${collectEmail ? 'block' : 'hidden'} text-16px`}
                 ></div>
               </span>
-              <div className="text-12px text-black/50">yeni paylaşımlarla ilgili e-posta al.</div>
+              <div className="text-12px text-black/50">
+                <span className="hidden md:block">yeni paylaşımlarla ilgili e-posta al.</span>
+                <span className="md:hidden">E-posta listemize kaydol</span>
+              </div>
             </div>
             <button
-              className=" px-12px mr-8px py-6px text-13px transition-color cursor-pointer rounded text-black hover:bg-[rgba(0,_0,_0,_0.05)] md:ml-auto"
+              className=" px-12px mr-8px py-6px text-13px transition-color ml-auto cursor-pointer rounded text-black hover:bg-[rgba(0,_0,_0,_0.05)]"
               onClick={() => setCommentOpen(!commentOpen)}
             >
               Geri

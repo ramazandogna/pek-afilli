@@ -116,13 +116,13 @@ z-[1] flex h-[24px] w-[24px] -translate-y-[50%] items-center text-[#9e9e9e]"
 
       <div className={styles.buttonContainer}>
         <Link href="/forgot-password">
-          <p className={styles.forgetPassword}>Şifremi Unuttum</p>
+          <span className={styles.forgetPassword}>Şifremi Unuttum</span>
         </Link>
 
         <Link className={styles.right} href="/auth/login">
           <div className={styles.registerButton}>
             <div className={`${styles.registerIcon} i-quill:link-out`} />
-            <p className={styles.register}>Back To Login</p>
+            <span className={styles.register}>Back To Login</span>
           </div>
         </Link>
         <button

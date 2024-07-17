@@ -11,10 +11,13 @@ export default function Header() {
   const [menuFixed, setMenuFixed] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
   const [menuCategory, setMenuCategory] = useState(false);
+
   const toggleMenu = () => {
     setMobileMenu(!mobileMenu);
     setMenuFixed(true);
   };
+
+  console.log(mobileMenu);
 
   return (
     <>
@@ -118,7 +121,7 @@ export default function Header() {
               >
                 <span>Kategoriler</span>
                 <div
-                  className={`${menuCategory === true ? 'rotate-180' : 'rotate-0'} i-mdi-chevron-down text-[24px] duration-300`}
+                  className={` i-mdi-chevron-down ${menuCategory === true ? 'rotate-180' : 'rotate-0'}  text-[24px] duration-300`}
                 />
               </div>
               <div

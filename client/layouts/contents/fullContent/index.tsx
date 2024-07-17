@@ -42,9 +42,8 @@ export default function FullContent({ posts }: { posts: Content[] }) {
             src={Images[1].src}
             alt={Images[1].alt}
             loading="lazy"
-            sizes="(max-width: 768px) 100vw, 50vw"
             fill
-            className="groupA-image object-cover"
+            className="groupA-image md:w-50% w-full object-cover"
           />
           <div className=" absolute bottom-[24px]  left-[24px] z-10 bg-black/50 px-2 py-[2px] text-[20px] text-white  md:text-[22px]">
             {posts[1].title}
@@ -66,10 +65,9 @@ export default function FullContent({ posts }: { posts: Content[] }) {
                 <Image
                   src={Images[2].src}
                   alt={Images[2].alt}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   loading="lazy"
                   fill
-                  className="groupA-image rounded object-cover"
+                  className="groupA-image md:w-50% w-full rounded object-cover"
                 />
               </Link>
               <Link

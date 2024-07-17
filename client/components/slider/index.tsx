@@ -54,10 +54,10 @@ export default function Slider() {
         />
         <div className={styles.textWrapper}>
           <h3 className={styles.title}>{image.title}</h3>
-          <p className={styles.view}>
+          <span className={styles.view}>
             <div className="i-mingcute:eye-fill" />
             {image.view}
-          </p>
+          </span>
         </div>
       </Link>
 

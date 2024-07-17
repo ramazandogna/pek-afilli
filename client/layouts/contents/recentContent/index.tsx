@@ -14,9 +14,15 @@ import { formatTitle } from '../../../helpers/functions';
 export default function RecentContent({ posts }: { posts: Content[] }) {
   const [firstContent, setFirstContent] = useState<number>(5);
   const [contents, setContents] = useState<Content[]>(posts.slice(0, firstContent));
+  const [postsLoading, setPostsLoading] = useState(false);
+
   const getMorePost = async () => {
-    setContents(posts.slice(0, firstContent + 5));
-    setFirstContent(firstContent + 5);
+    setPostsLoading(true);
+    setTimeout(() => {
+      setContents(posts.slice(0, firstContent + 5));
+      setFirstContent(firstContent + 5);
+      setPostsLoading(false);
+    }, 2500);
   };
 
   if (!posts) {
@@ -58,7 +64,7 @@ export default function RecentContent({ posts }: { posts: Content[] }) {
                 alt={images[1].alt}
                 loading="lazy"
                 fill
-                className="groupA-image rounded object-cover"
+                className="groupA-image md:w-50% w-full rounded object-cover"
               />
             </Link>
             <Link
@@ -72,9 +78,15 @@ export default function RecentContent({ posts }: { posts: Content[] }) {
       </div>
       <div
         onClick={getMorePost}
-        className="mt-[25px] flex w-full cursor-pointer items-center justify-center border-t-2 py-2 text-[14px] font-bold hover:text-[#0693e3]"
+        className="h-45px mt-[25px] flex w-full cursor-pointer items-center justify-center border-t-2 py-2 text-[14px] font-bold hover:text-[#0693e3]"
       >
-        Daha Fazla Yükle
+        {postsLoading ? (
+          <div className="flex h-full w-full items-center justify-center">
+            <div className="i-eos-icons:three-dots-loading text-40px opacity-85"></div>
+          </div>
+        ) : (
+          'Daha fazla göster'
+        )}
       </div>
     </Card>
   );
