@@ -22,7 +22,6 @@
   },
   "type": "module",
   "devDependencies": {
-    "@iconify-json": "link:@iconify-json",
     "@iconify/json": "^2.2.227",
     "@types/node": "^20.14.9",
     "@types/react": "^18.3.3",
