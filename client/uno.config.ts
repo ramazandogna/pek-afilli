@@ -11,7 +11,7 @@ export default defineConfig({
     presetWebFonts({
       provider: 'google',
       fonts: {
-        sans: 'Roboto'
+        sans: 'Inter'
       }
     }),
     presetIcons()
