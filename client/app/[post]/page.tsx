@@ -4,6 +4,7 @@ import WriteComment from '../../components/writeComment';
 import HeroSection from '../../components/content/heroSection';
 import Post from '../../components/content/post';
 import Card from '../../components/card';
+import CategoriesSection from '../../components/content/categoriesSection';
 //layouts
 import RelatedContent from '../../layouts/contents/relatedContent';
 //helpers
@@ -11,8 +12,7 @@ import Images from '../../helpers/slider/images';
 import { fetchComments, fetchPost, fetchPosts } from '../../helpers/apis/fetchs';
 //types
 import { Content } from '../../types/content';
-import CategoriesSection from '../../components/content/categoriesSection';
-import { Comment, CommentsType } from '../../types/comments';
+import { CommentsType } from '../../types/comments';
 
 async function Home({ params }: { params: { post: string } }) {
   const getSinglePosts = async () => {

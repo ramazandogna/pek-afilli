@@ -41,10 +41,10 @@ export default function Slider() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentImage]);
   return (
-    <div className={styles.sliderWrapper}>
+    <div className="{styles.sliderWrapper}">
       <Link href={formatTitle(image.title)}>
         <Image
-          className={styles.image}
+          className="h-auto w-full max-w-full rounded bg-cover bg-center duration-500 ease-in-out"
           src={image.src}
           alt={image.alt}
           priority
@@ -52,9 +52,11 @@ export default function Slider() {
           height={500}
           onDragStart={onDragStart}
         />
-        <div className={styles.textWrapper}>
-          <h3 className={styles.title}>{image.title}</h3>
-          <span className={styles.view}>
+        <div className="absolute bottom-10 left-4 right-4 flex flex-col-reverse items-start justify-center gap-[4px]   text-white">
+          <h3 className="rounded bg-[#00000030] px-2 py-[2px] text-[22px] font-bold md:text-[32px]">
+            {image.title}
+          </h3>
+          <span className="flex items-center gap-[4px] text-[13px]">
             <div className="i-mingcute:eye-fill" />
             {image.view}
           </span>
@@ -67,14 +69,14 @@ export default function Slider() {
         className={`${styles.rightIcon} i-ant-design:right-outlined`}
       />
 
-      <div className={styles.dottes}>
-        {images.map((s, i) => (
+      <div className="flex items-center justify-center md:pt-2">
+        {images.map((_s, i) => (
           <div
             onClick={() => {
               changeImage(i);
             }}
             key={i}
-            className={`${currentImage === i ? styles.active : ''} ${styles.dot} i-mdi:dot`}
+            className={`${currentImage === i ? 'text-[#0693e3] transition-all' : ''} i-mdi:dot  cursor-pointer text-[28px] transition-colors`}
           />
         ))}
       </div>

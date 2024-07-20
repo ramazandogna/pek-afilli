@@ -1,5 +1,3 @@
-import styles from './card.module.css';
-
 export default function Card({
   children,
   className
@@ -7,5 +5,9 @@ export default function Card({
   children: React.ReactNode;
   className?: string;
 }) {
-  return <div className={`${styles.card} ${className}`}>{children}</div>;
+  return (
+    <div className={`mt-2 rounded border p-4 shadow-lg backdrop-blur-md ${className}`}>
+      {children}
+    </div>
+  );
 }

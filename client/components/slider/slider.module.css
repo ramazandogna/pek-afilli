@@ -7,22 +7,6 @@
   @apply md:opacity-100;
 }
 
-.image {
-  @apply h-auto w-full max-w-full rounded bg-cover bg-center duration-500 ease-in-out;
-}
-
-.textWrapper {
-  @apply absolute bottom-10 left-4 right-4 flex flex-col-reverse items-start justify-center gap-[4px]   text-white;
-}
-
-.title {
-  @apply rounded bg-[#00000030] px-2 py-[2px] text-[22px] font-bold md:text-[32px];
-}
-
-.view {
-  @apply flex items-center gap-[4px] text-[13px];
-}
-
 .leftIcon {
   @apply absolute left-[5px] top-[50%] z-[2147483647] flex   -translate-y-[50%] items-center  justify-center;
   @apply h-[40px] w-[25px] cursor-pointer rounded  bg-black/20 text-[30px] text-white opacity-0 transition-opacity duration-[400ms];
@@ -31,16 +15,4 @@
 .rightIcon {
   @apply absolute right-[5px] top-[50%] z-[2147483647] flex -translate-y-[50%] items-center  justify-center;
   @apply h-[40px]  w-[25px] cursor-pointer rounded  bg-black/20 text-[30px] text-white opacity-0 transition-opacity duration-[400ms];
-}
-
-.dottes {
-  @apply flex items-center justify-center md:pt-2;
-}
-
-.dot {
-  @apply cursor-pointer  text-[28px] transition-colors;
-}
-
-.active {
-  @apply text-[#0693e3] transition-all;
 }

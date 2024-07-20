@@ -4,9 +4,6 @@ import { Inter } from 'next/font/google';
 import '../styles/globals.css';
 import '../styles/tailwind.css';
 import '../styles/hoverElements.css';
-//unocss
-import '../styles/uno.css';
-// import '@unocss/reset/eric-meyer.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
