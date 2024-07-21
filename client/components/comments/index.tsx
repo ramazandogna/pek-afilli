@@ -36,7 +36,7 @@ export default function Comments({ comments }: { comments: Comment[] }) {
     <div className="gap-16px flex flex-col rounded bg-white p-4">
       {getComments.map((comment, i) => (
         <div id={(i + 1).toString()} className="md:gap-12px relative flex" key={i}>
-          <div className="md:w-36px min-w-42px w-42px md:min-w-36px">
+          <div className="min-w-42px w-42px md:min-w-36px md:w-[36px]">
             <Image
               src={PekAfilli}
               width={24}
