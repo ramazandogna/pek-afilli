@@ -76,12 +76,9 @@ export default function WriteComment() {
           />
         </div>
       ) : (
-        <form
-          className="flex flex-col gap-[8px] text-[14px] [&_input]:rounded [&_input]:p-2 [&_textarea]:rounded [&_textarea]:p-2"
-          onSubmit={handleSubmit}
-        >
-          <div className="flex gap-[8px] [&_div]:grow [&_input]:w-full">
-            <div className="">
+        <form className="flex flex-col gap-[8px] text-[14px]" onSubmit={handleSubmit}>
+          <div className="flex gap-[8px]">
+            <div className="grow">
               <input
                 type="text"
                 id="name"
@@ -90,9 +87,10 @@ export default function WriteComment() {
                 placeholder="İsim"
                 onChange={handleInputChange}
                 required
+                className="w-full rounded p-2"
               />
             </div>
-            <div className="">
+            <div className="grow">
               <input
                 type="email"
                 id="email"
@@ -101,6 +99,7 @@ export default function WriteComment() {
                 placeholder="E-posta"
                 onChange={handleInputChange}
                 required
+                className="w-full rounded p-2"
               />
             </div>
           </div>
@@ -111,7 +110,7 @@ export default function WriteComment() {
               value={formData.comment}
               placeholder="Yorum ekleyin..."
               onChange={handleInputChange}
-              className="h-full w-full grow resize-none bg-white"
+              className="roundedp-2 h-full w-full grow resize-none bg-white"
               required
             />
           </div>
@@ -137,7 +136,7 @@ export default function WriteComment() {
               Geri
             </button>
             <button
-              className=" transition-color bg-blue/85 hover:bg-blue/90 active:bg-blue cursor-pointer rounded px-[12px] py-[6px] text-[13px] text-white disabled:pointer-events-none disabled:bg-[rgba(0,_0,_0,_0.05)] disabled:text-[9] "
+              className=" transition-color cursor-pointer rounded bg-blue-500/85 px-[12px] py-[6px] text-[13px] text-white hover:bg-blue-500/90 active:bg-blue-500 disabled:pointer-events-none disabled:bg-[rgba(0,_0,_0,_0.05)] disabled:text-[9] "
               type="submit"
               disabled={!isFormValid}
             >

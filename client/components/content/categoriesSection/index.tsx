@@ -10,7 +10,7 @@ export default function CategoriesSection({ categories }: { categories?: string[
           {categories.map((category, index) => {
             return (
               <Link key={index} href={formatTitle(category)}>
-                <span className="cursor-pointer rounded bg-slate-50 px-2 py-1 capitalize text-slate-400 transition-all hover:text-slate-500 hover:shadow-sm">
+                <span className="cursor-pointer rounded bg-slate-100 px-2 py-1 capitalize text-slate-400 transition-all hover:text-slate-500 hover:shadow-sm">
                   {category}
                 </span>
               </Link>

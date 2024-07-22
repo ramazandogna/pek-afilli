@@ -11,7 +11,7 @@ export default function BreadCrumb({ link, name }: { link?: string; name?: strin
   };
 
   return (
-    <div className="flex w-full items-center gap-[12px] rounded bg-slate-50 p-2 text-[13px]">
+    <div className="flex w-full items-center gap-[12px] rounded bg-slate-100 p-2 text-[13px]">
       <Link href="/">
         <span className="transition-color  text-slate-400 hover:text-slate-500">Ana Sayfa</span>
       </Link>
