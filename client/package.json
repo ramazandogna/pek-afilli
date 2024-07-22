@@ -3,42 +3,29 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev:css": "unocss '**/*.tsx' --out-file=styles/uno.css --watch",
-    "dev:next": "next dev",
-    "dev": "run-p dev:*",
-    "css": "unocss '**/*.tsx' --out-file=styles/uno.css",
+    "dev": "next dev -H 0.0.0.0",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@unocss/reset": "^0.59.0",
     "axios": "^1.7.2",
     "next": "^14.2.4",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-scripts": "^5.0.1"
+    "react-dom": "^18.3.1"
   },
   "type": "module",
   "devDependencies": {
-    "@iconify/json": "^2.2.227",
     "@types/node": "^20.14.9",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
-    "@unocss/cli": "^0.61.3",
-    "@unocss/preset-attributify": "^0.61.3",
-    "@unocss/preset-icons": "^0.61.3",
-    "@unocss/preset-uno": "^0.61.3",
-    "@unocss/preset-web-fonts": "^0.61.3",
     "eslint": "^8.57.0",
     "eslint-config-next": "14.2.3",
-    "npm-run-all": "^4.1.5",
     "postcss": "^8.4.38",
     "prettier": "^3.3.2",
     "prettier-plugin-tailwindcss": "^0.5.14",
     "tailwindcss": "^3.4.4",
-    "typescript": "^4",
-    "unocss": "^0.61.3"
+    "typescript": "^5.5.2"
   }
 }
