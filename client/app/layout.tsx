@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google';
 import '../styles/globals.css';
 import '../styles/tailwind.css';
 import '../styles/hoverElements.css';
+import '../styles/icons.css'
 
 const inter = Inter({ subsets: ['latin'] });
 
