@@ -1,6 +1,8 @@
 'use client';
 import { useState, ChangeEvent, FormEvent } from 'react';
 import { FormData } from '../../types/comment';
+import { ThreeDot } from '../../public/icons/threeDot';
+import { Check } from '../../public/icons/check';
 
 export default function WriteComment() {
   const [formData, setFormData] = useState<FormData>({
@@ -53,7 +55,7 @@ export default function WriteComment() {
   if (mailSending) {
     return (
       <div className="flex h-[45px] w-full items-center justify-center">
-        <div className="i-eos-icons:three-dots-loading text-[40px] opacity-85"></div>
+        <ThreeDot className="text-[40px] opacity-85" />
       </div>
     );
   }
@@ -120,9 +122,7 @@ export default function WriteComment() {
               className="flex cursor-pointer items-center gap-[8px] rounded bg-white"
             >
               <span className="flex h-[16px] w-[16px] items-center justify-center overflow-hidden rounded border-[1px] border-black/50 bg-white">
-                <div
-                  className={`i-ph:check-bold ${collectEmail ? 'block' : 'hidden'} text-[16px]`}
-                ></div>
+                <Check className={`${collectEmail ? 'block' : 'hidden'} text-[16px]`}></Check>
               </span>
               <div className="text-[12px] text-black/50">
                 <span className="hidden md:block">yeni paylaşımlarla ilgili e-posta al.</span>

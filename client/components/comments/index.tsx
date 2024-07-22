@@ -5,6 +5,8 @@ import PekAfilli from '../../public/pek-afilli.svg';
 import Image from 'next/image';
 import { truncateText } from '../../helpers/functions';
 import Link from 'next/link';
+import { Like, LikeFill } from '../../public/icons/Like';
+import { ThreeDot } from '../../public/icons/threeDot';
 
 export default function Comments({ comments }: { comments: Comment[] }) {
   const [like, setLike] = useState(0);
@@ -69,11 +71,7 @@ export default function Comments({ comments }: { comments: Comment[] }) {
                   className="transition-color transition-color flex h-[30px] w-[30px] cursor-pointer items-center justify-center rounded-full text-[16px] hover:bg-[rgba(0,_0,_0,_0.05)]"
                   onClick={handleLikeClick}
                 >
-                  {liked ? (
-                    <div className="i-iconamoon:like-fill"></div>
-                  ) : (
-                    <div className="i-iconamoon:like-duotone"></div>
-                  )}
+                  {liked ? <LikeFill></LikeFill> : <Like></Like>}
                 </div>
                 <div className="mr-[8px] cursor-default text-[11px] md:text-[12px]">{like}</div>
               </div>
@@ -87,7 +85,7 @@ export default function Comments({ comments }: { comments: Comment[] }) {
       >
         {commentLoading ? (
           <div className="flex h-full w-full items-center justify-center">
-            <div className="i-eos-icons:three-dots-loading text-[40px] opacity-85"></div>
+            <ThreeDot className="text-[40px] opacity-85" />
           </div>
         ) : (
           'Daha fazla göster'

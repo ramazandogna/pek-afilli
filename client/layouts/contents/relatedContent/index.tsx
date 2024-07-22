@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { formatTitle } from '../../../helpers/functions';
 import images from '../../../helpers/slider/images';
+import { LinkI } from '../../../public/icons/Link';
 
 export default function RelatedContent({ relatedPosts }: { relatedPosts: Content[] }) {
   return (
@@ -22,7 +23,7 @@ export default function RelatedContent({ relatedPosts }: { relatedPosts: Content
               className="groupA relative flex h-[189px] min-h-[189px] items-start overflow-hidden  rounded "
             >
               <div className="groupA-hover absolute inset-0 z-[50]  bg-black/50">
-                <div className="i-line-md:link absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[24px] text-[#d6d6d6]" />
+                <LinkI className="absolute left-[50%] top-[50%] z-[99] h-[24px] w-[24px] -translate-x-[50%] -translate-y-[50%] text-[#d6d6d6]" />
               </div>
               <Image
                 src={images[i].src}

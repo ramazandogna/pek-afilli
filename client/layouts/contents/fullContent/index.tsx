@@ -8,6 +8,7 @@ import Images from '../../../helpers/slider/images';
 import { formatTitle, truncateText } from '../../../helpers/functions';
 //types
 import { Content } from '../../../types/content';
+import { LinkI } from '../../../public/icons/Link';
 
 export default function FullContent({ posts }: { posts: Content[] }) {
   if (!posts) {
@@ -36,7 +37,7 @@ export default function FullContent({ posts }: { posts: Content[] }) {
           className="groupA relative h-[375px] w-full overflow-hidden rounded md:h-[550px]"
         >
           <div className="groupA-hover absolute inset-0 z-[50]  bg-black/50">
-            <div className="i-line-md:link absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[36px] text-[#d6d6d6]" />
+            <LinkI className=" absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[36px] text-[#d6d6d6]" />
           </div>
           <Image
             src={Images[1].src}
@@ -60,7 +61,7 @@ export default function FullContent({ posts }: { posts: Content[] }) {
                 className="groupA relative flex h-full w-[110px] min-w-[110px] items-start overflow-hidden rounded "
               >
                 <div className="groupA-hover absolute inset-0 z-[50]  bg-black/30">
-                  <div className="i-line-md:link fade-in absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[24px] text-[#d6d6d6] " />
+                  <LinkI className=" fade-in absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[24px] text-[#d6d6d6] " />
                 </div>
                 <Image
                   src={Images[2].src}

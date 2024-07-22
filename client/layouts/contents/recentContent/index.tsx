@@ -10,6 +10,8 @@ import Card from '../../../components/card';
 //types
 import { Content } from '../../../types/content';
 import { formatTitle } from '../../../helpers/functions';
+import { LinkI } from '../../../public/icons/Link';
+import { ThreeDot } from '../../../public/icons/threeDot';
 
 export default function RecentContent({ posts }: { posts: Content[] }) {
   const [firstContent, setFirstContent] = useState<number>(5);
@@ -57,7 +59,7 @@ export default function RecentContent({ posts }: { posts: Content[] }) {
               className="groupA relative flex h-[189px] min-h-[189px] items-start overflow-hidden  rounded md:w-[336px] md:min-w-[336px]"
             >
               <div className="groupA-hover absolute inset-0 z-[50]  bg-black/50">
-                <div className="i-line-md:link absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[24px] text-[#d6d6d6]" />
+                <LinkI className=" absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[24px] text-[#d6d6d6]" />
               </div>
               <Image
                 src={images[1].src}
@@ -82,7 +84,7 @@ export default function RecentContent({ posts }: { posts: Content[] }) {
       >
         {postsLoading ? (
           <div className="flex h-full w-full items-center justify-center">
-            <div className="i-eos-icons:three-dots-loading text-[40px] opacity-85"></div>
+            <ThreeDot className=" text-[40px] opacity-85" />
           </div>
         ) : (
           'Daha fazla göster'

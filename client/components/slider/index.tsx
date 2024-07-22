@@ -8,6 +8,9 @@ import styles from './slider.module.css';
 //helpers
 import { formatTitle } from '../../helpers/functions';
 import images from '../../helpers/slider/images';
+import { Eye } from '../../public/icons/eye';
+import { Right } from '../../public/icons/right';
+import { Left } from '../../public/icons/left';
 //components
 
 export default function Slider() {
@@ -26,10 +29,6 @@ export default function Slider() {
 
   const onDragStart = (e: any) => {
     e.preventDefault();
-  };
-
-  const changeImage = (index: number) => {
-    setCurrentImage(index);
   };
 
   useEffect(() => {
@@ -57,29 +56,14 @@ export default function Slider() {
             {image.title}
           </h3>
           <span className="flex items-center gap-[4px] text-[13px]">
-            <div className="i-mingcute:eye-fill" />
+            <Eye />
             {image.view}
           </span>
         </div>
       </Link>
 
-      <div onClick={() => prevImage()} className={`${styles.leftIcon} i-icon-park-outline:left`} />
-      <div
-        onClick={() => nextImage()}
-        className={`${styles.rightIcon} i-ant-design:right-outlined`}
-      />
-
-      <div className="flex items-center justify-center md:pt-2">
-        {images.map((_s, i) => (
-          <div
-            onClick={() => {
-              changeImage(i);
-            }}
-            key={i}
-            className={`${currentImage === i ? 'text-[#0693e3] transition-all' : ''} i-mdi:dot  cursor-pointer text-[28px] transition-colors`}
-          />
-        ))}
-      </div>
+      <Left onClick={() => prevImage()} className={styles.leftIcon} />
+      <Right onClick={() => nextImage()} className={styles.rightIcon} />
     </div>
   );
 }

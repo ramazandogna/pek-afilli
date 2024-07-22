@@ -3,6 +3,15 @@ import Link from 'next/link';
 //components
 
 import { formatDate } from '../../../helpers/functions';
+import { Password } from '../../../public/icons/password';
+import { EditName } from '../../../public/icons/editName';
+import { Rename } from '../../../public/icons/rename';
+import { RaisedHand } from '../../../public/icons/raisedHand';
+import { EmailEdit } from '../../../public/icons/emailEdit';
+import { Company } from '../../../public/icons/company';
+import { Eye } from '../../../public/icons/eye';
+import { LinkI } from '../../../public/icons/Link';
+import { ArrowRight } from '../../../public/icons/arrowRight';
 
 export default function Register() {
   const today = new Date();
@@ -15,7 +24,7 @@ export default function Register() {
         <div className="text-center text-[13px] opacity-70">{time}</div>
       </div>
       <div className="inputWrapper">
-        <div className="i-icon-park-solid:edit-name absolute left-[14px] top-[50%] z-[1] flex h-[24px] w-[24px] -translate-y-[50%] items-center text-[#9e9e9e]" />
+        <EditName className="absolute left-[14px] top-[50%] z-[1] flex h-[24px] w-[24px] -translate-y-[50%] items-center text-[#9e9e9e]" />
         <input
           className="input"
           v-model="auth.usernameOrEmail"
@@ -28,7 +37,7 @@ export default function Register() {
         </label>
       </div>
       <div className="inputWrapper">
-        <div className="i-lets-icons:rename absolute left-[14px] top-[50%] z-[1] flex h-[24px] w-[24px] -translate-y-[50%] items-center text-[#9e9e9e]" />
+        <Rename className=" absolute left-[14px] top-[50%] z-[1] flex h-[24px] w-[24px] -translate-y-[50%] items-center text-[#9e9e9e]" />
         <input
           className="input"
           v-model="auth.usernameOrEmail"
@@ -41,7 +50,7 @@ export default function Register() {
         </label>
       </div>
       <div className="inputWrapper">
-        <div className="i-material-symbols-light:person-raised-hand absolute left-[14px] top-[50%] z-[1] flex h-[24px] w-[24px] -translate-y-[50%] items-center text-[#9e9e9e]" />
+        <RaisedHand className="absolute left-[14px] top-[50%] z-[1] flex h-[24px] w-[24px] -translate-y-[50%] items-center text-[#9e9e9e]" />
         <input
           className="input"
           v-model="auth.usernameOrEmail"
@@ -54,7 +63,7 @@ export default function Register() {
         </label>
       </div>
       <div className="inputWrapper">
-        <div className="i-mdi:email-edit absolute left-[14px] top-[50%] z-[1] flex h-[24px] w-[24px] -translate-y-[50%] items-center text-[#9e9e9e]" />
+        <EmailEdit className=" absolute left-[14px] top-[50%] z-[1] flex h-[24px] w-[24px] -translate-y-[50%] items-center text-[#9e9e9e]" />
         <input
           className="input"
           v-model="auth.usernameOrEmail"
@@ -67,7 +76,7 @@ export default function Register() {
         </label>
       </div>
       <div className="inputWrapper">
-        <div className="i-carbon-location-company absolute left-[14px] top-[50%] z-[1] flex h-[24px] w-[24px] -translate-y-[50%] items-center text-[#9e9e9e]" />
+        <Company className="absolute left-[14px] top-[50%] z-[1] flex h-[24px] w-[24px] -translate-y-[50%] items-center text-[#9e9e9e]" />
         <input
           className="input"
           v-model="auth.usernameOrEmail"
@@ -80,8 +89,8 @@ export default function Register() {
         </label>
       </div>
       <div className="inputWrapper">
-        <div
-          className="i-ic:sharp-password absolute left-[14px] top-[50%]
+        <Password
+          className=" absolute left-[14px] top-[50%]
 z-[1] flex h-[24px] w-[24px] -translate-y-[50%] items-center text-[#9e9e9e]"
         />
         <input className="input" v-model="auth.password" placeholder=" " id="password" />
@@ -92,12 +101,12 @@ z-[1] flex h-[24px] w-[24px] -translate-y-[50%] items-center text-[#9e9e9e]"
           // onClick={() => {}}
           className="absolute right-[14px] top-[50%] z-[4] flex h-[38px] w-[38px] -translate-y-[50%] cursor-pointer items-center justify-center rounded-full transition-all duration-[400] hover:bg-[#08839520]"
         >
-          <div className="i-mingcute:eye-fill h-[24px] w-[24px] text-[#00000090] opacity-80" />
+          <Eye className=" h-[24px] w-[24px] text-[#00000090] opacity-80" />
         </div>
       </div>
       <div className="inputWrapper">
-        <div
-          className="i-ic:sharp-password absolute left-[14px] top-[50%]
+        <Password
+          className=" absolute left-[14px] top-[50%]
 z-[1] flex h-[24px] w-[24px] -translate-y-[50%] items-center text-[#9e9e9e]"
         />
         <input className="input" v-model="auth.password" placeholder=" " id="password" />
@@ -108,7 +117,7 @@ z-[1] flex h-[24px] w-[24px] -translate-y-[50%] items-center text-[#9e9e9e]"
           // onClick={() => {}}
           className="absolute right-[14px] top-[50%] z-[4] flex h-[38px] w-[38px] -translate-y-[50%] cursor-pointer items-center justify-center rounded-full transition-all duration-[400] hover:bg-[#08839520]"
         >
-          <div className="i-mingcute:eye-fill h-[24px] w-[24px] text-[#00000090] opacity-80" />
+          <Eye className=" h-[24px] w-[24px] text-[#00000090] opacity-80" />
         </div>
       </div>
 
@@ -121,7 +130,7 @@ z-[1] flex h-[24px] w-[24px] -translate-y-[50%] items-center text-[#9e9e9e]"
 
         <Link className="ml-0 w-full sm:ml-auto sm:w-auto" href="/auth/login">
           <div className="sm:w-auto` flex h-[42px] w-full items-center justify-center gap-[4px] rounded-[4px] border-2 px-[16px] py-[8px] font-bold transition-all hover:scale-105 hover:border-[#088395]">
-            <div className="i-quill:link-out h-[20px] w-[20px] text-black" />
+            <LinkI className=" h-[20px] w-[20px] text-black" />
             <span className="underline">Back To Login</span>
           </div>
         </Link>
@@ -138,7 +147,7 @@ z-[1] flex h-[24px] w-[24px] -translate-y-[50%] items-center text-[#9e9e9e]"
         className="absolute bottom-[8px] right-[8px] flex items-center gap-[8px] text-[14px] text-[#33333385] hover:text-[#333333]"
       >
         <div> Back to Homepage</div>
-        <div className="i-lets-icons-arrow-right"></div>
+        <ArrowRight />
       </Link>
     </div>
   );

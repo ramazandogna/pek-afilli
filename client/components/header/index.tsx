@@ -6,6 +6,13 @@ import styles from './header.module.css';
 //icons
 //CSR
 import { useState } from 'react';
+import { Instagram, Linkedin, Twitter, Youtube } from '../../public/icons/social';
+import { Hot } from '../../public/icons/hot';
+import { Menu } from '../../public/icons/menu';
+import { Close } from '../../public/icons/close';
+import { Search } from '../../public/icons/search';
+import { SignIn, SignUp } from '../../public/icons/sign';
+import { Down } from '../../public/icons/Down';
 
 export default function Header() {
   const [menuFixed, setMenuFixed] = useState(false);
@@ -20,7 +27,7 @@ export default function Header() {
   return (
     <>
       <nav className="fixed left-0 right-0 top-0 z-[99] flex scroll-smooth  bg-white/30 shadow backdrop-blur-2xl md:bottom-auto">
-        <div className="width-container flex h-[55px] gap-[16px] py-2 md:h-auto md:py-0">
+        <div className="width-container flex h-[55px] items-center gap-[16px] py-2 md:h-auto md:py-0">
           <Link href="/">
             <div className={`${styles.logo} backgroundContent ml-4`}>
               <div className="hidden md:block">PEK</div>
@@ -33,16 +40,16 @@ export default function Header() {
               <div className="flex items-center gap-[8px]">
                 <div className="flex items-center gap-[4px]">
                   <div className={styles.iconBg}>
-                    <div className={`${styles.icon} i-ri:instagram-fill`} />
+                    <Instagram className={styles.icon} />
                   </div>
                   <div className={styles.iconBg}>
-                    <div className={`${styles.icon} i-ant-design:twitter-circle-filled`} />
+                    <Twitter className={styles.icon} />
                   </div>
                   <div className={styles.iconBg}>
-                    <div className={`${styles.icon} i-ri:youtube-fill`} />
+                    <Youtube className={styles.icon} />
                   </div>
                   <div className={styles.iconBg}>
-                    <div className={`${styles.icon} i-mingcute:pinterest-fill`} />
+                    <Linkedin className={styles.icon} />
                   </div>
                 </div>
                 <div className={styles.inputWrapper}>
@@ -53,20 +60,20 @@ export default function Header() {
                   />
                   <div className="absolute right-[6px] top-[50%] flex h-[65%] -translate-y-[50%] items-center gap-[6px]">
                     <div className="h-full border-[0.35px] border-[#00000060]"></div>
-                    <div className={`${styles.inputIcon} i-ic:round-search`} />
+                    <Search className={styles.inputIcon} />
                   </div>
                 </div>
               </div>
               <div className="ml-auto flex w-[225px] gap-1">
                 <Link href="/auth/login" className={`${styles.topRightSignIn} backgroundContent`}>
-                  <div className={`${styles.signInIcon} i-uil:signin`} />
+                  <SignIn className={styles.signInIcon} />
                   <div>Sign In</div>
                 </Link>
                 <Link
                   href="/auth/register"
                   className={`${styles.topRightSignUp} backgroundContent2`}
                 >
-                  <div className={`i-carbon:join-node ${styles.signUpIcon}`} />
+                  <SignUp className={styles.signUpIcon} />
                   <div>Join Now</div>
                 </Link>
               </div>
@@ -79,7 +86,7 @@ export default function Header() {
                 <li className="cursor-pointer transition-all hover:scale-[102%]">Motivation</li>
               </ul>
               <Link href="/" className={styles.bottomRight}>
-                <div className={`i-mdi:hot ${styles.hotIcon}`} />
+                <Hot className={styles.hotIcon} />
                 <div>What&apos;s Hot</div>
               </Link>
             </div>
@@ -88,14 +95,16 @@ export default function Header() {
             onClick={toggleMenu}
             className="ml-auto mr-4 flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-md text-[40px] text-[#161619] transition-all hover:scale-105 md:mr-auto md:hidden"
           >
-            <div className="i-solar:hamburger-menu-broken" />
+            <Menu />
           </div>
         </div>
       </nav>
 
       <>
         <div
-          className={`${mobileMenu === true ? 'slide-in' : 'slide-out'} ${menuFixed === true ? '' : 'hidden'}  fixed bottom-0 right-0 top-0 z-[1000001] flex h-full w-[85%] flex-col  items-center gap-[16px] bg-[#1f2024] px-[30px] text-white duration-300 md:hidden`}
+          className={`${mobileMenu === true ? 'slide-in' : 'slide-out'} ${menuFixed === true ? '' : 'hidden'} 
+          fixed bottom-0 right-0 top-0 z-[1000001] flex h-full w-[85%] flex-col items-center
+           gap-[16px] bg-[#1f2024] px-[30px] text-white duration-300 md:hidden`}
         >
           <div className="mb-[30px] flex h-[55px] w-full items-center justify-between text-[20px] font-bold uppercase">
             <Link href="/">
@@ -103,10 +112,7 @@ export default function Header() {
                 <div className="">PEK AFİLLİ</div>
               </div>
             </Link>
-            <div
-              onClick={toggleMenu}
-              className="i-material-symbols-close-rounded cursor-pointer text-[24px]"
-            />
+            <Close onClick={toggleMenu} className="cursor-pointer text-[24px]" />
           </div>
 
           <div className="mb-[20px] w-full grow">
@@ -121,8 +127,8 @@ export default function Header() {
                 className="flex items-center justify-between py-[15px] font-bold"
               >
                 <span>Kategoriler</span>
-                <div
-                  className={` i-mdi-chevron-down ${menuCategory === true ? 'rotate-180' : 'rotate-0'}  text-[24px] duration-300`}
+                <Down
+                  className={`${menuCategory === true ? 'rotate-180' : 'rotate-0'}  text-[10px] duration-300`}
                 />
               </div>
               <div
@@ -157,13 +163,16 @@ export default function Header() {
           </div>
           <div className="mb-[15px] flex items-end justify-center gap-4 text-[24px]">
             <Link className="flex h-[40px] w-[40px] items-center justify-center" href="/">
-              <div className="i-teenyicons:instagram-solid" />
+              <Instagram />
             </Link>
             <Link className="flex h-[40px] w-[40px] items-center justify-center" href="/">
-              <div className="i-ant-design:twitter-circle-filled" />
+              <Twitter />
             </Link>
             <Link className="flex h-[40px] w-[40px] items-center justify-center" href="/">
-              <div className="i-ri:youtube-fill" />
+              <Youtube />
+            </Link>
+            <Link className="flex h-[40px] w-[40px] items-center justify-center" href="/">
+              <Linkedin />
             </Link>
           </div>
         </div>
