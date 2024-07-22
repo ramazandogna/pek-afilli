@@ -12,7 +12,7 @@ import { Menu } from '../../public/icons/menu';
 import { Close } from '../../public/icons/close';
 import { Search } from '../../public/icons/search';
 import { SignIn, SignUp } from '../../public/icons/sign';
-import { Down } from '../../public/icons/Down';
+import { Down } from '../../public/icons/down';
 
 export default function Header() {
   const [menuFixed, setMenuFixed] = useState(false);
