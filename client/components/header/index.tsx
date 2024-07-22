@@ -17,12 +17,10 @@ export default function Header() {
     setMenuFixed(true);
   };
 
-  console.log(mobileMenu);
-
   return (
     <>
-      <nav className={styles.navbar}>
-        <div className={`${styles.wrapper} width-container`}>
+      <nav className="fixed left-0 right-0 top-0 z-[99] flex scroll-smooth  bg-white/30 shadow backdrop-blur-2xl md:bottom-auto">
+        <div className="width-container flex h-[55px] gap-[16px] py-2 md:h-auto md:py-0">
           <Link href="/">
             <div className={`${styles.logo} backgroundContent ml-4`}>
               <div className="hidden md:block">PEK</div>
@@ -30,10 +28,10 @@ export default function Header() {
               <div className="md:hidden">PEK AFİLLİ</div>
             </div>
           </Link>
-          <div className={styles.menus}>
-            <div className={styles.topMenu}>
-              <div className={styles.topLeft}>
-                <div className={styles.social}>
+          <div className="hidden grow flex-col md:flex">
+            <div className="flex h-[40px] grow items-center border-b">
+              <div className="flex items-center gap-[8px]">
+                <div className="flex items-center gap-[4px]">
                   <div className={styles.iconBg}>
                     <div className={`${styles.icon} i-ri:instagram-fill`} />
                   </div>
@@ -53,13 +51,13 @@ export default function Header() {
                     placeholder="Search in the site.."
                     className={`${styles.searchInput} h-[30px] w-[200px]  `}
                   />
-                  <div className={styles.inputIcons}>
-                    <div className={styles.inputBorder}></div>
+                  <div className="absolute right-[6px] top-[50%] flex h-[65%] -translate-y-[50%] items-center gap-[6px]">
+                    <div className="h-full border-[0.35px] border-[#00000060]"></div>
                     <div className={`${styles.inputIcon} i-ic:round-search`} />
                   </div>
                 </div>
               </div>
-              <div className={styles.topRight}>
+              <div className="ml-auto flex w-[225px] gap-1">
                 <Link href="/auth/login" className={`${styles.topRightSignIn} backgroundContent`}>
                   <div className={`${styles.signInIcon} i-uil:signin`} />
                   <div>Sign In</div>
@@ -73,12 +71,12 @@ export default function Header() {
                 </Link>
               </div>
             </div>
-            <div className={styles.bottomMenu}>
-              <ul className={styles.bottomLeft}>
-                <li className={styles.bottomLeftItem}>Magazine</li>
-                <li className={styles.bottomLeftItem}>Series</li>
-                <li className={styles.bottomLeftItem}>Technologies</li>
-                <li className={styles.bottomLeftItem}>Motivation</li>
+            <div className="flex h-[40px] grow items-center">
+              <ul className="flex gap-3">
+                <li className="cursor-pointer transition-all hover:scale-[102%]">Magazine</li>
+                <li className="cursor-pointer transition-all hover:scale-[102%]">Series</li>
+                <li className="cursor-pointer transition-all hover:scale-[102%]">Technologies</li>
+                <li className="cursor-pointer transition-all hover:scale-[102%]">Motivation</li>
               </ul>
               <Link href="/" className={styles.bottomRight}>
                 <div className={`i-mdi:hot ${styles.hotIcon}`} />
@@ -86,7 +84,10 @@ export default function Header() {
               </Link>
             </div>
           </div>
-          <div onClick={toggleMenu} className={styles.mobileIcon}>
+          <div
+            onClick={toggleMenu}
+            className="ml-auto mr-4 flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-md text-[40px] text-[#161619] transition-all hover:scale-105 md:mr-auto md:hidden"
+          >
             <div className="i-solar:hamburger-menu-broken" />
           </div>
         </div>

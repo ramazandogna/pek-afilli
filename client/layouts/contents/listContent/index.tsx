@@ -42,17 +42,17 @@ export default function ListContent({ posts }: { posts: Content[] }) {
           href={formatTitle(images[1].title)}
           className="groupA relative h-[375px] w-full overflow-hidden rounded md:h-[550px]"
         >
-          <div className="groupA-hover absolute inset-0 z-50  bg-black/50">
-            <div className="i-line-md:link text-#d6d6d6 absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[36px]" />
+          <div className="groupA-hover absolute inset-0 z-[50]  bg-black/50">
+            <div className="i-line-md:link absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[36px] text-[#d6d6d6]" />
           </div>
           <Image
             src={images[1].src}
             alt={images[1].alt}
             loading="lazy"
             fill
-            className="groupA-image md:w-50% w-full object-cover"
+            className="groupA-image w-full object-cover md:w-[50%]"
           />
-          <div className=" absolute bottom-[16px] left-[16px] z-10 mr-[16px] overflow-hidden bg-black/50 px-2 py-[2px] text-[20px] text-white md:text-[22px]">
+          <div className=" absolute bottom-[16px] left-[16px] z-[10] mr-[16px] overflow-hidden bg-black/50 px-2 py-[2px] text-[20px] text-white md:text-[22px]">
             {posts[1].title}
           </div>
         </Link>
@@ -66,15 +66,15 @@ export default function ListContent({ posts }: { posts: Content[] }) {
                 href={formatTitle(post.title)}
                 className="groupA relative flex h-full w-[110px] min-w-[110px] items-start overflow-hidden rounded"
               >
-                <div className="groupA-hover absolute inset-0 z-50  bg-black/30">
-                  <div className="i-line-md:link text-#d6d6d6 absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[24px]" />
+                <div className="groupA-hover absolute inset-0 z-[50]  bg-black/30">
+                  <div className="i-line-md:link absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[24px] text-[#d6d6d6]" />
                 </div>
                 <Image
                   src={images[2].src}
                   alt={images[2].alt}
                   loading="lazy"
                   fill
-                  className="groupA-image md:w-50% w-full rounded object-cover"
+                  className="groupA-image w-full rounded object-cover md:w-[50%]"
                 />
               </Link>
               <Link

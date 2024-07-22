@@ -41,7 +41,7 @@ export default function Slider() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentImage]);
   return (
-    <div className="{styles.sliderWrapper}">
+    <div className={styles.sliderWrapper}>
       <Link href={formatTitle(image.title)}>
         <Image
           className="h-auto w-full max-w-full rounded bg-cover bg-center duration-500 ease-in-out"

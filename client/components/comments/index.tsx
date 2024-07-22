@@ -33,40 +33,40 @@ export default function Comments({ comments }: { comments: Comment[] }) {
   };
 
   return (
-    <div className="gap-16px flex flex-col rounded bg-white p-4">
+    <div className="flex flex-col gap-[16px] rounded bg-white p-4">
       {getComments.map((comment, i) => (
-        <div id={(i + 1).toString()} className="md:gap-12px relative flex" key={i}>
-          <div className="min-w-42px w-42px md:min-w-36px md:w-[36px]">
+        <div id={(i + 1).toString()} className="relative flex md:gap-[12px]" key={i}>
+          <div className="w-[42px] min-w-[42px] md:w-[36px] md:min-w-[36px]">
             <Image
               src={PekAfilli}
               width={24}
               height={24}
               alt="logo"
-              className="md:w-24px w-36px h-36px md:h-24px transition-all hover:rotate-3 hover:scale-[105%] "
+              className="h-[36px] w-[36px] transition-all hover:rotate-3 hover:scale-[105%] md:h-[24px] md:w-[24px] "
               title={comment.name.toString()}
             />
           </div>
-          <div className="pl-8px md:pl-0">
-            <div className="gap-6px mb-2px flex items-center">
+          <div className="pl-[8px] md:pl-0">
+            <div className="mb-[2px] flex items-center gap-[6px]">
               <div
                 title={comment.name.toString()}
-                className="md:text-13px text-12px  cursor-default font-bold capitalize"
+                className="cursor-default text-[12px]  font-bold capitalize md:text-[13px]"
               >
-                <Link href={`#${i + 1}`} className="text-#ff001975">
+                <Link href={`#${i + 1}`} className="text-[#ff001975]">
                   #{i + 1}
                 </Link>
                 <span> {truncateText(comment.name.toString(), 3)}</span>
               </div>
-              <div className="text-12px text-#60606060 ml-auto md:ml-0">2 ay önce</div>
+              <div className="ml-auto text-[12px] text-[#60606060] md:ml-0">2 ay önce</div>
             </div>
-            <div className="md:text-14px text-12px">{comment.body}</div>
-            <div className="mb-16px relative flex  ">
+            <div className="text-[12px] md:text-[14px]">{comment.body}</div>
+            <div className="relative mb-[16px] flex  ">
               <div
                 title={`${like.toString()} like `}
-                className="-left-9px -top-2px absolute flex items-center"
+                className="absolute -left-[9px] -top-[2px] flex items-center"
               >
                 <div
-                  className="text-16px transition-color h-30px w-30px transition-color flex cursor-pointer items-center justify-center rounded-full hover:bg-[rgba(0,_0,_0,_0.05)]"
+                  className="transition-color transition-color flex h-[30px] w-[30px] cursor-pointer items-center justify-center rounded-full text-[16px] hover:bg-[rgba(0,_0,_0,_0.05)]"
                   onClick={handleLikeClick}
                 >
                   {liked ? (
@@ -75,7 +75,7 @@ export default function Comments({ comments }: { comments: Comment[] }) {
                     <div className="i-iconamoon:like-duotone"></div>
                   )}
                 </div>
-                <div className="md:text-12px text-11px mr-8px cursor-default">{like}</div>
+                <div className="mr-[8px] cursor-default text-[11px] md:text-[12px]">{like}</div>
               </div>
             </div>
           </div>
@@ -83,11 +83,11 @@ export default function Comments({ comments }: { comments: Comment[] }) {
       ))}
       <div
         onClick={getMoreComment}
-        className="h-45px mt-[25px] flex w-full cursor-pointer items-center justify-center border-t-2 py-2 text-[14px] font-bold hover:text-[#0693e3]"
+        className="mt-[25px] flex h-[45px] w-full cursor-pointer items-center justify-center border-t-2 py-2 text-[14px] font-bold hover:text-[#0693e3]"
       >
         {commentLoading ? (
           <div className="flex h-full w-full items-center justify-center">
-            <div className="i-eos-icons:three-dots-loading text-40px opacity-85"></div>
+            <div className="i-eos-icons:three-dots-loading text-[40px] opacity-85"></div>
           </div>
         ) : (
           'Daha fazla göster'

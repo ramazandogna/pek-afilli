@@ -56,15 +56,15 @@ export default function RecentContent({ posts }: { posts: Content[] }) {
               href={formatTitle(post.title)}
               className="groupA relative flex h-[189px] min-h-[189px] items-start overflow-hidden  rounded md:w-[336px] md:min-w-[336px]"
             >
-              <div className="groupA-hover absolute inset-0 z-50  bg-black/50">
-                <div className="i-line-md:link text-#d6d6d6 absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[24px]" />
+              <div className="groupA-hover absolute inset-0 z-[50]  bg-black/50">
+                <div className="i-line-md:link absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[24px] text-[#d6d6d6]" />
               </div>
               <Image
                 src={images[1].src}
                 alt={images[1].alt}
                 loading="lazy"
                 fill
-                className="groupA-image md:w-50% w-full rounded object-cover"
+                className="groupA-image w-full rounded object-cover md:w-[50%]"
               />
             </Link>
             <Link
@@ -78,11 +78,11 @@ export default function RecentContent({ posts }: { posts: Content[] }) {
       </div>
       <div
         onClick={getMorePost}
-        className="h-45px mt-[25px] flex w-full cursor-pointer items-center justify-center border-t-2 py-2 text-[14px] font-bold hover:text-[#0693e3]"
+        className="mt-[25px] flex h-[45px] w-full cursor-pointer items-center justify-center border-t-2 py-2 text-[14px] font-bold hover:text-[#0693e3]"
       >
         {postsLoading ? (
           <div className="flex h-full w-full items-center justify-center">
-            <div className="i-eos-icons:three-dots-loading text-40px opacity-85"></div>
+            <div className="i-eos-icons:three-dots-loading text-[40px] opacity-85"></div>
           </div>
         ) : (
           'Daha fazla göster'

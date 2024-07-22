@@ -21,8 +21,8 @@ export default function RelatedContent({ relatedPosts }: { relatedPosts: Content
               href={formatTitle(post.title)}
               className="groupA relative flex h-[189px] min-h-[189px] items-start overflow-hidden  rounded "
             >
-              <div className="groupA-hover absolute inset-0 z-50  bg-black/50">
-                <div className="i-line-md:link text-#d6d6d6 absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[24px]" />
+              <div className="groupA-hover absolute inset-0 z-[50]  bg-black/50">
+                <div className="i-line-md:link absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[24px] text-[#d6d6d6]" />
               </div>
               <Image
                 src={images[i].src}
@@ -31,7 +31,7 @@ export default function RelatedContent({ relatedPosts }: { relatedPosts: Content
                 fill
                 className="groupA-image rounded object-cover"
               />
-              <span className="font-700 max-w-90% px-8px py-4px absolute bottom-4 left-4 rounded bg-black/50 text-[14px] text-white transition-all hover:text-[#0693e3]">
+              <span className="font-700 absolute bottom-4 left-4 max-w-[90%] rounded bg-black/50 px-[8px] py-[4px] text-[14px] text-white transition-all hover:text-[#0693e3]">
                 <h2>{post.title}</h2>
               </span>
             </Link>

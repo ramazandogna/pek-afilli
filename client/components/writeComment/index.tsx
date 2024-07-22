@@ -52,8 +52,8 @@ export default function WriteComment() {
 
   if (mailSending) {
     return (
-      <div className="h-45px flex w-full items-center justify-center">
-        <div className="i-eos-icons:three-dots-loading text-40px opacity-85"></div>
+      <div className="flex h-[45px] w-full items-center justify-center">
+        <div className="i-eos-icons:three-dots-loading text-[40px] opacity-85"></div>
       </div>
     );
   }
@@ -65,7 +65,7 @@ export default function WriteComment() {
           onClick={() => {
             setCommentOpen(!commentOpen);
           }}
-          className="h-45px text-14px w-full"
+          className="h-[45px] w-full text-[14px]"
         >
           <textarea
             id="comment"
@@ -77,10 +77,10 @@ export default function WriteComment() {
         </div>
       ) : (
         <form
-          className="gap-8px text-14px flex flex-col [&_input]:rounded [&_input]:p-2 [&_textarea]:rounded [&_textarea]:p-2"
+          className="flex flex-col gap-[8px] text-[14px] [&_input]:rounded [&_input]:p-2 [&_textarea]:rounded [&_textarea]:p-2"
           onSubmit={handleSubmit}
         >
-          <div className="gap-8px flex [&_div]:grow [&_input]:w-full">
+          <div className="flex gap-[8px] [&_div]:grow [&_input]:w-full">
             <div className="">
               <input
                 type="text"
@@ -104,7 +104,7 @@ export default function WriteComment() {
               />
             </div>
           </div>
-          <div className="h-80px flex w-full">
+          <div className="flex h-[80px] w-full">
             <textarea
               id="comment"
               name="comment"
@@ -118,26 +118,26 @@ export default function WriteComment() {
           <div className="flex items-center  justify-start bg-white  p-2">
             <div
               onClick={() => setCollectEmail(!collectEmail)}
-              className="gap-8px flex cursor-pointer items-center rounded bg-white"
+              className="flex cursor-pointer items-center gap-[8px] rounded bg-white"
             >
-              <span className="w-16px h-16px border-1px flex items-center justify-center overflow-hidden rounded border-black/50 bg-white">
+              <span className="flex h-[16px] w-[16px] items-center justify-center overflow-hidden rounded border-[1px] border-black/50 bg-white">
                 <div
-                  className={`i-ph:check-bold ${collectEmail ? 'block' : 'hidden'} text-16px`}
+                  className={`i-ph:check-bold ${collectEmail ? 'block' : 'hidden'} text-[16px]`}
                 ></div>
               </span>
-              <div className="text-12px text-black/50">
+              <div className="text-[12px] text-black/50">
                 <span className="hidden md:block">yeni paylaşımlarla ilgili e-posta al.</span>
                 <span className="md:hidden">E-posta listemize kaydol</span>
               </div>
             </div>
             <button
-              className=" px-12px mr-8px py-6px text-13px transition-color ml-auto cursor-pointer rounded text-black hover:bg-[rgba(0,_0,_0,_0.05)]"
+              className=" transition-color ml-auto mr-[8px] cursor-pointer rounded px-[12px] py-[6px] text-[13px] text-black hover:bg-[rgba(0,_0,_0,_0.05)]"
               onClick={() => setCommentOpen(!commentOpen)}
             >
               Geri
             </button>
             <button
-              className=" px-12px py-6px text-13px disabled:text-#909090 transition-color bg-blue/85 hover:bg-blue/90 active:bg-blue cursor-pointer rounded text-white disabled:pointer-events-none disabled:bg-[rgba(0,_0,_0,_0.05)] "
+              className=" transition-color bg-blue/85 hover:bg-blue/90 active:bg-blue cursor-pointer rounded px-[12px] py-[6px] text-[13px] text-white disabled:pointer-events-none disabled:bg-[rgba(0,_0,_0,_0.05)] disabled:text-[9] "
               type="submit"
               disabled={!isFormValid}
             >
