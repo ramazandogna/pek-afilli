@@ -5,7 +5,7 @@ import PekAfilli from '../../public/pek-afilli.svg';
 import Image from 'next/image';
 import { truncateText } from '../../helpers/functions';
 import Link from 'next/link';
-import { Like, LikeFill } from '../../public/icons/Like';
+import { Like, LikeFill } from '../../public/icons/like';
 import { ThreeDot } from '../../public/icons/threeDot';
 
 export default function Comments({ comments }: { comments: Comment[] }) {
