@@ -10,7 +10,7 @@ import { RaisedHand } from '../../../public/icons/raisedHand';
 import { EmailEdit } from '../../../public/icons/emailEdit';
 import { Company } from '../../../public/icons/company';
 import { Eye } from '../../../public/icons/eye';
-import { LinkI } from '../../../public/icons/link';
+import { LinkI } from '../../../public/assets/slider/link';
 import { ArrowRight } from '../../../public/icons/arrowRight';
 
 export default function Register() {

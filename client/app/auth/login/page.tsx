@@ -6,7 +6,7 @@ import { formatDate } from '../../../helpers/functions';
 import { RaisedHand } from '../../../public/icons/raisedHand';
 import { Password } from '../../../public/icons/password';
 import { Eye } from '../../../public/icons/eye';
-import { LinkI } from '../../../public/icons/link';
+import { LinkI } from '../../../public/assets/slider/link';
 import { ArrowRight } from '../../../public/icons/arrowRight';
 
 export default function Login() {

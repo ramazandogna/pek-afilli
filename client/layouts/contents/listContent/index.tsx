@@ -9,7 +9,7 @@ import { formatTitle, truncateText } from '../../../helpers/functions';
 //types
 import { Content } from '../../../types/content';
 import { DocumentI } from '../../../public/icons/document';
-import { LinkI } from '../../../public/icons/link';
+import { LinkI } from '../../../public/assets/slider/link';
 
 export default function ListContent({ posts }: { posts: Content[] }) {
   if (!posts) {
