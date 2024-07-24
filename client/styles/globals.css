@@ -1,10 +1,13 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-size: 16px;
   line-height: 1.5;
   color: #333;
   min-height: 100vh;
   background-color: #ebf4f6;
-  scroll-behavior: smooth;
 }
 
 .width-container {

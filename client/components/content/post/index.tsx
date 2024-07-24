@@ -3,7 +3,7 @@ import { Content } from '../../../types/content';
 
 export default function Post({ post }: { post: Content }) {
   return (
-    <div>
+    <div className="slide-post">
       {post.body}
       {post.body}
       {post.body}

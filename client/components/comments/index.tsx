@@ -7,6 +7,8 @@ import { truncateText } from '../../helpers/functions';
 import Link from 'next/link';
 import { Like, LikeFill } from '../../public/icons/like';
 import { ThreeDot } from '../../public/icons/threeDot';
+import { motion } from 'framer-motion';
+import { fadeInAnimation } from '../../helpers/animations/fadeInAnimations';
 
 export default function Comments({ comments }: { comments: Comment[] }) {
   const [like, setLike] = useState(0);
@@ -37,7 +39,18 @@ export default function Comments({ comments }: { comments: Comment[] }) {
   return (
     <div className="flex flex-col gap-[16px] rounded bg-white p-4">
       {getComments.map((comment, i) => (
-        <div id={(i + 1).toString()} className="relative flex md:gap-[12px]" key={i}>
+        <motion.div
+          variants={fadeInAnimation}
+          initial="initial"
+          whileInView="animate"
+          viewport={{
+            once: true
+          }}
+          custom={i}
+          id={(i + 1).toString()}
+          className="relative flex md:gap-[12px]"
+          key={i}
+        >
           <div className="w-[42px] min-w-[42px] md:w-[36px] md:min-w-[36px]">
             <Image
               src={PekAfilli}
@@ -77,7 +90,7 @@ export default function Comments({ comments }: { comments: Comment[] }) {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       ))}
       <div
         onClick={getMoreComment}

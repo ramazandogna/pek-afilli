@@ -5,6 +5,7 @@ import { useState } from 'react';
 import Image from 'next/image';
 //helper
 import images from '../../../helpers/slider/images';
+import { motion } from 'framer-motion';
 //components
 import Card from '../../../components/card';
 //types
@@ -12,6 +13,7 @@ import { Content } from '../../../types/content';
 import { formatTitle } from '../../../helpers/functions';
 import { LinkI } from '../../../public/icons/link';
 import { ThreeDot } from '../../../public/icons/threeDot';
+import { fadeInAnimation } from '../../../helpers/animations/fadeInAnimations';
 
 export default function RecentContent({ posts }: { posts: Content[] }) {
   const [firstContent, setFirstContent] = useState<number>(5);
@@ -49,8 +51,15 @@ export default function RecentContent({ posts }: { posts: Content[] }) {
       </h2>
 
       <div className="flex min-h-[550px] w-full flex-col gap-[24px] rounded">
-        {contents.map((post) => (
-          <div
+        {contents.map((post, i) => (
+          <motion.div
+            variants={fadeInAnimation}
+            initial="initial"
+            whileInView="animate"
+            viewport={{
+              once: true
+            }}
+            custom={i}
             className=" flex grow flex-col md:h-[189px] md:min-h-[189px] md:flex-row md:gap-[8px]"
             key={post.id}
           >
@@ -75,7 +84,7 @@ export default function RecentContent({ posts }: { posts: Content[] }) {
             >
               <h2>{post.title}</h2>
             </Link>
-          </div>
+          </motion.div>
         ))}
       </div>
       <div

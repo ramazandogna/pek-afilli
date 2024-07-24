@@ -1,10 +1,11 @@
+import dynamic from 'next/dynamic';
 //components
-import Comments from '../../components/comments';
-import WriteComment from '../../components/writeComment';
-import HeroSection from '../../components/content/heroSection';
-import Post from '../../components/content/post';
-import Card from '../../components/card';
-import CategoriesSection from '../../components/content/categoriesSection';
+const Comments = dynamic(() => import('../../components/comments'));
+const WriteComment = dynamic(() => import('../../components/writeComment'));
+const HeroSection = dynamic(() => import('../../components/content/heroSection'));
+const Post = dynamic(() => import('../../components/content/post'));
+const Card = dynamic(() => import('../../components/card'));
+const CategoriesSection = dynamic(() => import('../../components/content/categoriesSection'));
 //layouts
 import RelatedContent from '../../layouts/contents/relatedContent';
 //helpers

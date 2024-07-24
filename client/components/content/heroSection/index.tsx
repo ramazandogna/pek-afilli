@@ -75,10 +75,10 @@ export default function HeroSection({
           {time}
         </div>
         <div className="flex items-center gap-[12px] md:ml-auto">
-          <span className="flex items-center  gap-[4px]">
+          <Link href="#1" className="flex items-center  gap-[4px]">
             <Comments />
             {comments ? comments : 0}
-          </span>
+          </Link>
           <span
             className={` 
             ${

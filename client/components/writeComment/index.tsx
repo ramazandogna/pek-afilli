@@ -3,6 +3,7 @@ import { useState, ChangeEvent, FormEvent } from 'react';
 import { FormData } from '../../types/comment';
 import { ThreeDot } from '../../public/icons/threeDot';
 import { Check } from '../../public/icons/check';
+import { motion } from 'framer-motion';
 
 export default function WriteComment() {
   const [formData, setFormData] = useState<FormData>({
@@ -61,9 +62,22 @@ export default function WriteComment() {
   }
 
   return (
-    <>
+    <motion.div
+      initial={{ y: 20, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      whileInView="animate"
+      viewport={{
+        once: true
+      }}
+    >
       {!commentOpen ? (
-        <div
+        <motion.div
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          whileInView="animate"
+          viewport={{
+            once: true
+          }}
           onClick={() => {
             setCommentOpen(!commentOpen);
           }}
@@ -76,9 +90,18 @@ export default function WriteComment() {
             className="h-full w-full grow resize-none rounded bg-white p-2"
             required
           />
-        </div>
+        </motion.div>
       ) : (
-        <form className="flex flex-col gap-[8px] text-[14px]" onSubmit={handleSubmit}>
+        <motion.form
+          initial={{ y: 20, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          whileInView="animate"
+          viewport={{
+            once: true
+          }}
+          className="flex flex-col gap-[8px] text-[14px]"
+          onSubmit={handleSubmit}
+        >
           <div className="flex gap-[8px]">
             <div className="grow">
               <input
@@ -136,15 +159,15 @@ export default function WriteComment() {
               Geri
             </button>
             <button
-              className=" transition-color cursor-pointer rounded bg-blue-500/85 px-[12px] py-[6px] text-[13px] text-white hover:bg-blue-500/90 active:bg-blue-500 disabled:pointer-events-none disabled:bg-[rgba(0,_0,_0,_0.05)] disabled:text-[9] "
+              className={`${!isFormValid ? 'text-black/50' : 'text-white'}  transition-color cursor-pointer rounded bg-blue-500/85 px-[12px] py-[6px] text-[13px]  hover:bg-blue-500/90 active:bg-blue-500 disabled:pointer-events-none disabled:bg-[rgba(0,_0,_0,_0.05)] disabled:text-[9] `}
               type="submit"
               disabled={!isFormValid}
             >
               Yorum Yap
             </button>
           </div>
-        </form>
+        </motion.form>
       )}
-    </>
+    </motion.div>
   );
 }

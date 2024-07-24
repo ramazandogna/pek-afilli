@@ -12,10 +12,12 @@ import { Eye } from '../../public/icons/eye';
 import { Right } from '../../public/icons/right';
 import { Left } from '../../public/icons/left';
 //components
+import { motion } from 'framer-motion';
 
 export default function Slider() {
   const [currentImage, setCurrentImage] = useState(0);
   const image = images[currentImage];
+  const [fade, setFade] = useState(false);
 
   const nextImage = () => {
     const maxImages = images.length - 1;
@@ -24,7 +26,10 @@ export default function Slider() {
 
   const prevImage = () => {
     const maxImages = images.length - 1;
-    currentImage > 0 ? setCurrentImage(currentImage - 1) : setCurrentImage(maxImages);
+    setTimeout(() => {
+      currentImage > 0 ? setCurrentImage(currentImage - 1) : setCurrentImage(maxImages);
+      setFade(false);
+    }, 200);
   };
 
   const onDragStart = (e: any) => {
@@ -42,16 +47,29 @@ export default function Slider() {
   return (
     <div className={styles.sliderWrapper}>
       <Link href={formatTitle(image.title)}>
-        <Image
-          className="h-auto w-full max-w-full rounded bg-cover bg-center duration-500 ease-in-out"
-          src={image.src}
-          alt={image.alt}
-          priority
-          width={1000}
-          height={500}
-          onDragStart={onDragStart}
-        />
-        <div className="absolute bottom-10 left-4 right-4 flex flex-col-reverse items-start justify-center gap-[4px]   text-white">
+        <motion.span
+          key={image.src}
+          initial={{ opacity: 0.75 }}
+          animate={{ opacity: 0.95 }}
+          transition={{ ease: 'easeInOut', duration: 0.75 }}
+        >
+          <Image
+            className="h-auto w-full max-w-full rounded bg-cover bg-center duration-500 ease-in-out"
+            src={image.src}
+            alt={image.alt}
+            priority
+            width={1000}
+            height={500}
+            onDragStart={onDragStart}
+          />
+        </motion.span>
+        <motion.div
+          key={currentImage}
+          initial={{ x: 20, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ ease: 'easeInOut', duration: 0.5 }}
+          className="absolute bottom-10 left-4 right-4 flex flex-col-reverse items-start justify-center gap-[4px]   text-white"
+        >
           <h3 className="rounded bg-[#00000030] px-2 py-[2px] text-[22px] font-bold md:text-[32px]">
             {image.title}
           </h3>
@@ -59,7 +77,7 @@ export default function Slider() {
             <Eye />
             {image.view}
           </span>
-        </div>
+        </motion.div>
       </Link>
 
       <Left onClick={() => prevImage()} className={styles.leftIcon} />
