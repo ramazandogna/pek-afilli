@@ -10,7 +10,7 @@ import Card from '../../../components/card';
 //types
 import { Content } from '../../../types/content';
 import { formatTitle } from '../../../helpers/functions';
-import { LinkI } from '../../../public/assets/slider/link';
+import { LinkI } from '../../../public/icons/link';
 import { ThreeDot } from '../../../public/icons/threeDot';
 
 export default function RecentContent({ posts }: { posts: Content[] }) {

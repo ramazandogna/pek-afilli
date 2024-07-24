@@ -8,7 +8,7 @@ import Images from '../../../helpers/slider/images';
 import { formatTitle, truncateText } from '../../../helpers/functions';
 //types
 import { Content } from '../../../types/content';
-import { LinkI } from '../../../public/assets/slider/link';
+import { LinkI } from '../../../public/icons/link';
 
 export default function FullContent({ posts }: { posts: Content[] }) {
   if (!posts) {

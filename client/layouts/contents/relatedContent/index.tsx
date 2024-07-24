@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { formatTitle } from '../../../helpers/functions';
 import images from '../../../helpers/slider/images';
-import { LinkI } from '../../../public/assets/slider/link';
+import { LinkI } from '../../../public/icons/link';
 
 export default function RelatedContent({ relatedPosts }: { relatedPosts: Content[] }) {
   return (
