@@ -2,13 +2,11 @@
 
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import { unFormatTitle } from '../../helpers/functions';
 
 export default function BreadCrumb({ link, name }: { link?: string; name?: string }) {
   const pathName = usePathname();
   const pathNames = pathName.split('/').filter((path) => path);
-  const formatPathSegment = (pathSegment: string) => {
-    return pathSegment.replace(/-/g, ' ').replace(/\b\w/g, (char) => char.toUpperCase());
-  };
 
   return (
     <div className="flex w-full items-center gap-[12px] rounded bg-slate-200 p-2 text-[13px]">
@@ -28,7 +26,7 @@ export default function BreadCrumb({ link, name }: { link?: string; name?: strin
       )}
       <Link href={pathName}>
         <span className="transition-color  text-slate-500 hover:text-slate-600">
-          {formatPathSegment(pathNames[0])}
+          {unFormatTitle(pathNames[0])}
         </span>
       </Link>
     </div>

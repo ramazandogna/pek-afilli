@@ -61,18 +61,19 @@ export default async function PostPage({ params }: { params: { post: string } })
   const comments = await getComments();
   const post: Content = await getSinglePost();
   const relatedPosts: Content[] = await getRelatedPost();
+
   const categories = ['Category 1', 'Category2', 'Category3'];
   const views = 2000;
-  const readTime = post.body.split(' ').length / 200;
-
-  console.log(params);
+  const readTime = (post.body.split(' ').length / 200).toFixed(1);
+  const postTitle = post.title;
+  console.log('post:', post);
   return (
     <main className="min-h-[100vh]">
       <Card className="my-4 bg-gray-100 p-4">
         <HeroSection
-          params={params}
+          title={postTitle}
           image={Images[0]}
-          readTime={readTime * 26}
+          readTime={Number(readTime) * 26}
           views={views}
           comments={comments.commentsLength}
         />

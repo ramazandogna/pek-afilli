@@ -4,7 +4,7 @@ import React from 'react';
 //components
 import BreadCrumb from '../../../components/breadCrumb';
 //helpers
-import { formatDate } from '../../../helpers/functions';
+import { formatDate, unFormatTitle } from '../../../helpers/functions';
 //types
 import { Content, ImageType } from '../../../types/content';
 import { Hot, Popular, Trending } from '../../../public/icons/hot';
@@ -14,13 +14,13 @@ import { Read } from '../../../public/icons/read';
 import Link from 'next/link';
 
 export default function HeroSection({
-  params,
+  title,
   image,
   comments,
   views,
   readTime
 }: {
-  params: { post: string };
+  title: string;
   image: ImageType;
   comments?: number;
   views?: number;
@@ -28,7 +28,6 @@ export default function HeroSection({
 }) {
   const today = new Date();
   const time = formatDate(today);
-  console.log(params);
   return (
     <div className="flex flex-col gap-[8px]">
       <Image
@@ -68,7 +67,7 @@ export default function HeroSection({
       </div>
 
       <h2 id="h2" className=" text-[24px] font-bold">
-        {params.post}
+        {title}
       </h2>
       <div className="mb-[20px] flex flex-col gap-[8px] text-[12px] md:flex-row md:gap-0">
         <div className="flex items-center gap-[8px]">
