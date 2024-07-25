@@ -6,7 +6,7 @@ import BreadCrumb from '../../../components/breadCrumb';
 //helpers
 import { formatDate, unFormatTitle } from '../../../helpers/functions';
 //types
-import { Content, ImageType } from '../../../types/content';
+import { ImageType } from '../../../types/content';
 import { Hot, Popular, Trending } from '../../../public/icons/hot';
 import { Comments } from '../../../public/icons/comments';
 import { Eye } from '../../../public/icons/eye';
@@ -43,21 +43,21 @@ export default function HeroSection({
       <div className="flex text-[13px]">
         {views && views >= 10000 ? (
           <Link
-            className="flex cursor-pointer items-center justify-center gap-[4px] rounded bg-[#f11e1e] px-[8px] py-[4px] text-white"
+            className="flex cursor-pointer items-center justify-center gap-[4px] rounded bg-[#f11e1e] px-[8px] py-[4px] text-white shadow-sm"
             href="#h2"
           >
             <Hot /> Hot
           </Link>
         ) : views && views >= 5000 ? (
           <Link
-            className="flex cursor-pointer items-center justify-center gap-[4px] rounded bg-[#FF5733] px-[8px] py-[4px] text-white"
+            className="flex cursor-pointer items-center justify-center gap-[4px] rounded bg-[#FF5733] px-[8px] py-[4px] text-white shadow-sm"
             href="#h2"
           >
             <Trending /> Trend
           </Link>
         ) : views && views >= 2000 ? (
           <Link
-            className="flex cursor-pointer items-center justify-center gap-[4px] rounded bg-[#FFC000] px-[8px] py-[4px]"
+            className="flex cursor-pointer items-center justify-center gap-[4px] rounded bg-[#FFC000] px-[8px] py-[4px] shadow-sm"
             href="#h2"
           >
             <Popular />

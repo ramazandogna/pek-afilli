@@ -80,10 +80,21 @@ export default function Header() {
             </div>
             <div className="flex h-[40px] grow items-center">
               <ul className="flex gap-3">
-                <li className="cursor-pointer transition-all hover:scale-[102%]">Magazine</li>
-                <li className="cursor-pointer transition-all hover:scale-[102%]">Series</li>
-                <li className="cursor-pointer transition-all hover:scale-[102%]">Technologies</li>
-                <li className="cursor-pointer transition-all hover:scale-[102%]">Motivation</li>
+                <Link href="/category/magazine">
+                  <li className="transition-all hover:scale-[102%]">Magazine</li>
+                </Link>
+                <Link href="/category/series">
+                  <li className="transition-all hover:scale-[102%]">Series</li>
+                </Link>
+                <Link href="/category/technology">
+                  <li className="transition-all hover:scale-[102%]">Technologies</li>
+                </Link>
+                <Link href="/category/motivation">
+                  <li className="transition-all hover:scale-[102%]">Motivation</li>
+                </Link>
+                <Link href="/category/sport">
+                  <li className="transition-all hover:scale-[102%]">Sport</li>
+                </Link>
               </ul>
               <Link href="/" className={styles.bottomRight}>
                 <Hot className={styles.hotIcon} />
@@ -135,30 +146,30 @@ export default function Header() {
                 className={`${menuCategory === true ? 'slide-bottom' : 'slide-top'} flex-col pl-[10px] text-[13px] transition-all  duration-300`}
               >
                 <div className="flex w-full  py-[10px]">
-                  <Link href="/">Magazine</Link>
+                  <Link href="/category/magazine">Magazine</Link>
                 </div>
                 <div className="flex w-full  py-[10px]">
-                  <Link href="/">Series</Link>
+                  <Link href="/category/series">Series</Link>
                 </div>
                 <div className="flex w-full  py-[10px]">
-                  <Link href="/">Technologies</Link>
+                  <Link href="/category/technology">Technology</Link>
                 </div>
                 <div className="flex w-full  py-[10px]">
-                  <Link href="/">Motivation</Link>
+                  <Link href="/category/motivation">Motivation</Link>
+                </div>
+                <div className="flex w-full  py-[10px]">
+                  <Link href="/category/sport">Sport</Link>
                 </div>
               </div>
             </div>
             <div className="flex w-full border-b border-[#ffffff0d] py-[15px] font-bold">
-              <Link href="/">Magazine</Link>
+              <Link href="/">Contact</Link>
             </div>
             <div className="flex w-full border-b border-[#ffffff0d] py-[15px] font-bold">
-              <Link href="/">Series</Link>
+              <Link href="/">About Us</Link>
             </div>
             <div className="flex w-full border-b border-[#ffffff0d] py-[15px] font-bold">
-              <Link href="/">Technologies</Link>
-            </div>
-            <div className="flex w-full border-b border-[#ffffff0d] py-[15px] font-bold">
-              <Link href="/">Motivation</Link>
+              <Link href="/">Advertisement</Link>
             </div>
           </div>
           <div className="mb-[15px] flex items-end justify-center gap-4 text-[24px]">

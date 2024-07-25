@@ -66,7 +66,6 @@ export default async function PostPage({ params }: { params: { post: string } })
   const views = 2000;
   const readTime = (post.body.split(' ').length / 200).toFixed(1);
   const postTitle = post.title;
-  console.log('post:', post);
   return (
     <main className="min-h-[100vh]">
       <Card className="my-4 bg-gray-100 p-4">
