@@ -6,7 +6,7 @@ import BreadCrumb from '../../../components/breadCrumb';
 //helpers
 import { formatDate } from '../../../helpers/functions';
 //types
-import { ImageType } from '../../../types/content';
+import { Content, ImageType } from '../../../types/content';
 import { Hot, Popular, Trending } from '../../../public/icons/hot';
 import { Comments } from '../../../public/icons/comments';
 import { Eye } from '../../../public/icons/eye';
@@ -28,6 +28,7 @@ export default function HeroSection({
 }) {
   const today = new Date();
   const time = formatDate(today);
+  console.log(params);
   return (
     <div className="flex flex-col gap-[8px]">
       <Image

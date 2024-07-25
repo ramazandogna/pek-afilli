@@ -1,4 +1,5 @@
 import dynamic from 'next/dynamic';
+import { notFound } from 'next/navigation';
 //components
 const Comments = dynamic(() => import('../../components/comments'));
 const WriteComment = dynamic(() => import('../../components/writeComment'));
@@ -10,19 +11,28 @@ const CategoriesSection = dynamic(() => import('../../components/content/categor
 import RelatedContent from '../../layouts/contents/relatedContent';
 //helpers
 import Images from '../../helpers/slider/images';
-import { fetchComments, fetchPost, fetchPosts } from '../../helpers/apis/fetchs';
+import {
+  fetchComments,
+  fetchSlugToIdMap,
+  fetchPosts,
+  fetchPostBySlug
+} from '../../helpers/apis/fetchs';
 //types
 import { Content } from '../../types/content';
 import { CommentsType } from '../../types/comments';
 
-async function Home({ params }: { params: { post: string } }) {
-  const getSinglePosts = async () => {
+export default async function PostPage({ params }: { params: { post: string } }) {
+  const getSinglePost = async () => {
     try {
-      const post = await fetchPost(1);
-      return post;
+      const post = await fetchPostBySlug(params.post);
+      if (!post) {
+        notFound();
+      } else {
+        return post;
+      }
     } catch (error) {
-      console.error('Veri getirme hatası:', error);
-      return [];
+      console.error('Veri çekme hatası:', error);
+      notFound();
     }
   };
 
@@ -49,11 +59,13 @@ async function Home({ params }: { params: { post: string } }) {
   };
 
   const comments = await getComments();
-  const post: Content = await getSinglePosts();
+  const post: Content = await getSinglePost();
   const relatedPosts: Content[] = await getRelatedPost();
   const categories = ['Category 1', 'Category2', 'Category3'];
   const views = 2000;
   const readTime = post.body.split(' ').length / 200;
+
+  console.log(params);
   return (
     <main className="min-h-[100vh]">
       <Card className="my-4 bg-gray-100 p-4">
@@ -79,5 +91,3 @@ async function Home({ params }: { params: { post: string } }) {
     </main>
   );
 }
-
-export default Home;
