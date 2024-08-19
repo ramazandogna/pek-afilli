@@ -2,41 +2,5 @@ import React from 'react';
 import { Content } from '../../../types/content';
 
 export default function Post({ post }: { post: Content }) {
-  return (
-    <div className="slide-post">
-      {post.body}
-      {post.body}
-      {post.body}
-      {post.body}
-      {post.body}
-      {post.body}
-      {post.body}
-      {post.body}
-      {post.body}
-      {post.body}
-      {post.body}
-      {post.body}
-      {post.body}
-      <div>
-        {post.body}
-        {post.body}
-        {post.body}
-        {post.body}
-        {post.body}
-        {post.body}
-      </div>
-      <div>
-        {post.body}
-        {post.body}
-        {post.body}
-        {post.body}
-        {post.body}
-        {post.body}
-        {post.body}
-        {post.body}
-        {post.body}
-        {post.body}
-      </div>
-    </div>
-  );
+  return <div dangerouslySetInnerHTML={{ __html: post }} className="slide-post" />;
 }

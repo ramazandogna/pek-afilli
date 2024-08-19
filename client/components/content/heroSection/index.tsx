@@ -12,33 +12,37 @@ import { Comments } from '../../../public/icons/comments';
 import { Eye } from '../../../public/icons/eye';
 import { Read } from '../../../public/icons/read';
 import Link from 'next/link';
+import { FeaturedImage } from '../../../types/post';
+import { CategoryNode } from '../../../types/posts';
 
 export default function HeroSection({
   title,
   image,
   comments,
   views,
-  readTime
+  readTime,
+  category
 }: {
   title: string;
-  image: ImageType;
+  image: FeaturedImage;
   comments?: number;
   views?: number;
   readTime: number;
+  category: CategoryNode;
 }) {
   const today = new Date();
   const time = formatDate(today);
   return (
     <div className="flex flex-col gap-[8px]">
       <Image
-        src={image.src}
-        alt={image.alt}
+        src={image.node.mediaDetails.sizes[0].sourceUrl}
+        alt={image.node.mediaDetails.sizes[0].sourceUrl}
         width={720}
         height={360}
         className="mx-auto rounded object-cover"
         priority
       />
-      <BreadCrumb name="Category 1" link="http://localhost:3000/auth/register" />
+      <BreadCrumb name={category.name} link={`/category/${category.slug}`} />
 
       <div className="flex text-[13px]">
         {views && views >= 10000 ? (
@@ -80,7 +84,7 @@ export default function HeroSection({
             {comments ? comments : 0}
           </Link>
           <span
-            className={` 
+            className={`
             ${
               views && views >= 10000
                 ? 'text-[#f11e1e]'

@@ -92,7 +92,7 @@ export default function Header() {
                 <Link href="/category/motivation">
                   <li className="transition-all hover:scale-[102%]">Motivation</li>
                 </Link>
-                <Link href="/category/sport">
+                <Link href="/test">
                   <li className="transition-all hover:scale-[102%]">Sport</li>
                 </Link>
               </ul>
@@ -113,7 +113,7 @@ export default function Header() {
 
       <>
         <div
-          className={`${mobileMenu === true ? 'slide-in' : 'slide-out'} ${menuFixed === true ? '' : 'hidden'} 
+          className={`${mobileMenu === true ? 'slide-in' : 'slide-out'} ${menuFixed === true ? '' : 'hidden'}
           fixed bottom-0 right-0 top-0 z-[1000001] flex h-full w-[85%] flex-col items-center
            gap-[16px] bg-[#1f2024] px-[30px] text-white duration-300 md:hidden`}
         >
