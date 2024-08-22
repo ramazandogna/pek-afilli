@@ -1,5 +1,5 @@
-import { PostResponse } from "../types/posts";
-import graphqlRequest from "./graphqlRequest";
+import { PostResponse } from '../types/posts';
+import graphqlRequest from './graphqlRequest';
 export default async function getAllPosts() {
   const query = {
     query: `query getAllPosts {
@@ -38,7 +38,7 @@ export default async function getAllPosts() {
           }`
   };
   const resJson = await graphqlRequest(query);
-  const allPost: PostResponse  = resJson.data.posts;
+  const allPost: PostResponse = resJson.data.posts;
 
   return allPost;
 }

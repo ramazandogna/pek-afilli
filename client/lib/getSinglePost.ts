@@ -1,4 +1,4 @@
-import { Post } from '../types/post';
+import { PostType } from '../types/post';
 import graphqlRequest from './graphqlRequest';
 
 export async function getSinglePost(slug: any) {

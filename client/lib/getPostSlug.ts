@@ -1,4 +1,4 @@
-import graphqlRequest from "./graphqlRequest";
+import graphqlRequest from './graphqlRequest';
 export default async function getPostSlug() {
   const query = {
     query: `query getPostSlug {
