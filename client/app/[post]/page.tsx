@@ -1,61 +1,40 @@
 import dynamic from 'next/dynamic';
 import { notFound } from 'next/navigation';
-//components
+//components > Lazy Import
 const Comments = dynamic(() => import('../../components/comments'));
 const WriteComment = dynamic(() => import('../../components/writeComment'));
 const HeroSection = dynamic(() => import('../../components/content/heroSection'));
-const Post = dynamic(() => import('../../components/content/post'));
-const Card = dynamic(() => import('../../components/card'));
 const CategoriesSection = dynamic(() => import('../../components/content/categoriesSection'));
+//components > Normal Import
+import Card from '../../components/card';
+import Post from '../../components/content/post';
 //layouts
 import RelatedContent from '../../layouts/contents/relatedContent';
-//helpers
-import Images from '../../helpers/slider/images';
-import {
-  fetchComments,
-  fetchSlugToIdMap,
-  fetchPosts,
-  fetchPostBySlug
-} from '../../helpers/apis/fetchs';
+//mock
+import { fetchComments, fetchPosts } from '../../helpers/apis/fetchs';
 //types
 import { Content } from '../../types/content';
 import { CommentsType } from '../../types/comments';
 import { getSinglePost } from '../../lib/getSinglePost';
-import getPostSlug from '../../lib/getPostSlug';
 import { CategoryNode } from '../../types/posts';
+import type { PostType } from '../../types/post';
+//query
+import getPostSlug from '../../lib/getPostSlug';
 
-console.log();
 export default async function PostPage({ params }: { params: { post: string } }) {
   const { post: slug } = params;
-
-  // Slugları getir ve kontrol et
+  const post: PostType = await getSinglePost(slug);
   const slugs = await getPostSlug();
+
   const isValidSlug = slugs.some((s: { slug: string }) => s.slug === slug);
 
   if (!isValidSlug) {
-    notFound(); // Eğer slug bulunamazsa 404 sayfası göster
+    notFound();
   }
-
-  // Slug doğruysa postu getir
-  const post = await getSinglePost(slug);
 
   if (!post) {
-    notFound(); // Post verisi bulunamazsa 404 göster
+    notFound();
   }
-
-  //   const getSinglePost = async () => {
-  //     try {
-  //       const post = await fetchPostBySlug(params.post);
-  //       if (!post) {
-  //         notFound();
-  //       } else {
-  //         return post;
-  //       }
-  //     } catch (error) {
-  //       console.error('Veri çekme hatası:', error);
-  //       notFound();
-  //     }
-  //   };
 
   const getRelatedPost = async () => {
     try {
@@ -78,23 +57,12 @@ export default async function PostPage({ params }: { params: { post: string } })
       throw error;
     }
   };
-  console.log('post', post.categories.nodes);
-
-  async function countWords(): Promise<number> {
-    // HTML etiketlerini temizle
-    const text = post.content.replace(/<\/?[^>]+(>|$)/g, ' ');
-    // Metni kelimelere ayır ve boş kelimeleri temizle
-    const words = text.trim().split(/\s+/);
-    return words.length;
-  }
 
   const comments = await getComments();
-  //   const post: Content = await getSinglePost();
   const relatedPosts: Content[] = await getRelatedPost();
 
-  const categories = post.categories.nodes;
+  const categories = post.categories.nodes as CategoryNode[];
   const views = 2000;
-  //   const readTime = (post.body.split(' ').length / 200).toFixed(1);
 
   const words = post.content
     .replace(/<\/?[^>]+(>|$)/g, ' ') // HTML etiketlerini temizle
@@ -102,7 +70,6 @@ export default async function PostPage({ params }: { params: { post: string } })
     .split(/\s+/); // Metni kelimelere ayır
 
   const wordCount = words.length; // Toplam kelime sayısını al
-  console.log('wordCount', wordCount);
   const readTime = Math.ceil(wordCount / 200); // Okuma süresini hesapla (200 kelime/dakika)
   const postTitle = post.title;
   return (
@@ -117,7 +84,7 @@ export default async function PostPage({ params }: { params: { post: string } })
           category={post.categories.nodes[0] as CategoryNode}
         />
         <Post post={post.content} />
-        <CategoriesSection categories={post.categories.nodes as CategoryNode[]} />
+        <CategoriesSection categories={categories} />
       </Card>
       <Card className="my-4 bg-gray-100 p-4">
         <RelatedContent relatedPosts={relatedPosts} />

@@ -29,7 +29,7 @@ export interface CategoryNode {
   }
 
   // Post types
-  export interface Post {
+  export interface PostType {
     content: string;
     modified: string;
     slug: string;
