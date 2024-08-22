@@ -35,7 +35,7 @@ export async function getSinglePost(slug: any) {
   };
 
   const resJson = await graphqlRequest(query);
-  const singlePost: Post = resJson.data.post;
+  const singlePost: PostType = resJson.data.post;
 
   return singlePost;
 }
