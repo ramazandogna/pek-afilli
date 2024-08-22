@@ -44,7 +44,7 @@ export interface PostType {
 // GraphQL response type
 export interface GetSinglePostResponse {
   data: {
-    post: Post;
+    post: PostType;
   };
   extensions?: {
     debug?: Array<{
