@@ -5,29 +5,30 @@ import Image from 'next/image';
 import { formatTitle } from '../../../helpers/functions';
 import images from '../../../helpers/slider/images';
 import { LinkI } from '../../../public/icons/link';
+import { PostNode, PostResponse } from '../../../types/posts';
 
-export default function RelatedContent({ relatedPosts }: { relatedPosts: Content[] }) {
+export default function RelatedContent({ relatedPosts }: { relatedPosts: PostResponse }) {
   return (
     <div>
       <h2 className="my-4 inline-flex border-b-[3px] border-[#0693e3] pb-3 text-[18px] font-bold text-[#0693e3] transition-all hover:border-[#0061b1] hover:text-[#0061b1]">
         Related Posts
       </h2>
       <div className="flex flex-wrap">
-        {relatedPosts.map((post, i) => (
+        {relatedPosts.nodes.map((post, i) => (
           <div
             className="mb-4 flex w-full grow flex-col md:h-[189px] md:min-h-[189px] md:gap-[8px]"
-            key={post.id}
+            key={post.slug}
           >
             <Link
-              href={formatTitle(post.title)}
+              href={post.slug}
               className="groupA relative flex h-[189px] min-h-[189px] items-start overflow-hidden  rounded "
             >
               <div className="groupA-hover absolute inset-0 z-[50]  bg-black/50">
                 <LinkI className="absolute left-[50%] top-[50%] z-[99] h-[24px] w-[24px] -translate-x-[50%] -translate-y-[50%] text-[#d6d6d6]" />
               </div>
               <Image
-                src={images[i].src}
-                alt={images[i].alt}
+                src={post.featuredImage.node.mediaDetails.sizes[0].sourceUrl}
+                alt={post.featuredImage.node.altText}
                 loading="lazy"
                 fill
                 className="groupA-image rounded object-cover"

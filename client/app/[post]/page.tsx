@@ -20,6 +20,8 @@ import { CategoryNode } from '../../types/posts';
 import type { PostType } from '../../types/post';
 //query
 import getPostSlug from '../../lib/getPostSlugs';
+import getAllPosts from '../../lib/getAllPosts';
+import getRelatedPosts from '../../lib/gerRelatedPosts';
 
 export default async function PostPage({ params }: { params: { post: string } }) {
   const { post: slug } = params;
@@ -36,17 +38,6 @@ export default async function PostPage({ params }: { params: { post: string } })
     notFound();
   }
 
-  const getRelatedPost = async () => {
-    try {
-      const posts = await fetchPosts();
-
-      return posts.slice(0, 2);
-    } catch (error) {
-      console.error('Veri getirme hatası:', error);
-      return [];
-    }
-  };
-
   const getComments = async (): Promise<CommentsType> => {
     try {
       const comments = await fetchComments();
@@ -59,8 +50,15 @@ export default async function PostPage({ params }: { params: { post: string } })
   };
 
   const comments = await getComments();
-  const relatedPosts: Content[] = await getRelatedPost();
-
+  const categorieList: string[] = post.categories.nodes
+    .map((category) => category?.name)
+    .filter((name): name is string => name !== undefined);
+  const random = Math.floor(Math.random() * categorieList.length);
+  const relatedPosts = await getAllPosts(
+    '',
+    { key: 'categoryName', value: categorieList[random] },
+    2
+  );
   const categories = post.categories.nodes as CategoryNode[];
   const views = 2000;
 
