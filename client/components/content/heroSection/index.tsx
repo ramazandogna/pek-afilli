@@ -14,6 +14,7 @@ import { Read } from '../../../public/icons/read';
 import Link from 'next/link';
 import { FeaturedImage } from '../../../types/post';
 import { CategoryNode } from '../../../types/posts';
+import HeroImage from '../../image/heroImage';
 
 export default function HeroSection({
   title,
@@ -21,7 +22,8 @@ export default function HeroSection({
   comments,
   views,
   readTime,
-  category
+  category,
+  date
 }: {
   title: string;
   image: FeaturedImage;
@@ -29,19 +31,21 @@ export default function HeroSection({
   views?: number;
   readTime: number;
   category: CategoryNode;
+  date: string;
 }) {
   const today = new Date();
-  const time = formatDate(today);
+  const time = date;
   return (
     <div className="flex flex-col gap-[8px]">
-      <Image
-        src={image.node.mediaDetails.sizes[0].sourceUrl}
-        alt={image.node.mediaDetails.sizes[0].sourceUrl}
-        width={720}
-        height={360}
-        className="mx-auto rounded object-cover"
-        priority
-      />
+      <div className="flex h-[358px] w-full overflow-hidden">
+        <HeroImage
+          src={image.node.mediaDetails.sizes[0].sourceUrl}
+          alt={image.node.mediaDetails.sizes[0].sourceUrl}
+          height={359}
+          width={718}
+        />
+      </div>
+
       <BreadCrumb name={category.name} link={`/category/${category.slug}`} />
 
       <div className="flex text-[13px]">

@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { PostNode } from '../../types/posts';
+import { PostNode } from '../../../types/posts';
 import { getPlaiceholder } from 'plaiceholder';
 
 export default async function FeaturedImage({ post }: { post: PostNode }) {

@@ -5,6 +5,7 @@ import Footer from '../components/footer/index';
 import Header from '../components/header/index';
 //helpers
 import { fetchPosts } from '../helpers/apis/fetchs';
+import getAllPosts from '../lib/getAllPosts';
 
 export default async function Home() {
   const getListPost = async () => {
@@ -46,11 +47,11 @@ export default async function Home() {
       return [];
     }
   };
-
+  const dataRecent = await getAllPosts();
   const dataPost = await getPopularPost();
   const dataList = await getListPost();
   const dataMoney = await getMoneyPost();
-  const dataRecent = await getRecentPost();
+//   const dataRecent = await getRecentPost();
   return (
     <main>
       <Header />

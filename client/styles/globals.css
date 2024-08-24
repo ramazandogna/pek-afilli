@@ -1,3 +1,7 @@
+:root {
+  --global-width: 784px;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -11,7 +15,7 @@ body {
 }
 
 .width-container {
-  max-width: 784px;
+  max-width: var(--global-width);
   width: 100%;
   margin: 0 auto;
   padding: 0 1rem;

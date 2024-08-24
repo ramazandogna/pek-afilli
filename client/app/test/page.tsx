@@ -1,5 +1,5 @@
 import Date from '../../components/date';
-import FeaturedImage from '../../components/featuredImage';
+import FeaturedImage from '../../components/image/featuredImage';
 import getAllPosts from '../../lib/getAllPosts';
 import { PostNode } from '../../types/posts';
 

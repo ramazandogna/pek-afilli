@@ -82,8 +82,9 @@ export default async function PostPage({ params }: { params: { post: string } })
           views={views}
           comments={post.commentCount}
           category={post.categories.nodes[0] as CategoryNode}
+          date={post.date}
         />
-        <Post post={post.content} />
+        <Post slug={slug} post={post.content} />
         <CategoriesSection categories={categories} />
       </Card>
       <Card className="my-4 bg-gray-100 p-4">
