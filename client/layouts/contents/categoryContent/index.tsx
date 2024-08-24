@@ -34,7 +34,7 @@ export default function CategoryContent({
           key={i}
         >
           <Link
-            href={post.slug}
+            href={`/${post.slug}`}
             className="groupA relative flex h-[189px] min-h-[189px] items-start overflow-hidden  rounded md:w-[336px] md:min-w-[336px]"
           >
             <div className="groupA-hover absolute inset-0 z-[50]  bg-black/80">
@@ -49,7 +49,7 @@ export default function CategoryContent({
             />
           </Link>
           <div className="relative w-[358px]">
-            <Link href={`/${formatTitle(post.title)}`}>
+            <Link href={`/${post.slug}`}>
               <h2 className=" transition-all hover:text-[#0693e3]">{post.title}</h2>
             </Link>
             <span className="text-[12px]">{post.date}</span>
