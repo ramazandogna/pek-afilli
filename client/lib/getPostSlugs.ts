@@ -1,5 +1,5 @@
 import graphqlRequest from './graphqlRequest';
-export default async function getPostSlug({name} : {name: string}) {
+export default async function getPostSlug({ name }: { name: string }) {
   const query = {
     query: `query getPostSlug {
         posts(where: { name: "${name}" }) {

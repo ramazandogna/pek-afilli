@@ -1,4 +1,3 @@
-import { Category } from '../../types/category';
 import { category } from '../mock/category';
 
 export const getCategories = async () => {

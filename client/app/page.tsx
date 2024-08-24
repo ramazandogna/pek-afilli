@@ -51,7 +51,7 @@ export default async function Home() {
   const dataPost = await getPopularPost();
   const dataList = await getListPost();
   const dataMoney = await getMoneyPost();
-//   const dataRecent = await getRecentPost();
+  //   const dataRecent = await getRecentPost();
   return (
     <main>
       <Header />
