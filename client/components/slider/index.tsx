@@ -46,7 +46,7 @@ export default function Slider({ posts }: { posts: PostResponse }) {
   }, [currentImage]);
   return (
     <div className={styles.sliderWrapper}>
-      <Link href={formatTitle(image.title)}>
+      <Link href={image.slug}>
         <motion.span
           key={image.slug}
           initial={{ opacity: 0.75 }}
