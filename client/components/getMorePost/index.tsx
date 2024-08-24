@@ -6,10 +6,12 @@ import getPostList from '../../lib/getAllPosts';
 
 export default function GetMorePost({
   contents,
-  setContents
+  setContents,
+  taxonomy
 }: {
   contents: PostResponse;
   setContents: (posts: PostResponse) => void;
+  taxonomy: { key: string | null; value: string | null };
 }) {
   const [postsLoading, setPostsLoading] = useState(false);
   const [noMorePost, setNoMorePost] = useState(false);

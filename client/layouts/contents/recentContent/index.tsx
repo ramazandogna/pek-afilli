@@ -60,30 +60,39 @@ export default function RecentContent({ posts }: { posts: PostResponse }) {
               href={post.slug}
               className="groupA relative flex h-[189px] min-h-[189px] items-start overflow-hidden  rounded md:w-[336px] md:min-w-[336px]"
             >
-              <div className="groupA-hover absolute inset-0 z-[50]  bg-black/50">
+              <div className="groupA-hover relative inset-0 z-[50]  bg-black/50">
                 <LinkI className=" absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[24px] text-[#d6d6d6]" />
               </div>
               <Image
                 src={post.featuredImage.node.mediaDetails.sizes[0].sourceUrl}
-                alt={images[1].alt}
+                alt={post.featuredImage.node.altText}
                 loading="lazy"
                 fill
                 className="groupA-image w-full rounded object-cover md:w-[50%]"
               />
             </Link>
-            <div className="font-700 grow  ">
+            <div className="font-700 grow">
               <Link href={post.slug} className="text-[16px] transition-all hover:text-[#0693e3]">
                 <h2>{post.title}</h2>
               </Link>
               <div className="flex gap-2 text-[12px]">
-                <div>{post.categories.nodes[0].name}</div>
+                <Link
+                  className="transition-all hover:text-[#0693e3]"
+                  href={`/category/${post.categories.nodes[0].slug}`}
+                >
+                  <div>{post.categories.nodes[0].name}</div>
+                </Link>
                 <div>{post.date}</div>
               </div>
             </div>
           </motion.div>
         ))}
       </div>
-      <GetMorePost contents={contents} setContents={setContents} />
+      <GetMorePost
+        taxonomy={{ key: null, value: null }}
+        contents={contents}
+        setContents={setContents}
+      />
     </Card>
   );
 }

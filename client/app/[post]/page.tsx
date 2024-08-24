@@ -19,14 +19,14 @@ import { getSinglePost } from '../../lib/getSinglePost';
 import { CategoryNode } from '../../types/posts';
 import type { PostType } from '../../types/post';
 //query
-import getPostSlug from '../../lib/getPostSlug';
+import getPostSlug from '../../lib/getPostSlugs';
 
 export default async function PostPage({ params }: { params: { post: string } }) {
   const { post: slug } = params;
   const post: PostType = await getSinglePost(slug);
-  const slugs = await getPostSlug();
+  const slugs = await getPostSlug({ name: params.post });
 
-  const isValidSlug = slugs.some((s: { slug: string }) => s.slug === slug);
+  const isValidSlug = slugs.some((s: { slug: string }) => params.post.includes(s.slug));
 
   if (!isValidSlug) {
     notFound();

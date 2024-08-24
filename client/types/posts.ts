@@ -11,6 +11,7 @@ export interface MediaDetails {
 
 export interface FeaturedImageNode {
   mediaDetails: MediaDetails;
+  altText: string;
 }
 
 export interface CategoryNode {

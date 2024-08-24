@@ -1,28 +1,66 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import { Content } from '../../../types/content';
 import Card from '../../../components/card';
 import Link from 'next/link';
 import { formatTitle } from '../../../helpers/functions';
+import { PostResponse } from '../../../types/posts';
+import { motion } from 'framer-motion';
+import { fadeInAnimation } from '../../../helpers/animations/fadeInAnimations';
+import Image from 'next/image';
+import { LinkI } from '../../../public/icons/link';
+import GetMorePost from '../../../components/getMorePost';
 
-export default function CategoryContent({ posts }: { posts: Content[] }) {
+export default function CategoryContent({
+  posts,
+  params
+}: {
+  posts: PostResponse;
+  params: { category: string };
+}) {
+  const [contents, setContents] = useState<PostResponse>(posts);
   return (
     <Card>
-      {posts.map((post, i: number) => (
-        <div className="flex min-h-[100px] gap-[10px] p-[16px]" key={post.id}>
+      {contents.nodes.map((post, i: number) => (
+        <motion.div
+          variants={fadeInAnimation}
+          initial="initial"
+          whileInView="animate"
+          viewport={{
+            once: true
+          }}
+          custom={i}
+          className="flex min-h-[100px] gap-[10px] p-[16px]"
+          key={i}
+        >
           <Link
-            href={`/${formatTitle(post.title)}`}
-            className="hidden flex-1 cursor-pointer items-center justify-center rounded text-[60px] shadow transition-all hover:rotate-1 hover:scale-105 hover:shadow-lg  md:flex"
+            href={post.slug}
+            className="groupA relative flex h-[189px] min-h-[189px] items-start overflow-hidden  rounded md:w-[336px] md:min-w-[336px]"
           >
-            {i}
+            <div className="groupA-hover absolute inset-0 z-[50]  bg-black/80">
+              <LinkI className=" absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[24px] text-white" />
+            </div>
+            <Image
+              src={post.featuredImage.node.mediaDetails.sizes[0].sourceUrl}
+              alt={post.featuredImage.node.altText}
+              loading="lazy"
+              fill
+              className="groupA-image w-full rounded object-cover md:w-[50%]"
+            />
           </Link>
-          <div className="relative flex-[8]">
+          <div className="relative w-[358px]">
             <Link href={`/${formatTitle(post.title)}`}>
-              <h2 className="mb-[16px] transition-all hover:text-[#0693e3]">{post.title}</h2>
+              <h2 className=" transition-all hover:text-[#0693e3]">{post.title}</h2>
             </Link>
-            <p>{post.body}</p>
+            <span className="text-[12px]">{post.date}</span>
           </div>
-        </div>
+        </motion.div>
       ))}
+      <GetMorePost
+        taxonomy={{ key: contents.nodes[0].categories.nodes[0].name, value: params.category }}
+        contents={contents}
+        setContents={setContents}
+      />
     </Card>
   );
 }

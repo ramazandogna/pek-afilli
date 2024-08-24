@@ -1,7 +1,14 @@
 import { PostResponse } from '../types/posts';
 import graphqlRequest from './graphqlRequest';
-export default async function getPostList(endCursor = '') {
-  const condition = `after: "${endCursor || ''}", first: 5, where: {orderby: {field: DATE, order: DESC}}`;
+export default async function getPostList(
+  endCursor = '',
+  taxonomy: { key: string; value: string } | null = null
+) {
+  let condition = `after: "${endCursor || ''}", first: 5, where: {orderby: {field: DATE, order: DESC}}`;
+
+  if (taxonomy) {
+    condition = `after: "${endCursor}", first: 5, where: {orderby: {field: DATE, order: DESC}, ${taxonomy.key}: "${taxonomy.value}"}`;
+  }
 
   const query = {
     query: `query getAllPosts {
@@ -19,7 +26,8 @@ export default async function getPostList(endCursor = '') {
               height
               width
             }
-          }
+            }
+            altText
         }
       }
       categories {

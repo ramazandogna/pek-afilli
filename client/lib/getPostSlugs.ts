@@ -1,8 +1,8 @@
 import graphqlRequest from './graphqlRequest';
-export default async function getPostSlug() {
+export default async function getPostSlug({name} : {name: string}) {
   const query = {
     query: `query getPostSlug {
-        posts {
+        posts(where: { name: "${name}" }) {
           nodes {
             slug
           }
@@ -11,6 +11,5 @@ export default async function getPostSlug() {
   };
   const resJson = await graphqlRequest(query);
   const slugs = resJson.data.posts.nodes;
-
   return slugs;
 }

@@ -7,42 +7,34 @@ import { fetchPosts } from '../../../helpers/apis/fetchs';
 import BreadCrumb from '../../../components/breadCrumb';
 import CategoriesSection from '../../../components/content/categoriesSection';
 import HeroSection from '../../../components/category/heroSection';
+import { getCategorySlugs } from '../../../lib/getCategorySlugs';
+import getPostList from '../../../lib/getAllPosts';
+import { getCategoryDetails } from '../../../lib/getCategoryDetails';
 
 export default async function page({ params }: { params: { category: string } }) {
-  const getCategory = async () => {
-    try {
-      const category = await getCategoryBySlug(params.category);
-      if (!category) {
-        notFound();
-      } else {
-        return category;
-      }
-    } catch (error) {
-      console.error('Veri çekme hatası:', error);
-      notFound();
-    }
-  };
+  const { category: slug } = params;
+  const slugs = await getCategorySlugs({ name: params.category });
+  const categoryPost = await getPostList('', { key: 'categoryName', value: params.category });
+  const categoryDetails = await getCategoryDetails(params.category);
 
-  const getCategoryPosts = async () => {
-    try {
-      const posts = await fetchPosts();
-      return posts.slice(0, 12);
-    } catch (error) {
-      console.error('Veri getirme hatası:', error);
-      return [];
-    }
-  };
+  const isValidSlug = slugs.some((s: { slug: string }) => params.category.includes(s.slug));
 
-  const category = await getCategory();
-  const posts = await getCategoryPosts();
+  if (!isValidSlug) {
+    notFound();
+  }
+
+  if (!categoryDetails) {
+    notFound();
+  }
+
   return (
     <main>
       <Card className="gap=[200px] flex flex-col p-0 md:p-[16px]">
         <BreadCrumb />
 
-        <HeroSection category={category} />
+        <HeroSection category={categoryDetails} />
 
-        <CategoryContent posts={posts} />
+        <CategoryContent params={params} posts={categoryPost} />
       </Card>
     </main>
   );
