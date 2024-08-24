@@ -43,7 +43,8 @@ export default async function FeaturedImage({ post }: { post: PostNode }) {
         alt={post.title}
         placeholder="blur"
         blurDataURL={base64}
-        className=""
+        loading="lazy"
+        className="md:w-[50%]"
       />
     </Link>
   );

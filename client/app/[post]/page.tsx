@@ -84,7 +84,7 @@ export default async function PostPage({ params }: { params: { post: string } })
           category={post.categories.nodes[0] as CategoryNode}
           date={post.date}
         />
-        <Post slug={slug} post={post.content} />
+        <Post post={post.content} />
         <CategoriesSection categories={categories} />
       </Card>
       <Card className="my-4 bg-gray-100 p-4">

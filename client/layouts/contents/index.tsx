@@ -8,6 +8,7 @@ import RecentContent from './recentContent';
 //types
 import { Content } from '../../types/content';
 import { PostType } from '../../types/post';
+import { PostResponse } from '../../types/posts';
 
 export default function Contents({
   dataPost,
@@ -18,7 +19,7 @@ export default function Contents({
   dataPost: Content[];
   dataList: Content[];
   dataMoney: Content[];
-  dataRecent: PostType[];
+  dataRecent: PostResponse;
 }) {
   return (
     <Card>

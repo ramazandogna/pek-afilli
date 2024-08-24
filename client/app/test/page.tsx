@@ -1,10 +1,10 @@
 import Date from '../../components/date';
 import FeaturedImage from '../../components/image/featuredImage';
-import getAllPosts from '../../lib/getAllPosts';
+import getPostList from '../../lib/getAllPosts';
 import { PostNode } from '../../types/posts';
 
 export default async function Test() {
-  const posts = await getAllPosts();
+  const posts = await getPostList();
   return (
     <div>
       <h1>Posts</h1>
