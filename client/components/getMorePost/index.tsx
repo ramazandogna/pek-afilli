@@ -1,8 +1,8 @@
 'use client';
 import { useState } from 'react';
-import { PostNode, PostResponse } from '../../types/posts';
+import { PostResponse } from '../../types/posts';
 import { ThreeDot } from '../../public/icons/threeDot';
-import getPostList from '../../lib/getAllPosts';
+import getAllPosts from '../../lib/getAllPosts';
 
 export default function GetMorePost({
   contents,
@@ -21,7 +21,7 @@ export default function GetMorePost({
 
     setPostsLoading(true);
     console.log('contents', contents);
-    const morePost = await getPostList(contents.pageInfo.endCursor);
+    const morePost = await getAllPosts(contents.pageInfo.endCursor);
 
     let updatePosts: PostResponse = {
       pageInfo: {

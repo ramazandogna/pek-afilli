@@ -1,40 +1,40 @@
 {
-    "name": "pek-afilli",
-    "version": "0.1.0",
-    "private": true,
-    "scripts": {
-        "dev": "next dev -H 0.0.0.0",
-        "build": "next build",
-        "start": "next start",
-        "lint": "next lint && pnpm run type-check",
-        "type-check": "tsc --noEmit",
-        "format": "prettier --write ."
-    },
-    "dependencies": {
-        "axios": "^1.7.2",
-        "date-fns": "^3.6.0",
-        "framer-motion": "^11.3.12",
-        "html-react-parser": "^5.1.12",
-        "next": "^14.2.4",
-        "optional": "^0.1.4",
-        "plaiceholder": "^3.0.0",
-        "react": "^18.3.1",
-        "react-dom": "^18.3.1",
-        "sharp": "^0.33.5"
-    },
-    "type": "module",
-    "devDependencies": {
-        "@types/node": "^20.14.9",
-        "@types/react": "^18.3.3",
-        "@types/react-dom": "^18.3.0",
-        "@typescript-eslint/eslint-plugin": "^8.2.0",
-        "@typescript-eslint/parser": "^8.2.0",
-        "eslint": "^8.57.0",
-        "eslint-config-next": "14.2.3",
-        "postcss": "^8.4.38",
-        "prettier": "^3.3.2",
-        "prettier-plugin-tailwindcss": "^0.5.14",
-        "tailwindcss": "^3.4.4",
-        "typescript": "^5.5.2"
-    }
+  "name": "pek-afilli",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev -H 0.0.0.0",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint && pnpm run type-check",
+    "type-check": "tsc --noEmit",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "axios": "^1.7.2",
+    "date-fns": "^3.6.0",
+    "framer-motion": "^11.3.12",
+    "html-react-parser": "^5.1.12",
+    "next": "^14.2.4",
+    "optional": "^0.1.4",
+    "plaiceholder": "^3.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sharp": "^0.33.5"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@types/node": "^20.14.9",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@typescript-eslint/eslint-plugin": "^8.2.0",
+    "@typescript-eslint/parser": "^8.2.0",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.3",
+    "postcss": "^8.4.38",
+    "prettier": "^3.3.2",
+    "prettier-plugin-tailwindcss": "^0.5.14",
+    "tailwindcss": "^3.4.4",
+    "typescript": "^5.5.2"
+  }
 }

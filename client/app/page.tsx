@@ -6,6 +6,7 @@ import Header from '../components/header/index';
 //helpers
 import { fetchPosts } from '../helpers/apis/fetchs';
 import getAllPosts from '../lib/getAllPosts';
+import { getCategoryDetails } from '../lib/getCategoryDetails';
 
 export default async function Home() {
   const getListPost = async () => {
@@ -38,26 +39,19 @@ export default async function Home() {
     }
   };
 
-  const getRecentPost = async () => {
-    try {
-      const posts = await fetchPosts();
-      return posts;
-    } catch (error) {
-      console.error('Veri getirme hatası:', error);
-      return [];
-    }
-  };
+  const dataPost = await getAllPosts('', { key: 'categoryName', value: 'destinations' }, 4);
+  const dataSlider = await getAllPosts('', { key: 'categoryName', value: 'activities' }, 4);
+  const dataMoney = await getAllPosts('', { key: 'categoryName', value: 'activities' }, 4);
+  const dataList = await getAllPosts('', { key: 'categoryName', value: 'inspiration' }, 6);
+  console.log('dataList:', dataList);
   const dataRecent = await getAllPosts();
-  const dataPost = await getPopularPost();
-  const dataList = await getListPost();
-  const dataMoney = await getMoneyPost();
-  //   const dataRecent = await getRecentPost();
   return (
     <main>
       <Header />
 
       <div className="width-container section">
         <Contents
+          dataSlider={dataSlider}
           dataList={dataList}
           dataMoney={dataMoney}
           dataPost={dataPost}

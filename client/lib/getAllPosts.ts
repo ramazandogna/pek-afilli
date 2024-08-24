@@ -1,13 +1,14 @@
 import { PostResponse } from '../types/posts';
 import graphqlRequest from './graphqlRequest';
-export default async function getPostList(
+export default async function getAllPosts(
   endCursor = '',
-  taxonomy: { key: string; value: string } | null = null
+  taxonomy: { key: string; value: string } | null = null,
+  howMany = 5
 ) {
-  let condition = `after: "${endCursor || ''}", first: 5, where: {orderby: {field: DATE, order: DESC}}`;
+  let condition = `after: "${endCursor || ''}", first: ${howMany}, where: {orderby: {field: DATE, order: DESC}}`;
 
   if (taxonomy) {
-    condition = `after: "${endCursor}", first: 5, where: {orderby: {field: DATE, order: DESC}, ${taxonomy.key}: "${taxonomy.value}"}`;
+    condition = `after: "${endCursor}", first: ${howMany}, where: {orderby: {field: DATE, order: DESC}, ${taxonomy.key}: "${taxonomy.value}"}`;
   }
 
   const query = {

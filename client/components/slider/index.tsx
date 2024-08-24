@@ -7,25 +7,25 @@ import Link from 'next/link';
 import styles from './slider.module.css';
 //helpers
 import { formatTitle } from '../../helpers/functions';
-import images from '../../helpers/slider/images';
 import { Eye } from '../../public/icons/eye';
 import { Right } from '../../public/icons/right';
 import { Left } from '../../public/icons/left';
 //components
 import { motion } from 'framer-motion';
+import { PostResponse } from '../../types/posts';
 
-export default function Slider() {
+export default function Slider({ posts }: { posts: PostResponse }) {
   const [currentImage, setCurrentImage] = useState(0);
-  const image = images[currentImage];
+  const image = posts.nodes[currentImage];
   const [fade, setFade] = useState(false);
 
   const nextImage = () => {
-    const maxImages = images.length - 1;
+    const maxImages = posts.nodes.length - 1;
     currentImage < maxImages ? setCurrentImage(currentImage + 1) : setCurrentImage(0);
   };
 
   const prevImage = () => {
-    const maxImages = images.length - 1;
+    const maxImages = posts.nodes.length - 1;
     setTimeout(() => {
       currentImage > 0 ? setCurrentImage(currentImage - 1) : setCurrentImage(maxImages);
       setFade(false);
@@ -39,7 +39,7 @@ export default function Slider() {
   useEffect(() => {
     const interval = setInterval(() => {
       nextImage();
-    }, 5000);
+    }, 7500);
 
     return () => clearInterval(interval);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -48,18 +48,19 @@ export default function Slider() {
     <div className={styles.sliderWrapper}>
       <Link href={formatTitle(image.title)}>
         <motion.span
-          key={image.src}
+          key={image.slug}
           initial={{ opacity: 0.75 }}
           animate={{ opacity: 0.95 }}
           transition={{ ease: 'easeInOut', duration: 0.75 }}
+          className="relative flex h-[359px] min-h-[359px] w-full overflow-hidden rounded"
         >
           <Image
-            className="h-auto w-full max-w-full rounded bg-cover bg-center duration-500 ease-in-out"
-            src={image.src}
-            alt={image.alt}
+            className="h-auto w-full max-w-full rounded  duration-500 ease-in-out"
+            src={image.featuredImage.node.mediaDetails.sizes[0].sourceUrl}
+            alt={image.featuredImage.node.altText}
             priority
-            width={1000}
-            height={500}
+            width={718}
+            height={359}
             onDragStart={onDragStart}
           />
         </motion.span>
@@ -73,10 +74,10 @@ export default function Slider() {
           <h3 className="rounded bg-[#00000030] px-2 py-[2px] text-[22px] font-bold md:text-[32px]">
             {image.title}
           </h3>
-          <span className="flex items-center gap-[4px] text-[13px]">
+          {/* <span className="flex items-center gap-[4px] text-[13px]">
             <Eye />
             {image.view}
-          </span>
+          </span> */}
         </motion.div>
       </Link>
 

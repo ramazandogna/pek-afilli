@@ -8,13 +8,12 @@ import BreadCrumb from '../../../components/breadCrumb';
 import CategoriesSection from '../../../components/content/categoriesSection';
 import HeroSection from '../../../components/category/heroSection';
 import { getCategorySlugs } from '../../../lib/getCategorySlugs';
-import getPostList from '../../../lib/getAllPosts';
+import getAllPosts from '../../../lib/getAllPosts';
 import { getCategoryDetails } from '../../../lib/getCategoryDetails';
 
 export default async function page({ params }: { params: { category: string } }) {
-  const { category: slug } = params;
   const slugs = await getCategorySlugs({ name: params.category });
-  const categoryPost = await getPostList('', { key: 'categoryName', value: params.category });
+  const categoryPost = await getAllPosts('', { key: 'categoryName', value: params.category }, 6);
   const categoryDetails = await getCategoryDetails(params.category);
 
   const isValidSlug = slugs.some((s: { slug: string }) => params.category.includes(s.slug));
