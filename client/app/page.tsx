@@ -43,7 +43,6 @@ export default async function Home() {
   const dataSlider = await getAllPosts('', { key: 'categoryName', value: 'activities' }, 4);
   const dataMoney = await getAllPosts('', { key: 'categoryName', value: 'activities' }, 4);
   const dataList = await getAllPosts('', { key: 'categoryName', value: 'inspiration' }, 6);
-  console.log('dataList:', dataList);
   const dataRecent = await getAllPosts();
   return (
     <main>

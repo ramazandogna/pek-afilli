@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Yorum oluşturma işlemi
-    const result = await createComment({body});
+    const result = await createComment({ body });
 
     // Hatanın kaynağını bulmak için günlük ekleyin
     console.log('GraphQL Response:', result);

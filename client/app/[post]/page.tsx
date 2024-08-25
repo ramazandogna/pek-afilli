@@ -29,7 +29,6 @@ export default async function PostPage({ params }: { params: { post: string } })
   const slugs = await getPostSlug({ name: params.post });
 
   const { comments, commentCount } = await getComments(params.post);
-  console.log('comments', comments, commentCount);
 
   const isValidSlug = slugs.some((s: { slug: string }) => params.post.includes(s.slug));
 

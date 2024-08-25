@@ -20,7 +20,6 @@ export default function GetMorePost({
     if (postsLoading || noMorePost) return;
 
     setPostsLoading(true);
-    console.log('contents', contents);
     const morePost = await getAllPosts(contents.pageInfo.endCursor);
 
     let updatePosts: PostResponse = {
@@ -32,7 +31,6 @@ export default function GetMorePost({
       },
       nodes: []
     };
-    console.log(morePost, 'morePost');
     updatePosts.pageInfo = morePost.pageInfo;
 
     contents.nodes.map((node) => {

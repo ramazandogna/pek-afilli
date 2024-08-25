@@ -5,8 +5,8 @@ export async function createComment({
 }: {
   body: { author: string; authorEmail: string; postId: string; content: string };
 }) {
-    const mutation = {
-        query: `mutation createComment(
+  const mutation = {
+    query: `mutation createComment(
             $author: String = "${body.author}",
             $authorEmail: String = "${body.authorEmail}",
             $clientMutationId: String = "uniqueId",
@@ -25,9 +25,9 @@ export async function createComment({
               success
             }
           }`
-    };
+  };
 
-    const resJson = await graphqlRequest(mutation);
+  const resJson = await graphqlRequest(mutation);
 
-    return resJson;
+  return resJson;
 }
