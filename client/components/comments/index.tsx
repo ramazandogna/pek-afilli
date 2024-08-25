@@ -17,6 +17,7 @@ export default function Comments({
   comments,
   commentCount,
   slug
+  
 }: {
   comments: CommentsResponse;
   commentCount: number;

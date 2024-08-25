@@ -40,18 +40,6 @@ export default async function PostPage({ params }: { params: { post: string } })
     notFound();
   }
 
-  //   const getComments = async (): Promise<CommentsType> => {
-  //     try {
-  //       const comments = await fetchComments();
-  //       const commentsLength = comments.length;
-  //       return { comments: comments, commentsLength };
-  //     } catch (error) {
-  //       console.error('Veri getirme hatası:', error);
-  //       throw error;
-  //     }
-  //   };
-
-  //   const comments = await getComments();
   const categorieList: string[] = post.categories.nodes
     .map((category) => category?.name)
     .filter((name): name is string => name !== undefined);
@@ -94,12 +82,7 @@ export default async function PostPage({ params }: { params: { post: string } })
         <WriteComment postId={post.databaseId} />
       </Card>
       <Card className="my-4 bg-gray-100 p-4">
-        <Comments
-          comments={comments}
-          commentCount={commentCount}
-          slug={post.slug}
-          pageInfo={comments.pageInfo}
-        />
+        <Comments comments={comments} commentCount={commentCount} slug={post.slug} />
       </Card>
     </main>
   );
