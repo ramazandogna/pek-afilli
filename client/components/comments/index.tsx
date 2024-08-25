@@ -22,7 +22,6 @@ export default function Comments({
   commentCount: number;
   slug: string;
 }) {
-  console.log(comments);
   const [allComments, setAllComments] = useState<CommentNode[]>(comments.nodes);
 
   const CommentDate = ({ date }: { date: string }) => {

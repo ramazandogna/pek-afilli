@@ -28,7 +28,6 @@ export default function WriteComment({ postId }: { postId: number }) {
     };
 
     const jsonData = JSON.stringify(data);
-    console.log(jsonData);
 
     const response = await fetch('/api/comment', {
       method: 'POST',

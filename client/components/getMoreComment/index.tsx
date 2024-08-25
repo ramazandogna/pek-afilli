@@ -25,11 +25,11 @@ export default function GetMoreComment({
     setCommentsLoading(true);
 
     try {
-      const morePost = await getComments(slug, currentPageInfo.endCursor);
+      // `startCursor` kullanarak yeni yorumları al
+      const morePost = await getComments(slug, currentPageInfo.startCursor);
 
       // Güncellenmiş yorumları birleştir
       const updatedComments = [...comments, ...morePost.comments.nodes];
-
       // Güncellenmiş pageInfo'yu kullan
       setComments(updatedComments);
       setCurrentPageInfo(morePost.comments.pageInfo);
