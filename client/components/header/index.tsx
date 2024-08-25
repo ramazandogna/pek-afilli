@@ -13,6 +13,7 @@ import { Close } from '../../public/icons/close';
 import { Search } from '../../public/icons/search';
 import { SignIn, SignUp } from '../../public/icons/sign';
 import { Down } from '../../public/icons/down';
+import HeaderInput from '../input/headerInput';
 
 export default function Header() {
   const [menuFixed, setMenuFixed] = useState(false);
@@ -52,17 +53,7 @@ export default function Header() {
                     <Linkedin className={styles.icon} />
                   </div>
                 </div>
-                <div className={styles.inputWrapper}>
-                  <input
-                    type="text"
-                    placeholder="Search in the site.."
-                    className={`${styles.searchInput} h-[30px] w-[200px]  `}
-                  />
-                  <div className="absolute right-[6px] top-[50%] flex h-[65%] -translate-y-[50%] items-center gap-[6px]">
-                    <div className="h-full border-[0.35px] border-[#00000060]"></div>
-                    <Search className={styles.inputIcon} />
-                  </div>
-                </div>
+                <HeaderInput />
               </div>
               <div className="ml-auto flex w-[225px] gap-1">
                 <Link href="/auth/login" className={`${styles.topRightSignIn} backgroundContent`}>

@@ -20,22 +20,6 @@
   @apply m-auto flex h-[25px] w-[25px] p-[2px] transition-all;
 }
 
-.inputWrapper {
-  @apply relative cursor-pointer;
-}
-
-.inputWrapper:hover .inputIcon {
-  @apply rotate-3 scale-[105%] opacity-100;
-}
-
-.searchInput {
-  @apply rounded-[49px] border-0 bg-[#cccccc60] pl-[16px] text-[13px] focus:outline-none;
-}
-
-.searchInput::placeholder {
-  @apply text-black/60;
-}
-
 .topRightSignIn {
   @apply flex grow cursor-pointer items-center justify-end gap-[8px] rounded px-[8px] py-[4px] text-white  opacity-95 transition-all;
 }

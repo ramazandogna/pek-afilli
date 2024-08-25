@@ -1,0 +1,15 @@
+.inputWrapper {
+  @apply relative cursor-pointer;
+}
+
+.inputWrapper:hover .inputIcon {
+  @apply rotate-3 scale-[105%] opacity-100;
+}
+
+.searchInput {
+  @apply rounded-[49px] border-0 bg-[#cccccc60] pl-[16px] text-[13px] focus:outline-none;
+}
+
+.searchInput::placeholder {
+  @apply text-black/60;
+}
