@@ -20,6 +20,7 @@ export default async function getAllPosts(
           date
           slug
           excerpt
+          databaseId
           featuredImage {
             node {
               mediaDetails {

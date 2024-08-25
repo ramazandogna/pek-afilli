@@ -1,11 +1,30 @@
-export type Comment = {
-  id: number;
-  name: number;
-  email: string;
-  body: string;
-};
+export interface CommentAuthorNode {
+    name: string;
+}
 
-export interface CommentsType {
-  comments: Comment[]; // Sınırlı sayıdaki yorumlar
-  commentsLength: number; // Toplam}
+export interface CommentNode {
+    content: string;
+    author: {
+        node: CommentAuthorNode;
+    };
+    date: string;
+    parentId: number | null; // Assuming parentId can be null
+    id: string;
+}
+
+export interface CommentsResponse {
+    nodes: CommentNode[];
+    pageInfo: PageInfo;
+}
+
+export interface PostComments {
+    comments: CommentsResponse;
+    commentCount: number;
+}
+
+export interface PageInfo {
+    hasNextPage: boolean;
+    hasPreviousPage: boolean;
+    endCursor: string;
+    startCursor: string;
 }

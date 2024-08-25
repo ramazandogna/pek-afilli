@@ -9,6 +9,7 @@ export async function getSinglePost(slug: any) {
           modified
           slug
           title(format: RENDERED)
+          databaseId
           featuredImage {
             node {
               mediaDetails {

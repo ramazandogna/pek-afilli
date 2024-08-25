@@ -32,6 +32,7 @@ export interface FeaturedImage {
 export interface PostType {
   content: string;
   modified: string;
+  databaseId: number;
   slug: string;
   title: string;
   featuredImage: FeaturedImage;

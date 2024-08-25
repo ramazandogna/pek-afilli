@@ -14,8 +14,8 @@ import RelatedContent from '../../layouts/contents/relatedContent';
 import { fetchComments, fetchPosts } from '../../helpers/apis/fetchs';
 //types
 import { Content } from '../../types/content';
-import { CommentsType } from '../../types/comments';
 import { getSinglePost } from '../../lib/getSinglePost';
+import { getComments } from '../../lib/getComments';
 import { CategoryNode } from '../../types/posts';
 import type { PostType } from '../../types/post';
 //query
@@ -28,6 +28,9 @@ export default async function PostPage({ params }: { params: { post: string } })
   const post: PostType = await getSinglePost(slug);
   const slugs = await getPostSlug({ name: params.post });
 
+  const { comments, commentCount } = await getComments(params.post);
+  console.log('comments', comments, commentCount);
+
   const isValidSlug = slugs.some((s: { slug: string }) => params.post.includes(s.slug));
 
   if (!isValidSlug) {
@@ -38,18 +41,18 @@ export default async function PostPage({ params }: { params: { post: string } })
     notFound();
   }
 
-  const getComments = async (): Promise<CommentsType> => {
-    try {
-      const comments = await fetchComments();
-      const commentsLength = comments.length;
-      return { comments: comments, commentsLength };
-    } catch (error) {
-      console.error('Veri getirme hatası:', error);
-      throw error;
-    }
-  };
+  //   const getComments = async (): Promise<CommentsType> => {
+  //     try {
+  //       const comments = await fetchComments();
+  //       const commentsLength = comments.length;
+  //       return { comments: comments, commentsLength };
+  //     } catch (error) {
+  //       console.error('Veri getirme hatası:', error);
+  //       throw error;
+  //     }
+  //   };
 
-  const comments = await getComments();
+  //   const comments = await getComments();
   const categorieList: string[] = post.categories.nodes
     .map((category) => category?.name)
     .filter((name): name is string => name !== undefined);
@@ -89,10 +92,15 @@ export default async function PostPage({ params }: { params: { post: string } })
         <RelatedContent relatedPosts={relatedPosts} />
       </Card>
       <Card className="my-4 bg-gray-100 p-4">
-        <WriteComment />
+        <WriteComment postId={post.databaseId} />
       </Card>
       <Card className="my-4 bg-gray-100 p-4">
-        <Comments comments={comments.comments} />
+        <Comments
+          comments={comments}
+          commentCount={commentCount}
+          slug={post.slug}
+          pageInfo={comments.pageInfo}
+        />
       </Card>
     </main>
   );
