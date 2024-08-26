@@ -40,7 +40,17 @@ export interface PostType {
   categories: Categories;
   date: string;
   excerpt: string;
+  author: Author;
 }
+
+export interface AuthorNode {
+    name: string;
+  }
+
+  export interface Author {
+    node: AuthorNode;
+  }
+
 
 // GraphQL response type
 export interface GetSinglePostResponse {

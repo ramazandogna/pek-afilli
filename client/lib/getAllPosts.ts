@@ -20,6 +20,11 @@ export default async function getAllPosts(
           date
           slug
           excerpt
+          author {
+           node {
+            name
+           }
+          }
           databaseId
           featuredImage {
             node {

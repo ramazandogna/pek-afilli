@@ -3,31 +3,25 @@ import { notFound } from 'next/navigation';
 //components > Lazy Import
 const Comments = dynamic(() => import('../../components/comments'));
 const WriteComment = dynamic(() => import('../../components/writeComment'));
-const HeroSection = dynamic(() => import('../../components/content/heroSection'));
 const CategoriesSection = dynamic(() => import('../../components/content/categoriesSection'));
+const RelatedContent = dynamic(() => import('../../layouts/contents/relatedContent'));
 //components > Normal Import
 import Card from '../../components/card';
 import Post from '../../components/content/post';
-//layouts
-import RelatedContent from '../../layouts/contents/relatedContent';
-//mock
-import { fetchComments, fetchPosts } from '../../helpers/apis/fetchs';
+import HeroSection from '../../components/content/heroSection';
 //types
-import { Content } from '../../types/content';
+import type { PostType } from '../../types/post';
+import { CategoryNode } from '../../types/posts';
+//query
 import { getSinglePost } from '../../lib/getSinglePost';
 import { getComments } from '../../lib/getComments';
-import { CategoryNode } from '../../types/posts';
-import type { PostType } from '../../types/post';
-//query
 import getPostSlug from '../../lib/getPostSlugs';
 import getAllPosts from '../../lib/getAllPosts';
-import getRelatedPosts from '../../lib/gerRelatedPosts';
 
 export default async function PostPage({ params }: { params: { post: string } }) {
   const { post: slug } = params;
   const post: PostType = await getSinglePost(slug);
   const slugs = await getPostSlug({ name: params.post });
-
   const { comments, commentCount } = await getComments(params.post);
 
   const isValidSlug = slugs.some((s: { slug: string }) => params.post.includes(s.slug));
@@ -50,27 +44,32 @@ export default async function PostPage({ params }: { params: { post: string } })
     2
   );
   const categories = post.categories.nodes as CategoryNode[];
-  const views = 2000;
 
   const words = post.content
     .replace(/<\/?[^>]+(>|$)/g, ' ') // HTML etiketlerini temizle
     .trim() // Başındaki ve sonundaki boşlukları temizle
     .split(/\s+/); // Metni kelimelere ayır
 
-  const wordCount = words.length; // Toplam kelime sayısını al
-  const readTime = Math.ceil(wordCount / 200); // Okuma süresini hesapla (200 kelime/dakika)
+  const wordCount = words.length;
+  //props
+  const readTime = Math.ceil(wordCount / 200);
   const postTitle = post.title;
+  const author = post.author.node;
+  const category = post.categories.nodes[0] as CategoryNode;
+  const commentsCount = post.commentCount;
+  const featuredImage = post.featuredImage;
+  const date = post.modified;
   return (
     <main className="min-h-[100vh]">
       <Card className="my-4 bg-gray-100 p-4">
         <HeroSection
           title={postTitle}
-          image={post.featuredImage}
+          image={featuredImage}
           readTime={readTime}
-          views={views}
-          comments={post.commentCount}
-          category={post.categories.nodes[0] as CategoryNode}
-          date={post.date}
+          comments={commentsCount}
+          category={category}
+          date={date}
+          author={author}
         />
         <Post post={post.content} />
         <CategoriesSection categories={categories} />

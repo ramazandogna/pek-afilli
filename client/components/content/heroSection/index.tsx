@@ -7,20 +7,20 @@ import BreadCrumb from '../../../components/breadCrumb';
 import { formatDate, unFormatTitle } from '../../../helpers/functions';
 //types
 import { ImageType } from '../../../types/content';
-import { Hot, Popular, Trending } from '../../../public/icons/hot';
 import { Comments } from '../../../public/icons/comments';
 import { Eye } from '../../../public/icons/eye';
 import { Read } from '../../../public/icons/read';
 import Link from 'next/link';
-import { FeaturedImage } from '../../../types/post';
-import { CategoryNode } from '../../../types/posts';
+import { Author, FeaturedImage } from '../../../types/post';
+import { AuthorNode, CategoryNode } from '../../../types/posts';
 import HeroImage from '../../image/heroImage';
+import { Pencil } from '../../../public/icons/pencil';
 
 export default function HeroSection({
   title,
   image,
   comments,
-  views,
+  author,
   readTime,
   category,
   date
@@ -28,16 +28,24 @@ export default function HeroSection({
   title: string;
   image: FeaturedImage;
   comments?: number;
-  views?: number;
   readTime: number;
   category: CategoryNode;
   date: string;
+  author: AuthorNode;
 }) {
-  const today = new Date();
-  const time = date;
+  const formatDateToLong = (dateString: string) => {
+    const date = new Date(dateString);
+    return new Intl.DateTimeFormat('tr-TR', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    }).format(date);
+  };
+
+  const time = formatDateToLong(date);
   return (
     <div className="flex flex-col gap-[8px]">
-      <div className="flex h-[358px] w-full overflow-hidden">
+      <div className="flex w-full overflow-hidden md:h-[358px]">
         <HeroImage
           src={image.node.mediaDetails.sizes[0].sourceUrl}
           alt={image.node.mediaDetails.sizes[0].sourceUrl}
@@ -48,61 +56,28 @@ export default function HeroSection({
 
       <BreadCrumb name={category.name} link={`/category/${category.slug}`} />
 
-      <div className="flex text-[13px]">
-        {views && views >= 10000 ? (
-          <Link
-            className="flex cursor-pointer items-center justify-center gap-[4px] rounded bg-[#f11e1e] px-[8px] py-[4px] text-white shadow-sm"
-            href="#h2"
-          >
-            <Hot /> Hot
-          </Link>
-        ) : views && views >= 5000 ? (
-          <Link
-            className="flex cursor-pointer items-center justify-center gap-[4px] rounded bg-[#FF5733] px-[8px] py-[4px] text-white shadow-sm"
-            href="#h2"
-          >
-            <Trending /> Trend
-          </Link>
-        ) : views && views >= 2000 ? (
-          <Link
-            className="flex cursor-pointer items-center justify-center gap-[4px] rounded bg-[#FFC000] px-[8px] py-[4px] shadow-sm"
-            href="#h2"
-          >
-            <Popular />
-            Popular
-          </Link>
-        ) : null}
-      </div>
-
       <h2 id="h2" className=" text-[24px] font-bold">
         {title}
       </h2>
-      <div className="mb-[20px] flex flex-col gap-[8px] text-[12px] md:flex-row md:gap-0">
+      <div className="mb-[20px] flex flex-row  gap-[8px] text-[12px] md:gap-0">
         <div className="flex items-center gap-[8px]">
-          <span className="hidden font-bold md:flex"> &#183;</span>
-          {time}
+          <span className="flex items-center gap-[4px]">
+            <Pencil />
+            <span>{author.name}</span>
+          </span>
+          <span className="flex items-center gap-[4px]">
+            <span className="hidden font-bold md:flex"> &#183;</span>
+            {time}
+          </span>
         </div>
-        <div className="flex items-center gap-[12px] md:ml-auto">
+        <div className="ml-auto flex items-center gap-[12px]">
           <Link href="#1" className="flex items-center  gap-[4px]">
             <Comments />
             {comments ? comments : 0}
           </Link>
-          <span
-            className={`
-            ${
-              views && views >= 10000
-                ? 'text-[#f11e1e]'
-                : views && views >= 5000
-                  ? 'text-[#FF5733]'
-                  : 'text-[#333]'
-            }
-            flex items-center  gap-[4px]`}
-          >
-            <Eye />
-            <span>{views ? views : 0} Okuma</span>
-          </span>
+
           <span className="flex items-center  gap-[4px]">
-            <Read></Read>
+            <Read />
             <span>{readTime ? readTime : 0} dakika okuma süresi</span>
           </span>
         </div>

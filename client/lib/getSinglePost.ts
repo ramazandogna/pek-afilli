@@ -31,6 +31,11 @@ export async function getSinglePost(slug: any) {
           }
           date
           excerpt(format: RENDERED)
+          author {
+           node {
+            name
+           }
+          }
         }
       }`
   };

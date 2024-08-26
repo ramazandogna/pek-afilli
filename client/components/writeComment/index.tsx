@@ -3,17 +3,18 @@ import { useState, ChangeEvent, FormEvent } from 'react';
 import { ThreeDot } from '../../public/icons/threeDot';
 import { Check } from '../../public/icons/check';
 import { motion } from 'framer-motion';
+import { Coffee } from '../../public/icons/coffe';
 
 export default function WriteComment({ postId }: { postId: number }) {
   const [author, setAuthor] = useState('');
   const [authorEmail, setAuthorEmail] = useState('');
   const [content, setContent] = useState('');
-  const [id, setId] = useState('');
 
   const [collectEmail, setCollectEmail] = useState(false);
   const [commentOpen, setCommentOpen] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false);
   const [mailSending, setMailSending] = useState(false);
+  const [mailSend, setMailSend] = useState(false);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -33,15 +34,16 @@ export default function WriteComment({ postId }: { postId: number }) {
       method: 'POST',
       body: JSON.stringify(data)
     });
+    setMailSending(false);
     const result = await response.json();
-
     setTimeout(() => {
       if (isFormValid) {
         setIsFormValid(false);
         setMailSending(false);
         setCommentOpen(false);
       }
-    }, 1500);
+      setMailSend(true);
+    }, 500);
 
     return result;
   };
@@ -54,12 +56,19 @@ export default function WriteComment({ postId }: { postId: number }) {
     );
   }
 
+  if (mailSend) {
+    <div className="absolute inset-0 bg-green-400">
+      <Coffee />
+    </div>;
+  }
+
   return (
     <motion.div
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       whileInView="animate"
       viewport={{ once: true }}
+      className="relative"
     >
       {!commentOpen ? (
         <motion.div

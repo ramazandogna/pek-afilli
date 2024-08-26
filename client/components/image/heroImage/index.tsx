@@ -48,7 +48,6 @@ export default async function HeroImage({
       placeholder="blur"
       blurDataURL={base64}
       className="mx-auto overflow-hidden rounded object-cover transition-transform duration-500 ease-in-out hover:scale-105"
-      loading="lazy"
     />
   );
 }

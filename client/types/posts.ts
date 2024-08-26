@@ -31,8 +31,16 @@ export interface PostNode {
     nodes: CategoryNode[];
   };
   title: string;
+  author: Author;
 }
 
+export interface AuthorNode {
+    name: string;
+  }
+
+  export interface Author {
+    node: AuthorNode;
+  }
 export interface PageInfo {
   hasNextPage: boolean;
   hasPreviousPage: boolean;

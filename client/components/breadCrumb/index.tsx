@@ -27,14 +27,14 @@ export default function BreadCrumb({ link, name }: { link?: string; name?: strin
               {name}
             </span>
           </Link>
-          <span className="text-slate-500"> / </span>
+          {/* <span className="text-slate-500"> / </span> */}
         </>
       )}
-      <Link href={pathName}>
+      {/* <Link href={pathName}>
         <span className="transition-color  text-slate-500 hover:text-slate-600">
           {unFormatTitle(pathNames[lastPath])}
         </span>
-      </Link>
+      </Link> */}
     </motion.div>
   );
 }
