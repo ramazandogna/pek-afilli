@@ -44,13 +44,12 @@ export interface PostType {
 }
 
 export interface AuthorNode {
-    name: string;
-  }
+  name: string;
+}
 
-  export interface Author {
-    node: AuthorNode;
-  }
-
+export interface Author {
+  node: AuthorNode;
+}
 
 // GraphQL response type
 export interface GetSinglePostResponse {

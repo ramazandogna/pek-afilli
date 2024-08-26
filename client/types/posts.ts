@@ -35,12 +35,12 @@ export interface PostNode {
 }
 
 export interface AuthorNode {
-    name: string;
-  }
+  name: string;
+}
 
-  export interface Author {
-    node: AuthorNode;
-  }
+export interface Author {
+  node: AuthorNode;
+}
 export interface PageInfo {
   hasNextPage: boolean;
   hasPreviousPage: boolean;
