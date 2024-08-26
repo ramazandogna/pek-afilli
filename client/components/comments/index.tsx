@@ -28,7 +28,6 @@ export default function Comments({
   const CommentDate = ({ date }: { date: string }) => {
     const formattedDate = formatDistanceToNow(parseISO(date), { addSuffix: true, locale: tr });
     const formattedDateTr = formattedDate.replace('yaklaşık ', '');
-
     return <div className="ml-auto text-[12px] text-[#60606060] md:ml-0">{formattedDateTr}</div>;
   };
 
