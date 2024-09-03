@@ -1,14 +1,15 @@
 import dynamic from 'next/dynamic';
 import { notFound } from 'next/navigation';
+import Head from 'next/head';
 //components > Lazy Import
 const Comments = dynamic(() => import('../../components/comments'));
+const CategoriesSection = dynamic(() => import('../../components/post/categoriesSection'));
+const RelatedContent = dynamic(() => import('../../sections/post/relatedContent'));
 const WriteComment = dynamic(() => import('../../components/writeComment'));
-const CategoriesSection = dynamic(() => import('../../components/content/categoriesSection'));
-const RelatedContent = dynamic(() => import('../../layouts/contents/relatedContent'));
 //components > Normal Import
 import Card from '../../components/card';
-import Post from '../../components/content/post';
-import HeroSection from '../../components/content/heroSection';
+import Post from '../../components/post/post';
+import HeroSection from '../../components/post/heroSection';
 //types
 import type { PostType } from '../../types/post';
 import { CategoryNode } from '../../types/posts';
@@ -17,6 +18,57 @@ import { getSinglePost } from '../../lib/getSinglePost';
 import { getComments } from '../../lib/getComments';
 import getPostSlug from '../../lib/getPostSlugs';
 import getAllPosts from '../../lib/getAllPosts';
+
+export async function generateMetadata({ params }: { params: { post: string } }) {
+  const { post: slug } = params;
+  const post: PostType = await getSinglePost(slug);
+
+  if (!post) {
+    return {};
+  }
+
+  const description = post.excerpt
+    ? post.excerpt.replace(/^<p>|<\/p>\n$/g, '').trim()
+    : post.content
+        .slice(0, 150)
+        .replace(/<\/?[^>]+(>|$)/g, '')
+        .trim();
+
+  const image = post.featuredImage.node.mediaDetails.sizes[0]?.sourceUrl || '/default-image.jpg';
+
+  return {
+    title: `${post.title} | Pek Afilli`,
+    description,
+    openGraph: {
+      title: post.title,
+      description,
+      image,
+      type: 'article'
+    },
+    icons: '/client/public/pek-afilli-favicon.svg',
+    canonical: `https://pekafilli.com/${slug}`,
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      headline: post.title,
+      image,
+      datePublished: post.date,
+      dateModified: post.modified,
+      author: {
+        '@type': 'Person',
+        name: post.author.node.name
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Pek Afilli',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://pekafilli.com/logo.jpg'
+        }
+      }
+    }
+  };
+}
 
 export default async function PostPage({ params }: { params: { post: string } }) {
   const { post: slug } = params;
@@ -59,8 +111,9 @@ export default async function PostPage({ params }: { params: { post: string } })
   const commentsCount = post.commentCount;
   const featuredImage = post.featuredImage;
   const date = post.modified;
+
   return (
-    <main className="min-h-[100vh]">
+    <main id="comments" className="min-h-[100vh]">
       <Card className="my-4 bg-gray-100 p-4">
         <HeroSection
           title={postTitle}
@@ -70,6 +123,7 @@ export default async function PostPage({ params }: { params: { post: string } })
           category={category}
           date={date}
           author={author}
+          slug={post.slug}
         />
         <Post post={post.content} />
         <CategoriesSection categories={categories} />
