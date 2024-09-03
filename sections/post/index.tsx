@@ -1,13 +1,11 @@
 //components
 import Card from '../../components/card';
 import Slider from '../../components/slider';
-//layouts
+//sections
 import FullContent from './fullContent';
 import ListContent from './listContent';
 import RecentContent from './recentContent';
 //types
-import { Content } from '../../types/content';
-import { PostType } from '../../types/post';
 import { PostResponse } from '../../types/posts';
 
 export default function Contents({

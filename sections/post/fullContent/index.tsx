@@ -3,11 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 //components
 import Card from '../../../components/card';
-//helpers
-import Images from '../../../helpers/slider/images';
-import { formatTitle, truncateText } from '../../../helpers/functions';
 //types
-import { Content } from '../../../types/content';
 import { LinkI } from '../../../public/icons/link';
 import { PostNode, PostResponse } from '../../../types/posts';
 

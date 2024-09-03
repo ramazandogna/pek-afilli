@@ -23,7 +23,8 @@ export default function HeroSection({
   author,
   readTime,
   category,
-  date
+  date,
+  slug
 }: {
   title: string;
   image: FeaturedImage;
@@ -32,6 +33,7 @@ export default function HeroSection({
   category: CategoryNode;
   date: string;
   author: AuthorNode;
+  slug: string;
 }) {
   const formatDateToLong = (dateString: string) => {
     const date = new Date(dateString);
@@ -54,7 +56,12 @@ export default function HeroSection({
         />
       </div>
 
-      <BreadCrumb name={category.name} link={`/category/${category.slug}`} />
+      <BreadCrumb
+        name={category.name}
+        slug={slug}
+        title={category.name}
+        link={`/category/${category.slug}`}
+      />
 
       <h2 id="h2" className=" text-[24px] font-bold">
         {title}

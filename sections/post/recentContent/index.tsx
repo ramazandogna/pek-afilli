@@ -5,19 +5,15 @@ import { useState } from 'react';
 import Image from 'next/image';
 //helper
 import images from '../../../helpers/slider/images';
-import { motion } from 'framer-motion';
 //components
 import Card from '../../../components/card';
-//types
-import { Content } from '../../../types/content';
-import { formatTitle } from '../../../helpers/functions';
 import { LinkI } from '../../../public/icons/link';
-import { ThreeDot } from '../../../public/icons/threeDot';
-import { fadeInAnimation } from '../../../helpers/animations/fadeInAnimations';
 import GetMorePost from '../../../components/getMorePost';
-import { PostType } from '../../../types/post';
+//types
 import { PostResponse } from '../../../types/posts';
-import FeaturedImage from '../../../components/image/featuredImage';
+//motion
+import { fadeInAnimation } from '../../../helpers/animations/fadeInAnimations';
+import { motion } from 'framer-motion';
 
 export default function RecentContent({ posts }: { posts: PostResponse }) {
   const [contents, setContents] = useState<PostResponse>(posts);

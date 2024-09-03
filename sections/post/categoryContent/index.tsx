@@ -1,15 +1,17 @@
 'use client';
+//next - react
 import React, { useState } from 'react';
-import { Content } from '../../../types/content';
-import Card from '../../../components/card';
 import Link from 'next/link';
-import { formatTitle } from '../../../helpers/functions';
-import { PostResponse } from '../../../types/posts';
-import { motion } from 'framer-motion';
-import { fadeInAnimation } from '../../../helpers/animations/fadeInAnimations';
 import Image from 'next/image';
-import { LinkI } from '../../../public/icons/link';
+//components
+import Card from '../../../components/card';
 import GetMorePost from '../../../components/getMorePost';
+import { LinkI } from '../../../public/icons/link';
+//types
+import { PostResponse } from '../../../types/posts';
+//motion
+import { fadeInAnimation } from '../../../helpers/animations/fadeInAnimations';
+import { motion } from 'framer-motion';
 
 export default function CategoryContent({
   posts,

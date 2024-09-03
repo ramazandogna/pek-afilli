@@ -2,10 +2,10 @@ import { notFound } from 'next/navigation';
 import React from 'react';
 import { getCategoryBySlug } from '../../../helpers/apis/getCategory';
 import Card from '../../../components/card';
-import CategoryContent from '../../../layouts/contents/categoryContent';
+import CategoryContent from '../../../sections/post/categoryContent';
 import { fetchPosts } from '../../../helpers/apis/fetchs';
 import BreadCrumb from '../../../components/breadCrumb';
-import CategoriesSection from '../../../components/content/categoriesSection';
+import CategoriesSection from '../../../components/post/categoriesSection';
 import HeroSection from '../../../components/category/heroSection';
 import { getCategorySlugs } from '../../../lib/getCategorySlugs';
 import getAllPosts from '../../../lib/getAllPosts';
@@ -29,7 +29,11 @@ export default async function page({ params }: { params: { category: string } })
   return (
     <main>
       <Card className="gap=[200px] flex flex-col p-0 md:p-[16px]">
-        <BreadCrumb />
+        <BreadCrumb
+          title={params.category}
+          slug={params.category}
+          name={categoryPost.nodes[0].title}
+        />
 
         <HeroSection category={categoryDetails} />
 
