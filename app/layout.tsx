@@ -6,6 +6,8 @@ import '../styles/tailwind.css';
 import '../styles/hoverElements.css';
 import '../styles/animates.css';
 import Head from 'next/head';
+import Header from '../components/header';
+import Footer from '../components/footer';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -37,7 +39,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Header />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
