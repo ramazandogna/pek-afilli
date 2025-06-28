@@ -24,7 +24,7 @@ export default function Modal({
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm ${className}`}
+      className={`fixed inset-0 z-[999999] flex items-center justify-center bg-black/50 backdrop-blur-sm ${className}`}
       onClick={onClose}
     >
       <div

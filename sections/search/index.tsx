@@ -16,6 +16,7 @@ export default function SearchModal({
 }: {
   query: string;
   open: boolean;
+
   onClose: () => void;
 }) {
   const [results, setResults] = useState<PostResponse | null>(null);
@@ -57,7 +58,7 @@ export default function SearchModal({
   if (loading) {
     return (
       <Modal isOpen={open} onClose={onClose}>
-        <Card className="flex h-[200px] items-center justify-center">
+        <Card className="flex h-[96%] w-full items-center justify-center py-12 text-center">
           <span className="animate-ping text-sm">Loading...</span>
         </Card>
       </Modal>
