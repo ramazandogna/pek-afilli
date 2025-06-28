@@ -1,11 +1,11 @@
-export default async function graphqlRequest(query: object) {
+export default async function graphqlRequest(query: string, variables?: object) {
   const url = 'https://wp.pekafilli.com/graphql';
   const headers = { 'Content-Type': 'application/json' };
 
   const res = await fetch(url, {
     method: 'POST',
     headers,
-    body: JSON.stringify(query)
+    body: JSON.stringify({ query, variables })
   });
 
   const resJson = await res.json();

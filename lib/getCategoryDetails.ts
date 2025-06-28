@@ -1,20 +1,18 @@
 import { CategoryDetails } from '../types/category';
 import graphqlRequest from './graphqlRequest';
 
-export async function getCategoryDetails(categoryName: string) {
-  const query = {
-    query: `query getCategoryDetails {
-        category(id: "${categoryName}", idType: SLUG) {
-          count
-          name
-          slug
-          description
-        }
-      }`
-  };
+const query = `
+  query getCategoryDetails($slug: ID!) {
+    category(id: $slug, idType: SLUG) {
+      count
+      name
+      slug
+      description
+    }
+  }
+`;
 
-  const resJson = await graphqlRequest(query);
-  const categoryDetails: CategoryDetails = resJson.data.category;
-
-  return categoryDetails;
+export async function getCategoryDetails(slug: string): Promise<CategoryDetails> {
+  const resJson = await graphqlRequest(query, { slug });
+  return resJson.data.category;
 }

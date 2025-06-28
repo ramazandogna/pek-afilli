@@ -7,23 +7,31 @@ export default async function getAllPosts(
   howMany = 5,
   search: string | null = null
 ) {
-  let condition = `after: "${endCursor || ''}", first: ${howMany}, where: {orderby: {field: DATE, order: DESC}, search: "${search || ''}"}`;
-
-  if (taxonomy) {
-    condition = `after: "${endCursor}", first: ${howMany}, where: {orderby: {field: DATE, order: DESC}, search: "${search || ''}", ${taxonomy.key}: "${taxonomy.value}"}`;
-  }
-
-  const query = {
-    query: `query getAllPosts {
-      posts(${condition}) {
+  const query = `
+    query getAllPosts(
+      $endCursor: String
+      $search: String
+      $categoryName: String
+      $tag: String
+    ) {
+      posts(
+        after: $endCursor
+        first: ${howMany}
+        where: {
+          orderby: { field: DATE, order: DESC }
+          search: $search
+          categoryName: $categoryName
+          tag: $tag
+        }
+      ) {
         nodes {
           date
           slug
           excerpt
           author {
-           node {
-            name
-           }
+            node {
+              name
+            }
           }
           databaseId
           featuredImage {
@@ -54,11 +62,37 @@ export default async function getAllPosts(
           startCursor
         }
       }
-    }`
+    }
+  `;
+
+  const variables: any = {
+    endCursor,
+    search
   };
 
-  const resJson = await graphqlRequest(query);
-  const allPosts: PostResponse = resJson.data.posts;
+  if (taxonomy?.key === 'categoryName') {
+    variables.categoryName = taxonomy.value;
+  }
 
-  return allPosts;
+  if (taxonomy?.key === 'tag') {
+    variables.tag = taxonomy.value;
+  }
+
+  const resJson = await graphqlRequest(query, variables);
+
+  // Hata kontrolü
+  if (!resJson?.data?.posts) {
+    console.error('❌ GraphQL response error in getAllPosts:', resJson);
+    return {
+      nodes: [],
+      pageInfo: {
+        endCursor: '',
+        hasPreviousPage: false,
+        hasNextPage: false,
+        startCursor: ''
+      }
+    };
+  }
+
+  return resJson.data.posts as PostResponse;
 }

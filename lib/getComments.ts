@@ -1,38 +1,39 @@
 import graphqlRequest from './graphqlRequest';
-import { PostComments, CommentsResponse } from '../types/comments';
+import { PostComments } from '../types/comments';
 
 export async function getComments(slug: string, startCursor: string = ''): Promise<PostComments> {
-  const condition = `id: "${slug}", idType: SLUG`;
-
-  const query = {
-    query: `query getComments {
-            post(${condition}) {
-              commentCount
-              comments(where: {parentIn: "", order: ASC, orderby: COMMENT_DATE}, first: 10, before: "${startCursor}") {
-                nodes {
-                  content
-                  author {
-                    node {
-                      name
-                    }
-                  }
-                  date
-                  parentId
-                  id
-                }
-                pageInfo {
-                  endCursor
-                  hasNextPage
-                  hasPreviousPage
-                  startCursor
-                }
+  const query = `
+    query getComments($slug: ID!, $before: String) {
+      post(id: $slug, idType: SLUG) {
+        commentCount
+        comments(where: {order: ASC, orderby: COMMENT_DATE}, first: 10, before: $before) {
+          nodes {
+            content
+            author {
+              node {
+                name
               }
             }
-          }`
+            date
+            parentId
+            id
+          }
+          pageInfo {
+            endCursor
+            hasNextPage
+            hasPreviousPage
+            startCursor
+          }
+        }
+      }
+    }
+  `;
+
+  const variables = {
+    slug,
+    before: startCursor || null
   };
 
-  const resJson = await graphqlRequest(query);
-  const post: PostComments = resJson.data.post;
-
-  return post;
+  const resJson = await graphqlRequest(query, variables);
+  return resJson.data.post as PostComments;
 }

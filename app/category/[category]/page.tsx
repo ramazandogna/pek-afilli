@@ -11,9 +11,10 @@ import Footer from '../../../components/footer';
 import Header from '../../../components/header';
 
 export const revalidate = 60;
+
 export async function generateStaticParams() {
-  const allSlugs = await getCategorySlugs({ name: '' });
-  return allSlugs.map((cat: { slug: string }) => ({ category: cat.slug }));
+  const slugs = await getCategorySlugs();
+  return slugs?.map((cat) => ({ category: cat.slug })) || [];
 }
 
 export async function generateMetadata({ params }: { params: { category: string } }) {
@@ -33,17 +34,20 @@ export async function generateMetadata({ params }: { params: { category: string 
       description: `${categoryDetails.name} kategorisine ait yazılar.`,
       type: 'website'
     },
-    canonical: `https://pekafilli.com/category/${params.category}`
+    alternates: {
+      canonical: `https://pekafilli.com/category/${params.category}`
+    },
+    metadataBase: new URL('https://pekafilli.com')
   };
 }
 
-export default async function page({ params }: { params: { category: string } }) {
-  const slugs = await getCategorySlugs({ name: params.category });
+export default async function CategoryPage({ params }: { params: { category: string } }) {
+  const slugs = await getCategorySlugs();
   const categoryDetails = await getCategoryDetails(params.category);
   const categoryPost = await getAllPosts('', { key: 'categoryName', value: params.category }, 6);
 
-  const isValidSlug = slugs.some((s: { slug: string }) => params.category.includes(s.slug));
-
+  const isValidSlug = slugs?.some((s) => params.category === s.slug);
+  console.log('isvalidSlug', isValidSlug, 'categoryDetails', categoryDetails);
   if (!isValidSlug || !categoryDetails) {
     notFound();
   }
@@ -57,7 +61,6 @@ export default async function page({ params }: { params: { category: string } })
             categoryLink={`/category/${categoryDetails.slug}`}
             categoryName={categoryDetails.name}
           />
-
           <HeroSection category={categoryDetails} />
           <CategoryContent params={params} posts={categoryPost} />
         </Card>

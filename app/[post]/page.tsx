@@ -17,14 +17,14 @@ import type { PostType } from '../../types/post';
 import { CategoryNode } from '../../types/posts';
 import { getSinglePost } from '../../lib/getSinglePost';
 import { getComments } from '../../lib/getComments';
-import getPostSlug from '../../lib/getPostSlugs';
+import { getPostSlugs } from '../../lib/getPostSlugs'; // Changed to named import
 import getAllPosts from '../../lib/getAllPosts';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
 
 export async function generateStaticParams() {
-  const slugs = await getPostSlug({ name: '' });
-  return slugs.map((post: { slug: string }) => ({ post: post.slug }));
+  const slugs = await getPostSlugs(); // parametre VERİLMEZ
+  return slugs?.map((post) => ({ post: post.slug })) || [];
 }
 
 export const dynamicParams = false;
@@ -66,10 +66,10 @@ export async function generateMetadata({
 
 export default async function PostPage({ params }: { params: { post: string } }) {
   const post: PostType = await getSinglePost(params.post);
-  const slugs = await getPostSlug({ name: params.post });
+  const slugs = await getPostSlugs(params.post);
   const { comments, commentCount } = await getComments(params.post);
 
-  const isValidSlug = slugs.some((s: { slug: string }) => params.post.includes(s.slug));
+  const isValidSlug = slugs?.some((s: { slug: string }) => params.post.includes(s.slug));
   if (!isValidSlug || !post) notFound();
 
   const categorieList: string[] = post.categories.nodes
