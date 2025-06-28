@@ -6,8 +6,29 @@ import { formatTitle } from '../../../helpers/functions';
 import images from '../../../helpers/slider/images';
 import { LinkI } from '../../../public/icons/link';
 import { PostNode, PostResponse } from '../../../types/posts';
+import { getPlaiceholder } from 'plaiceholder';
 
-export default function RelatedContent({ relatedPosts }: { relatedPosts: PostResponse }) {
+const SUPPORTED_IMAGE_FORMATS = ['.jpg', '.jpeg', '.png', '.webp', '.avif'];
+
+function isSupportedImageFormat(src: string) {
+  return SUPPORTED_IMAGE_FORMATS.some((ext) => src.toLowerCase().endsWith(ext));
+}
+
+export default async function RelatedContent({ relatedPosts }: { relatedPosts: PostResponse }) {
+  let base64: string | undefined;
+  const src = relatedPosts.nodes[0].featuredImage.node.mediaDetails.sizes[0].sourceUrl;
+  if (isSupportedImageFormat(src)) {
+    try {
+      const response = await fetch(src);
+      if (!response.ok) throw new Error(`Failed to fetch image: ${src}`);
+      const buffer = Buffer.from(await response.arrayBuffer());
+      const result = await getPlaiceholder(buffer);
+      base64 = result.base64;
+    } catch (error) {
+      console.warn('Could not generate blur placeholder:', error);
+    }
+  }
+
   return (
     <div>
       <h2 className="my-4 inline-flex border-b-[3px] border-[#0693e3] pb-3 text-[18px] font-bold text-[#0693e3] transition-all hover:border-[#0061b1] hover:text-[#0061b1]">
@@ -29,6 +50,8 @@ export default function RelatedContent({ relatedPosts }: { relatedPosts: PostRes
               <Image
                 src={post.featuredImage.node.mediaDetails.sizes[0].sourceUrl}
                 alt={post.featuredImage.node.altText}
+                placeholder={base64 ? 'blur' : 'empty'}
+                blurDataURL={base64}
                 loading="lazy"
                 fill
                 className="groupA-image rounded object-cover"

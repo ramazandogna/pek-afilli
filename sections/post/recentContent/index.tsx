@@ -56,7 +56,7 @@ export default function RecentContent({ posts }: { posts: PostResponse }) {
               href={post.slug}
               className="groupA relative flex h-[189px] min-h-[189px] items-start overflow-hidden  rounded md:w-[336px] md:min-w-[336px]"
             >
-              <div className="groupA-hover relative inset-0 z-[50]  bg-black/50">
+              <div className="groupA-hover absolute inset-0 z-[50]  bg-black/30">
                 <LinkI className=" absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[24px] text-[#d6d6d6]" />
               </div>
               <Image

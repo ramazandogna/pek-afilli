@@ -12,14 +12,18 @@ export default async function Home() {
   const dataRecent = await getAllPosts();
 
   return (
-    <main className="width-container section">
-      <Contents
-        dataSlider={dataSlider}
-        dataList={dataList}
-        dataMoney={dataMoney}
-        dataPost={dataPost}
-        dataRecent={dataRecent}
-      />
-    </main>
+    <>
+      <Header />
+      <main className="width-container section">
+        <Contents
+          dataSlider={dataSlider}
+          dataList={dataList}
+          dataMoney={dataMoney}
+          dataPost={dataPost}
+          dataRecent={dataRecent}
+        />
+      </main>
+      <Footer />
+    </>
   );
 }

@@ -7,8 +7,15 @@ import Card from '../../../components/card';
 import { DocumentI } from '../../../public/icons/document';
 import { LinkI } from '../../../public/icons/link';
 import { PostNode, PostResponse } from '../../../types/posts';
+import { getPlaiceholder } from 'plaiceholder';
 
-export default function ListContent({
+const SUPPORTED_IMAGE_FORMATS = ['.jpg', '.jpeg', '.png', '.webp', '.avif'];
+
+function isSupportedImageFormat(src: string) {
+  return SUPPORTED_IMAGE_FORMATS.some((ext) => src.toLowerCase().endsWith(ext));
+}
+
+export default async function ListContent({
   posts,
   categoryName,
   categoryLink
@@ -25,6 +32,20 @@ export default function ListContent({
         </div>
       </Card>
     );
+  }
+
+  let base64: string | undefined;
+  const src = posts.nodes[0].featuredImage.node.mediaDetails.sizes[0].sourceUrl;
+  if (isSupportedImageFormat(src)) {
+    try {
+      const response = await fetch(src);
+      if (!response.ok) throw new Error(`Failed to fetch image: ${src}`);
+      const buffer = Buffer.from(await response.arrayBuffer());
+      const result = await getPlaiceholder(buffer);
+      base64 = result.base64;
+    } catch (error) {
+      console.warn('Could not generate blur placeholder:', error);
+    }
   }
 
   const listPosts: PostNode[] = posts.nodes.slice(1, 4);
@@ -54,6 +75,8 @@ export default function ListContent({
             src={posts.nodes[0].featuredImage.node.mediaDetails.sizes[0].sourceUrl}
             alt={posts.nodes[0].featuredImage.node.altText}
             loading="lazy"
+            placeholder={base64 ? 'blur' : 'empty'}
+            blurDataURL={base64}
             fill
             className="groupA-image w-full object-cover md:w-[50%]"
           />
@@ -75,6 +98,8 @@ export default function ListContent({
                   src={post.featuredImage.node.mediaDetails.sizes[0].sourceUrl}
                   alt={post.featuredImage.node.altText}
                   loading="lazy"
+                  placeholder={base64 ? 'blur' : 'empty'}
+                  blurDataURL={base64}
                   fill
                   className="groupA-image w-full rounded object-cover md:w-[50%]"
                 />

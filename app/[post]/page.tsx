@@ -19,6 +19,8 @@ import { getSinglePost } from '../../lib/getSinglePost';
 import { getComments } from '../../lib/getComments';
 import getPostSlug from '../../lib/getPostSlugs';
 import getAllPosts from '../../lib/getAllPosts';
+import Header from '../../components/header';
+import Footer from '../../components/footer';
 
 export async function generateStaticParams() {
   const slugs = await getPostSlug({ name: '' });
@@ -89,30 +91,34 @@ export default async function PostPage({ params }: { params: { post: string } })
   const readTime = Math.ceil(wordCount / 200);
 
   return (
-    <main id="comments" className="width-container section min-h-[100vh]">
-      <Card className="my-4 bg-gray-100 p-4">
-        <HeroSection
-          title={post.title}
-          image={post.featuredImage}
-          readTime={readTime}
-          comments={commentCount}
-          category={post.categories.nodes[0] as CategoryNode}
-          date={post.modified}
-          author={post.author.node}
-          slug={post.slug}
-        />
-        <Post post={post.content} />
-        <CategoriesSection categories={categories} />
-      </Card>
-      <Card className="my-4 bg-gray-100 p-4">
-        <RelatedContent relatedPosts={relatedPosts} />
-      </Card>
-      <Card className="my-4 bg-gray-100 p-4">
-        <WriteComment postId={post.databaseId} />
-      </Card>
-      <Card className="my-4 bg-gray-100 p-4">
-        <Comments comments={comments} commentCount={commentCount} slug={post.slug} />
-      </Card>
-    </main>
+    <>
+      <Header />
+      <main id="comments" className="width-container section min-h-[100vh]">
+        <Card className="my-4 bg-gray-100 p-4">
+          <HeroSection
+            title={post.title}
+            image={post.featuredImage}
+            readTime={readTime}
+            comments={commentCount}
+            category={post.categories.nodes[0] as CategoryNode}
+            date={post.modified}
+            author={post.author.node}
+            slug={post.slug}
+          />
+          <Post post={post.content} />
+          <CategoriesSection categories={categories} />
+        </Card>
+        <Card className="my-4 bg-gray-100 p-4">
+          <RelatedContent relatedPosts={relatedPosts} />
+        </Card>
+        <Card className="my-4 bg-gray-100 p-4">
+          <WriteComment postId={post.databaseId} />
+        </Card>
+        <Card className="my-4 bg-gray-100 p-4">
+          <Comments comments={comments} commentCount={commentCount} slug={post.slug} />
+        </Card>
+      </main>
+      <Footer />
+    </>
   );
 }

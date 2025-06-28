@@ -4,9 +4,11 @@ import Slider from '../../components/slider';
 //sections
 import FullContent from './fullContent';
 import ListContent from './listContent';
-import RecentContent from './recentContent';
 //types
 import { PostResponse } from '../../types/posts';
+import dynamic from 'next/dynamic';
+
+const RecentContent = dynamic(() => import('./recentContent'), { ssr: false });
 
 export default function Contents({
   dataSlider,
