@@ -2,15 +2,15 @@ import Link from 'next/link';
 import { truncateText } from '../../helpers/functions';
 
 export default function BreadCrumb({
-  link,
-  name,
-  slug,
-  title
+  categoryLink,
+  categoryName,
+  postSlug,
+  postTitle
 }: {
-  link?: string;
-  name?: string;
-  slug: string;
-  title: string;
+  categoryLink?: string;
+  categoryName?: string;
+  postSlug?: string;
+  postTitle?: string;
 }) {
   return (
     <div className="breadcrumb-animate flex max-h-[35px] w-full items-center gap-[12px] rounded bg-slate-200 p-2 text-[13px] shadow-sm">
@@ -19,23 +19,29 @@ export default function BreadCrumb({
           Ana Sayfa
         </span>
       </Link>
-      <span className="text-slate-500"> / </span>
-      {name && link && (
+
+      {categoryLink && categoryName && (
         <>
-          <Link title={name} href={link}>
-            <span className="transition-color whitespace-nowrap  text-slate-500 hover:text-slate-600">
-              {slug}
+          <span className="text-slate-500"> / </span>
+          <Link title={categoryName} href={categoryLink}>
+            <span className="transition-color whitespace-nowrap text-slate-500 hover:text-slate-600">
+              {categoryName}
             </span>
           </Link>
-          <span className="text-slate-500"> / </span>
         </>
       )}
-      <Link title={title} href={slug}>
-        <span className="transition-color capitalize text-slate-500 hover:text-slate-600">
-          <span className="flex md:hidden">{truncateText(title, 3)}</span>
-          <span className="hidden md:flex">{title}</span>
-        </span>
-      </Link>
+
+      {postSlug && postTitle && (
+        <>
+          <span className="text-slate-500"> / </span>
+          <Link title={postTitle} href={postSlug}>
+            <span className="transition-color capitalize text-slate-500 hover:text-slate-600">
+              <span className="flex md:hidden">{truncateText(postTitle, 3)}</span>
+              <span className="hidden md:flex">{postTitle}</span>
+            </span>
+          </Link>
+        </>
+      )}
     </div>
   );
 }

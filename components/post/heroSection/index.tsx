@@ -57,10 +57,10 @@ export default function HeroSection({
       </div>
 
       <BreadCrumb
-        name={category.name}
-        slug={slug}
-        title={category.name}
-        link={`/category/${category.slug}`}
+        categoryLink={`/category/${category.slug}`}
+        categoryName={category.name}
+        postSlug={`/${slug}`}
+        postTitle={title}
       />
 
       <h2 id="h2" className=" text-[24px] font-bold">
