@@ -14,11 +14,14 @@ import { Search } from '../../public/icons/search';
 import { SignIn, SignUp } from '../../public/icons/sign';
 import { Down } from '../../public/icons/down';
 import HeaderInput from '../input/headerInput';
+import SearchModal from '../../sections/search';
 
 export default function Header() {
   const [menuFixed, setMenuFixed] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
   const [menuCategory, setMenuCategory] = useState(false);
+  const [query, setQuery] = useState('');
+  const [showModal, setShowModal] = useState(false);
 
   const toggleMenu = () => {
     setMobileMenu(!mobileMenu);
@@ -53,7 +56,7 @@ export default function Header() {
                     <Linkedin className={styles.icon} />
                   </div>
                 </div>
-                <HeaderInput />
+                <HeaderInput query={query} setQuery={setQuery} setShowModal={setShowModal} />
               </div>
               <div className="ml-auto flex w-[225px] gap-1">
                 <Link href="/auth/login" className={`${styles.topRightSignIn} backgroundContent`}>
@@ -179,6 +182,7 @@ export default function Header() {
           </div>
         </div>
       </>
+      <SearchModal query={query} open={showModal} onClose={() => setShowModal(false)} />
     </>
   );
 }
