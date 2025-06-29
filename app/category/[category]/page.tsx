@@ -47,7 +47,6 @@ export default async function CategoryPage({ params }: { params: { category: str
   const categoryPost = await getAllPosts('', { key: 'categoryName', value: params.category }, 6);
 
   const isValidSlug = slugs?.some((s) => params.category === s.slug);
-  console.log('isvalidSlug', isValidSlug, 'categoryDetails', categoryDetails);
   if (!isValidSlug || !categoryDetails) {
     notFound();
   }

@@ -25,6 +25,5 @@ export async function getCategorySlugs(name?: string): Promise<{ slug: string }[
   `;
   const resJson = await graphqlRequest(allQuery);
   if (!resJson?.data?.categories?.nodes) return null;
-  console.log('getCategorySlugs', resJson.data.categories.nodes);
   return resJson.data.categories.nodes;
 }
