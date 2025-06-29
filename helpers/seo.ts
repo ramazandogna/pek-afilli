@@ -63,14 +63,14 @@ export function generateMetadata({
         }
       ]
     },
-    twitter: {
-      card: SEO.TWITTER_CARD_TYPE,
-      title: finalTitle,
-      description: finalDescription,
-      images: [finalImage],
-      creator: SITE.TWITTER_HANDLE,
-      site: SITE.TWITTER_HANDLE
-    },
+    // twitter: {
+    //   card: SEO.TWITTER_CARD_TYPE,
+    //   title: finalTitle,
+    //   description: finalDescription,
+    //   images: [finalImage],
+    //   creator: SITE.TWITTER_HANDLE,
+    //   site: SITE.TWITTER_HANDLE
+    // },
     alternates: {
       canonical: finalUrl
     },
