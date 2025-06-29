@@ -12,6 +12,7 @@ import { PostResponse } from '../../../types/posts';
 //motion
 import { fadeInAnimation } from '../../../helpers/animations/fadeInAnimations';
 import { motion } from 'framer-motion';
+import { formatDateToLong } from '../../../helpers/functions';
 
 export default function CategoryContent({
   posts,
@@ -21,6 +22,9 @@ export default function CategoryContent({
   params: { category: string };
 }) {
   const [contents, setContents] = useState<PostResponse>(posts);
+
+  const time = formatDateToLong(posts.nodes[0].date);
+
   return (
     <Card>
       {contents.nodes.map((post, i: number) => (
@@ -28,33 +32,32 @@ export default function CategoryContent({
           variants={fadeInAnimation}
           initial="initial"
           whileInView="animate"
-          viewport={{
-            once: true
-          }}
+          viewport={{ once: true }}
           custom={i}
-          className="flex min-h-[100px] gap-[10px] p-[16px]"
+          className="flex min-h-[100px] flex-col gap-[10px] p-[16px] md:flex-row"
           key={i}
         >
           <Link
             href={`/${post.slug}`}
-            className="groupA relative flex h-[189px] min-h-[189px] items-start overflow-hidden  rounded md:w-[336px] md:min-w-[336px]"
+            className="groupA relative aspect-[16/9] w-full overflow-hidden rounded md:w-[336px] md:min-w-[336px]"
           >
-            <div className="groupA-hover absolute inset-0 z-[50]  bg-black/80">
-              <LinkI className=" absolute left-[50%] top-[50%] z-[99] -translate-x-[50%] -translate-y-[50%] text-[24px] text-white" />
+            <div className="groupA-hover group-hoverA:opacity-100 absolute inset-0 z-[50] bg-black/80 opacity-0 transition-opacity">
+              <LinkI className="absolute left-1/2 top-1/2 z-[99] -translate-x-1/2 -translate-y-1/2 text-[24px] text-white" />
             </div>
             <Image
               src={post.featuredImage.node.mediaDetails.sizes[0].sourceUrl}
-              alt={post.featuredImage.node.altText}
+              alt={post.featuredImage.node.altText || post.title}
               loading="lazy"
               fill
-              className="groupA-image w-full rounded object-cover md:w-[50%]"
+              className="object-cover"
             />
           </Link>
-          <div className="relative w-[358px]">
+
+          <div className="relative w-full md:w-[358px]">
             <Link href={`/${post.slug}`}>
-              <h2 className=" transition-all hover:text-[#0693e3]">{post.title}</h2>
+              <h2 className="transition-all hover:text-[#0693e3]">{post.title}</h2>
             </Link>
-            <span className="text-[12px]">{post.date}</span>
+            <span className="text-[12px]">{time}</span>
           </div>
         </motion.div>
       ))}

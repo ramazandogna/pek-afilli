@@ -4,7 +4,7 @@ import React from 'react';
 //components
 import BreadCrumb from '../../../components/breadCrumb';
 //helpers
-import { formatDate, unFormatTitle } from '../../../helpers/functions';
+import { formatDate, formatDateToLong, unFormatTitle } from '../../../helpers/functions';
 //types
 import { ImageType } from '../../../types/content';
 import { Comments } from '../../../public/icons/comments';
@@ -35,15 +35,6 @@ export default function HeroSection({
   author: AuthorNode;
   slug: string;
 }) {
-  const formatDateToLong = (dateString: string) => {
-    const date = new Date(dateString);
-    return new Intl.DateTimeFormat('tr-TR', {
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric'
-    }).format(date);
-  };
-
   const time = formatDateToLong(date);
   return (
     <div className="flex flex-col gap-[8px]">

@@ -14,6 +14,7 @@ import { PostResponse } from '../../../types/posts';
 //motion
 import { fadeInAnimation } from '../../../helpers/animations/fadeInAnimations';
 import { motion } from 'framer-motion';
+import { formatDateToLong } from '../../../helpers/functions';
 
 export default function RecentContent({ posts }: { posts: PostResponse }) {
   const [contents, setContents] = useState<PostResponse>(posts);
@@ -27,6 +28,8 @@ export default function RecentContent({ posts }: { posts: PostResponse }) {
       </Card>
     );
   }
+
+  const time = formatDateToLong(posts.nodes[0].date);
 
   return (
     <Card>
@@ -78,7 +81,7 @@ export default function RecentContent({ posts }: { posts: PostResponse }) {
                 >
                   <div>{post.categories.nodes[0].name}</div>
                 </Link>
-                <div>{post.date}</div>
+                <div>{time}</div>
               </div>
             </div>
           </motion.div>
