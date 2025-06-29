@@ -1,6 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import getAllPosts from '../../lib/getAllPosts';
 import { PostResponse } from '../../types/posts';
 import GetMorePost from '../../components/getMorePost';
@@ -8,6 +8,7 @@ import Modal from '../../components/modal';
 import Card from '../../components/card';
 import Link from 'next/link';
 import Image from 'next/image';
+import { API } from '../../constants';
 
 export default function SearchModal({
   query,
@@ -16,31 +17,34 @@ export default function SearchModal({
 }: {
   query: string;
   open: boolean;
-
   onClose: () => void;
 }) {
   const [results, setResults] = useState<PostResponse | null>(null);
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      if (!query || !open) return;
+  const fetchPosts = useCallback(async () => {
+    if (!query || !open) return;
 
-      setLoading(true);
-      setResults(null);
+    setLoading(true);
+    setResults(null);
 
-      try {
-        const posts = await getAllPosts('', null, 5, query);
-        setResults(posts);
-      } catch (error) {
-        console.error('Error fetching search results:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchPosts();
+    try {
+      const posts = await getAllPosts('', null, API.DEFAULT_POSTS_PER_PAGE, query);
+      setResults(posts);
+    } catch (error) {
+      console.error('Error fetching search results:', error);
+    } finally {
+      setLoading(false);
+    }
   }, [query, open]);
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      fetchPosts();
+    }, API.DEBOUNCE_DELAY);
+
+    return () => clearTimeout(timeoutId);
+  }, [fetchPosts]);
 
   if (!loading && (!results || results.nodes.length === 0)) {
     return (

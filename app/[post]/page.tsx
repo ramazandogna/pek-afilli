@@ -12,6 +12,7 @@ const WriteComment = dynamic(() => import('../../components/writeComment'));
 import Card from '../../components/card';
 import Post from '../../components/post/post';
 import HeroSection from '../../components/post/heroSection';
+import StructuredData from '../../components/structuredData';
 
 import type { PostType } from '../../types/post';
 import { CategoryNode } from '../../types/posts';
@@ -21,6 +22,8 @@ import { getPostSlugs } from '../../lib/getPostSlugs'; // Changed to named impor
 import getAllPosts from '../../lib/getAllPosts';
 import Header from '../../components/header';
 import Footer from '../../components/footer';
+import { generateMetadata as generateSEOMetadata } from '../../helpers/seo';
+import { READING_SPEED } from '../../constants';
 
 export async function generateStaticParams() {
   const slugs = await getPostSlugs(); // parametre VERİLMEZ
@@ -48,20 +51,16 @@ export async function generateMetadata({
   const image =
     post.featuredImage?.node.mediaDetails?.sizes?.[0]?.sourceUrl || '/default-image.jpg';
 
-  return {
-    title: `${post.title} | Pek Afilli`,
+  return generateSEOMetadata({
+    title: post.title,
     description,
-    openGraph: {
-      title: post.title,
-      description,
-      images: [image],
-      type: 'article'
-    },
-    alternates: {
-      canonical: `https://pekafilli.com/${params.post}`
-    },
-    metadataBase: new URL('https://pekafilli.com')
-  };
+    image,
+    url: `https://pekafilli.com/${params.post}`,
+    type: 'article',
+    publishedTime: post.date,
+    modifiedTime: post.modified,
+    author: post.author.node.name
+  });
 }
 
 export default async function PostPage({ params }: { params: { post: string } }) {
@@ -88,10 +87,20 @@ export default async function PostPage({ params }: { params: { post: string } })
     .trim()
     .split(/\s+/);
   const wordCount = words.length;
-  const readTime = Math.ceil(wordCount / 200);
+  const readTime = Math.ceil(wordCount / READING_SPEED.WORDS_PER_MINUTE);
 
   return (
     <>
+      <StructuredData
+        title={post.title}
+        description={post.excerpt ? post.excerpt.replace(/^<p>|<\/p>\n$/g, '').trim() : ''}
+        image={post.featuredImage?.node.mediaDetails?.sizes?.[0]?.sourceUrl}
+        url={`https://pekafilli.com/${post.slug}`}
+        type="Article"
+        publishedTime={post.date}
+        modifiedTime={post.modified}
+        author={post.author.node.name}
+      />
       <Header />
       <main id="comments" className="width-container section min-h-[100vh]">
         <Card className="my-4 bg-gray-100 p-4">

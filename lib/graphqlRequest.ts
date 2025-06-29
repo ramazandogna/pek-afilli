@@ -1,13 +1,24 @@
+import { API } from '../constants';
+
 export default async function graphqlRequest(query: string, variables?: object) {
-  const url = 'https://wp.pekafilli.com/graphql';
+  const url = API.GRAPHQL_URL;
   const headers = { 'Content-Type': 'application/json' };
 
-  const res = await fetch(url, {
-    method: 'POST',
-    headers,
-    body: JSON.stringify({ query, variables })
-  });
+  try {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers,
+      body: JSON.stringify({ query, variables })
+    });
 
-  const resJson = await res.json();
-  return resJson;
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
+
+    const resJson = await res.json();
+    return resJson;
+  } catch (error) {
+    console.error('GraphQL request failed:', error);
+    throw error;
+  }
 }

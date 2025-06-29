@@ -65,7 +65,12 @@ export default async function getAllPosts(
     }
   `;
 
-  const variables: any = {
+  const variables: {
+    endCursor?: string;
+    search?: string | null;
+    categoryName?: string;
+    tag?: string;
+  } = {
     endCursor,
     search
   };

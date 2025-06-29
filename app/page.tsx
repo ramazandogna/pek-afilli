@@ -1,4 +1,3 @@
-import Head from 'next/head';
 import Contents from '../sections/post/index';
 import Footer from '../components/footer/index';
 import Header from '../components/header/index';

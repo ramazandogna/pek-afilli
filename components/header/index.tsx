@@ -93,12 +93,13 @@ export default function Header() {
               </Link>
             </div>
           </div>
-          <div
+          <button
             onClick={toggleMenu}
+            aria-label="Menüyü aç/kapat"
             className="ml-auto mr-4 flex h-[40px] w-[40px] cursor-pointer items-center justify-center rounded-md text-[40px] text-[#161619] transition-all hover:scale-105 md:mr-auto md:hidden"
           >
             <Menu />
-          </div>
+          </button>
         </div>
       </nav>
 

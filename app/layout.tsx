@@ -5,30 +5,26 @@ import '../styles/globals.css';
 import '../styles/tailwind.css';
 import '../styles/hoverElements.css';
 import '../styles/animates.css';
-import Head from 'next/head';
 import Header from '../components/header';
 import Footer from '../components/footer';
+import ErrorBoundary from '../components/errorBoundary';
+import { generateMetadata } from '../helpers/seo';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Pek Afilli - Ana Sayfa',
-  description: 'Genel olarak Pek Afilli Şeyler hakkında bilgi edinin.',
-  icons: '/client/public/pek-afilli-favicon.svg',
-  openGraph: {
-    title: 'Pek Afilli - Başarıya Dair Pek Afilli Şeyler',
-    description: 'Genel olarak Pek Afilli Şeyler hakkında bilgi edinin.',
-    url: 'https://pekafilli.com',
-    siteName: 'Pek Afilli',
-    images: [
-      {
-        url: 'https://pekafilli.com/path/to/image.jpg',
-        width: 1200,
-        height: 630
-      }
+  ...generateMetadata(),
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: 'any' }
     ],
-    locale: 'tr_TR',
-    type: 'website'
+    shortcut: '/favicon.svg',
+    apple: [{ url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+    other: [
+      { rel: 'icon', url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { rel: 'icon', url: '/icon-512.png', sizes: '512x512', type: 'image/png' }
+    ]
   }
 };
 
@@ -38,8 +34,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="tr">
+      <body className={inter.className}>
+        <ErrorBoundary>{children}</ErrorBoundary>
+      </body>
     </html>
   );
 }
