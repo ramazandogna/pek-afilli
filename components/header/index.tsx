@@ -74,20 +74,17 @@ export default function Header() {
             </div>
             <div className="flex h-[40px] grow items-center">
               <ul className="flex gap-3">
-                <Link href="/category/magazine">
-                  <li className="transition-all hover:scale-[102%]">Magazine</li>
+                <Link href="/category/activities">
+                  <li className="transition-all hover:scale-[102%]">Activities</li>
                 </Link>
-                <Link href="/category/series">
-                  <li className="transition-all hover:scale-[102%]">Series</li>
+                <Link href="/category/photography">
+                  <li className="transition-all hover:scale-[102%]">Photography</li>
                 </Link>
-                <Link href="/category/technology">
-                  <li className="transition-all hover:scale-[102%]">Technologies</li>
+                <Link href="/category/travel-tips">
+                  <li className="transition-all hover:scale-[102%]">Travel Tips</li>
                 </Link>
-                <Link href="/category/motivation">
-                  <li className="transition-all hover:scale-[102%]">Motivation</li>
-                </Link>
-                <Link href="/test">
-                  <li className="transition-all hover:scale-[102%]">Sport</li>
+                <Link href="/category/inspiration">
+                  <li className="transition-all hover:scale-[102%]">Inspiration</li>
                 </Link>
               </ul>
               <Link href="/" className={styles.bottomRight}>
@@ -140,19 +137,16 @@ export default function Header() {
                 className={`${menuCategory === true ? 'slide-bottom' : 'slide-top'} flex-col pl-[10px] text-[13px] transition-all  duration-300`}
               >
                 <div className="flex w-full  py-[10px]">
-                  <Link href="/category/magazine">Magazine</Link>
+                  <Link href="/category/activities">Activities</Link>
                 </div>
                 <div className="flex w-full  py-[10px]">
-                  <Link href="/category/series">Series</Link>
+                  <Link href="/category/photography">Photography</Link>
                 </div>
                 <div className="flex w-full  py-[10px]">
-                  <Link href="/category/technology">Technology</Link>
+                  <Link href="/category/travel-tips">Travel Tips</Link>
                 </div>
                 <div className="flex w-full  py-[10px]">
-                  <Link href="/category/motivation">Motivation</Link>
-                </div>
-                <div className="flex w-full  py-[10px]">
-                  <Link href="/category/sport">Sport</Link>
+                  <Link href="/category/inspiration">Inspiration</Link>
                 </div>
               </div>
             </div>
