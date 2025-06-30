@@ -9,6 +9,7 @@ export default async function graphqlRequest(query: string, variables?: object) 
       `Bearer ${process.env.WORDPRESS_AUTH_REFRESH_TOKEN}`;
   }
 
+  if (!url) throw new Error('GRAPHQL_URL tanımlı değil');
   try {
     const res = await fetch(url, {
       method: 'POST',
