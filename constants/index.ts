@@ -5,7 +5,6 @@ export const READING_SPEED = {
 
 // API sabitleri
 export const API = {
-  GRAPHQL_URL: process.env.GRAPHQL_URL,
   DEBOUNCE_DELAY: 300, // ms
   DEFAULT_POSTS_PER_PAGE: 5,
   MAX_POSTS_PER_PAGE: 10

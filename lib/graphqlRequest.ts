@@ -1,7 +1,5 @@
-import { API } from '../constants';
-
 export default async function graphqlRequest(query: string, variables?: object) {
-  const url = API.GRAPHQL_URL;
+  const url = process.env.GRAPHQL_URL;
   const headers = { 'Content-Type': 'application/json' };
 
   if (process.env.WORDPRESS_AUTH_REFRESH_TOKEN) {
