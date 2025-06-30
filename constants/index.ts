@@ -1,10 +1,3 @@
-// Z-index değerleri
-export const Z_INDEX = {
-  HEADER: 99,
-  MOBILE_MENU: 1000001,
-  MODAL: 999999
-} as const;
-
 // Okuma hızı sabitleri
 export const READING_SPEED = {
   WORDS_PER_MINUTE: 200
@@ -12,19 +5,10 @@ export const READING_SPEED = {
 
 // API sabitleri
 export const API = {
-  GRAPHQL_URL: 'https://wp.pekafilli.com/graphql',
+  GRAPHQL_URL: process.env.GRAPHQL_URL,
   DEBOUNCE_DELAY: 300, // ms
   DEFAULT_POSTS_PER_PAGE: 5,
   MAX_POSTS_PER_PAGE: 10
-} as const;
-
-// UI sabitleri
-export const UI = {
-  MOBILE_MENU_WIDTH: '85%',
-  MODAL_MAX_HEIGHT: '550px',
-  MODAL_MAX_WIDTH: '4xl',
-  HEADER_HEIGHT: '55px',
-  MOBILE_HEADER_HEIGHT: '40px'
 } as const;
 
 // Site sabitleri
