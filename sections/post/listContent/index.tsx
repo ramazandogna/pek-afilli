@@ -9,12 +9,6 @@ import { LinkI } from '../../../public/icons/link';
 import { PostNode, PostResponse } from '../../../types/posts';
 import { getPlaiceholder } from 'plaiceholder';
 
-const SUPPORTED_IMAGE_FORMATS = ['.jpg', '.jpeg', '.png', '.webp', '.avif'];
-
-function isSupportedImageFormat(src: string) {
-  return SUPPORTED_IMAGE_FORMATS.some((ext) => src.toLowerCase().endsWith(ext));
-}
-
 export default async function ListContent({
   posts,
   categoryName,
@@ -32,6 +26,12 @@ export default async function ListContent({
         </div>
       </Card>
     );
+  }
+
+  const SUPPORTED_IMAGE_FORMATS = ['.jpg', '.jpeg', '.png', '.webp', '.avif'];
+
+  function isSupportedImageFormat(src: string) {
+    return SUPPORTED_IMAGE_FORMATS.some((ext) => src.toLowerCase().endsWith(ext));
   }
 
   let base64: string | undefined;

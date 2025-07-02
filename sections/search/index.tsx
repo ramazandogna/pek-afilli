@@ -1,5 +1,5 @@
-/* eslint-disable react/no-unescaped-entities */
 'use client';
+/* eslint-disable react/no-unescaped-entities */
 import { useEffect, useState, useCallback } from 'react';
 import getAllPosts from '../../lib/getAllPosts';
 import { PostResponse } from '../../types/posts';
@@ -20,22 +20,26 @@ export default function SearchModal({
   onClose: () => void;
 }) {
   const [results, setResults] = useState<PostResponse | null>(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const fetchPosts = useCallback(async () => {
     if (!query || !open) return;
 
     setLoading(true);
-    setResults(null);
 
     try {
-      const posts = await getAllPosts('', null, API.DEFAULT_POSTS_PER_PAGE, query);
+      const response = await fetch('/api/search', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ query })
+      });
+      const posts = await response.json();
       setResults(posts);
     } catch (error) {
       console.error('Error fetching search results:', error);
     } finally {
-      setLoading(false);
     }
+    setLoading(false);
   }, [query, open]);
 
   useEffect(() => {
@@ -45,6 +49,11 @@ export default function SearchModal({
 
     return () => clearTimeout(timeoutId);
   }, [fetchPosts]);
+
+  if (open && !results && !loading) {
+    // Modal açıldı ama veri yüklenmedi, hiçbir şey gösterme
+    return null;
+  }
 
   if (!loading && (!results || results.nodes.length === 0)) {
     return (
@@ -63,54 +72,58 @@ export default function SearchModal({
     return (
       <Modal isOpen={open} onClose={onClose}>
         <Card className="flex h-[96%] w-full items-center justify-center py-12 text-center">
-          <span className="animate-ping text-sm">Loading...</span>
+          <span className="animate-ping text-sm">Yükleniyor...</span>
         </Card>
       </Modal>
     );
   }
 
-  return (
-    <Modal isOpen={open} onClose={onClose}>
-      <Card className="my-auto min-h-[96%] overflow-y-auto">
-        {!loading && results && (
-          <>
-            <h2 className="mb-4 text-xl font-semibold text-gray-700">Aranıyor: {query}</h2>
-            <div className="flex flex-col gap-6">
-              {results.nodes.map((post) => (
-                <Link
-                  href={`/${post.slug}`}
-                  key={post.slug}
-                  className="flex gap-4 hover:opacity-90"
-                >
-                  <div className="relative h-[100px] w-[150px] overflow-hidden rounded">
-                    <Image
-                      src={post.featuredImage.node.mediaDetails.sizes[0].sourceUrl}
-                      alt={post.featuredImage.node.altText || ''}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="flex flex-col justify-between">
-                    <h3 className="font-semibold text-gray-800">{post.title}</h3>
-                    <div className="text-xs text-gray-500">{post.date}</div>
-                  </div>
-                </Link>
-              ))}
-            </div>
-
-            {/* Sadece yeterince sonuç varsa göster */}
-            {results.pageInfo.hasNextPage && query && (
-              <div className="mt-6">
-                <GetMorePost
-                  contents={results}
-                  setContents={setResults}
-                  taxonomy={{ key: null, value: null }}
-                />
+  if (results) {
+    return (
+      <Modal isOpen={open} onClose={onClose}>
+        <Card className="my-auto min-h-[96%] overflow-y-auto">
+          {!loading && results && (
+            <>
+              <h2 className="mb-4 text-xl font-semibold text-gray-700">Aranıyor: {query}</h2>
+              <div className="flex flex-col gap-6">
+                {results.nodes.map((post) => (
+                  <Link
+                    href={`/${post.slug}`}
+                    key={post.slug}
+                    className="flex gap-4 hover:opacity-90"
+                  >
+                    <div className="relative h-[100px] w-[150px] overflow-hidden rounded">
+                      <Image
+                        src={post.featuredImage.node.mediaDetails.sizes[0].sourceUrl}
+                        alt={post.featuredImage.node.altText || ''}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="flex flex-col justify-between">
+                      <h3 className="font-semibold text-gray-800">{post.title}</h3>
+                      <div className="text-xs text-gray-500">{post.date}</div>
+                    </div>
+                  </Link>
+                ))}
               </div>
-            )}
-          </>
-        )}
-      </Card>
-    </Modal>
-  );
+
+              {/* Sadece yeterince sonuç varsa göster */}
+              {results.pageInfo.hasNextPage && query && (
+                <div className="mt-6">
+                  <GetMorePost
+                    contents={results}
+                    setContents={setResults}
+                    taxonomy={{ key: null, value: null }}
+                  />
+                </div>
+              )}
+            </>
+          )}
+        </Card>
+      </Modal>
+    );
+  }
+
+  return null;
 }
