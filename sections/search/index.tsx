@@ -32,8 +32,8 @@ export default function SearchModal({
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          query: '',
-          endCursor: results?.pageInfo.endCursor,
+          query,
+          endCursor: null,
           taxonomy: null
         })
       });
@@ -42,9 +42,9 @@ export default function SearchModal({
     } catch (error) {
       console.error('Error fetching search results:', error);
     } finally {
+      setLoading(false);
     }
-    setLoading(false);
-  }, [query, open, results]);
+  }, [query, open]);
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
