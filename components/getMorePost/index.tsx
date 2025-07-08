@@ -2,7 +2,6 @@
 import { useState } from 'react';
 import { PostResponse } from '../../types/posts';
 import { ThreeDot } from '../../public/icons/threeDot';
-import getAllPosts from '../../lib/getAllPosts';
 
 export default function GetMorePost({
   contents,
@@ -20,36 +19,30 @@ export default function GetMorePost({
     if (postsLoading || noMorePost) return;
 
     setPostsLoading(true);
-    const morePost = await getAllPosts(contents.pageInfo.endCursor);
+
+    // API route üzerinden fetch ile veri çek
+    const response = await fetch('/api/search', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        query: '', // Arama kelimesi gerekiyorsa ekle
+        endCursor: contents.pageInfo.endCursor,
+        taxonomy
+      })
+    });
+    const morePost = await response.json();
 
     let updatePosts: PostResponse = {
-      pageInfo: {
-        endCursor: '',
-        hasNextPage: false,
-        hasPreviousPage: false,
-        startCursor: ''
-      },
-      nodes: []
+      pageInfo: morePost.pageInfo,
+      nodes: [...contents.nodes, ...morePost.nodes]
     };
-    updatePosts.pageInfo = morePost.pageInfo;
-
-    contents.nodes.map((node) => {
-      updatePosts.nodes.push(node);
-    });
-    morePost.nodes.map((node) => {
-      updatePosts.nodes.push(node);
-    });
 
     setTimeout(() => {
       setPostsLoading(false);
       setContents(updatePosts);
     }, 500);
 
-    if (morePost.pageInfo.hasNextPage) {
-      setNoMorePost(false);
-    } else {
-      setNoMorePost(true);
-    }
+    setNoMorePost(!morePost.pageInfo.hasNextPage);
   };
 
   return (
