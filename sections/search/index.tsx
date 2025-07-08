@@ -31,7 +31,11 @@ export default function SearchModal({
       const response = await fetch('/api/search', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ query })
+        body: JSON.stringify({
+          query: '',
+          endCursor: results?.pageInfo.endCursor,
+          taxonomy: null
+        })
       });
       const posts = await response.json();
       setResults(posts);
@@ -40,7 +44,7 @@ export default function SearchModal({
     } finally {
     }
     setLoading(false);
-  }, [query, open]);
+  }, [query, open, results]);
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -113,7 +117,19 @@ export default function SearchModal({
                 <div className="mt-6">
                   <GetMorePost
                     contents={results}
-                    setContents={setResults}
+                    setContents={(morePost) => {
+                      let updatePosts: PostResponse = {
+                        pageInfo: morePost.pageInfo,
+                        nodes: [
+                          ...results.nodes,
+                          ...morePost.nodes.filter(
+                            (newPost) =>
+                              !results.nodes.some((oldPost) => oldPost.slug === newPost.slug)
+                          )
+                        ]
+                      };
+                      setResults(updatePosts);
+                    }}
                     taxonomy={{ key: null, value: null }}
                   />
                 </div>
