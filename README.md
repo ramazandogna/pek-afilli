@@ -201,7 +201,7 @@ The project supports these categories:
 ### GraphQL Endpoint
 
 ```
-https://wp.pekafilli.com/graphql
+endpoint/graphql
 ```
 
 ### Main Queries
@@ -347,7 +347,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 **Ramazan Doğan**
 
 - GitHub: [@ramazandogna](https://github.com/ramazandogna)
-- Website: [pekafilli.com](https://pekafilli.com)
+- Website: [pekafilli](https://pek-afilli.vercel.app/)
 
 ## 🙏 Acknowledgments
 
